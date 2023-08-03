@@ -8,6 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     SignupComponent,
     AccountsComponent,
-    TransactionComponent
+    TransactionComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
