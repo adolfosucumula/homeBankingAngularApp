@@ -14,6 +14,10 @@ import { OutputTransactionComponent } from './output-transaction/output-transact
 
 //
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+//Importing Http client module because we have components that make http requests throught HttpClient module
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -32,6 +36,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,//Material Module
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

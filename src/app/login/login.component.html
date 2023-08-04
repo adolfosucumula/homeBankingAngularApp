@@ -3,11 +3,11 @@
 
 </style>
 <div class="box-form">
-  <form class="example-form">
+  <form class="example-form" [formGroup]="signInForm" (ngSubmit)="signIn()">
 
       <mat-form-field appearance="outline">
         <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" class="input" [formControl]="email" required style="color: aliceblue;">
+        <input matInput placeholder="pat@example.com" class="input" formControlName="email" required style="color: aliceblue;">
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field>
@@ -15,7 +15,7 @@
       <p>
         <mat-form-field appearance="outline" class="password">
           <mat-label>Inter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" placeholder="xxxxxxxx" required style="color: aliceblue;">
+          <input matInput [type]="hide ? 'password' : 'text'" placeholder="xxxxxxxx" formControlName="password" required style="color: aliceblue;">
           <mat-error *ngIf="password.invalid">{{getErrorPassword()}}</mat-error>
           <button class="btn-pwd" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -27,5 +27,8 @@
       <button mat-fab extended color="primary">
         Sign in
       </button>
+      <div class="signup">
+        <a routerLink="/signup" >Sign Up!!</a>
+      </div>
   </form>
 </div>
