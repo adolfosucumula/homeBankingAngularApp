@@ -46,15 +46,11 @@
   ],
   "accounts": [
     {
-      "id": "1",
-      "account": "00123",
-      "iban": "PTHB000001230001",
-      "swift": "PTHB001",
-      "ibn": "PTHB000001230001",
-      "owner": "admin",
-      "initialBalance": "1000",
-      "currency": "$",
-      "isActive": "true"
+      "id": 1,
+      "account": "0022244",
+      "owner": "admin@email.com",
+      "balance": "100000",
+      "currency": "$"
     }
   ],
   "inputs": [],
