@@ -53,12 +53,31 @@
       "ibn": "PTHB000001230001",
       "owner": "admin",
       "initialBalance": "1000",
+      "currentBalance": "12000",
       "currency": "$",
       "isActive": "true"
     }
   ],
-  "inputs": [],
-  "outputs": [],
+  "credits": [
+    {
+      "id": "1",
+      "account": "00123",
+      "transaction": "0001",
+      "amount": 23,
+      "regist_date": "12-09-2023",
+      "operator": "Laura"
+    }
+  ],
+  "debits": [
+    {
+      "id": "1",
+      "account": "00123",
+      "transaction": "0001",
+      "amount": 5,
+      "regist_date": "12-09-2023 09:23",
+      "operator": "Laura"
+    }
+  ],
   "currencies": [
     {
       "id": 1,

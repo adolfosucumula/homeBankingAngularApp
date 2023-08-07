@@ -32,6 +32,7 @@ import { HomeAccountComponent } from './accounts/home-account/home-account.compo
 import { EditAccountComponent } from './accounts/edit-account/edit-account.component';
 import { AddAccountComponent } from './accounts/add-account/add-account.component';
 import { UpdateAccountComponent } from './accounts/update-account/update-account.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { UpdateAccountComponent } from './accounts/update-account/update-account
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,//Material Module

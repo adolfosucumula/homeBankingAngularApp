@@ -6,6 +6,7 @@ export interface AccountModel {
   ibn: string,
   owner: string,
   initialBalance: string,
+  currentBalance: string,
   currency: string,
   isActive: boolean
 

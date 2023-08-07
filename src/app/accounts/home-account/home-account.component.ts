@@ -6,7 +6,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 //Importing resources for Table component
 
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -14,7 +15,7 @@ import {MatTableModule} from '@angular/material/table';
   templateUrl: './home-account.component.html',
   styleUrls: ['./home-account.component.css'],
   standalone: true,
-  imports: [MatCardModule,MatButtonModule, MatTableModule, NgFor],
+  imports: [MatCardModule,MatButtonModule, MatTableModule, NgFor, RouterModule],
 })
 export class HomeAccountComponent implements OnInit{
 

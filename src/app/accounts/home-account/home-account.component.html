@@ -33,8 +33,10 @@
             <td>{{ item.account }}</td>
             <td>{{ item.iban }}</td>
             <td>
-              <button type="button" class="btn btn-primary">Edit</button>
-              <button type="button">Delete</button>
+              <a routerLink="account/gg" class="btn btn-primary" routerLinkActive="active">Edit</a>
+              <a  rel="noopener" href="/account/edit/{{item.id}}" title="Twitter" style="cursor: pointer;color: #e6ebf1;">
+                Accounts
+              </a>
             </td>
           </tr>
         </tbody>
