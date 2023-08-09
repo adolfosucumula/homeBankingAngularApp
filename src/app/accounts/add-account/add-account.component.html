@@ -9,13 +9,16 @@ width: 500px;
 <main>
   <div class="container">
     <form class="example-form" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
-
+        <div class="title">
+          <h2>Regist new account</h2>
+        </div>
         <mat-form-field hintLabel="Max 10 characters" appearance="outline">
           <mat-label>Account number</mat-label>
           <input matInput type="text"
             formControlName="account"
             [ngClass]="{ 'is-invalid': submitted && _fC['account'].errors }"
             placeholder="Account number"
+
            >
            <span *ngIf="submitted && _fC['account'].errors" class="invalid-feedback">
             <span *ngIf="_fC['account'].errors['required']">The account number is required</span>

@@ -1,4 +1,39 @@
 
+  <mat-toolbar color="primary">
+      <!--<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>menu</mat-icon>
+ </button>-->
+ <span>My App</span>
+ <button mat-button class="btn-menu-sidebar" [class.visited] ="isVisited == true" (click)="checkVisited()">
+  <mat-icon>more_vert</mat-icon>
+</button>
+ <span class="example-spacer"></span>
+ <!--   Menu buttons -->
+  <button mat-button class="btn-menu-01">Sign In
+  </button>
+  <button mat-button class="btn-menu-01"> Sign Up
+  </button>
+
+  <button mat-icon-button class="btn-menu" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Sign In</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Sign Up</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Sign Up</span>
+    </button>
+  </mat-menu>
+
+   </mat-toolbar>
+
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened class="sidbar">
     <mat-list role="list">
@@ -41,28 +76,7 @@
   </mat-drawer>
   <mat-drawer-content>
 
-    <mat-toolbar color="primary">
-      <!--<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-       <mat-icon>menu</mat-icon>
-     </button>-->
-     <span>My App</span>
-     <span class="example-spacer"></span>
-     <!--   Menu buttons -->
-      <button mat-button >Sign In
-      </button>
-      <button mat-button > Sign Up
-      </button>
-      <!--<button mat-button [matMenuTriggerFor]="aboveMenu">
-        <mat-icon>menu</mat-icon> Profile
-      </button>
 
-      <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
-      <mat-menu #afterMenu="matMenu" xPosition="after">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
-      </mat-menu>-->
-
-   </mat-toolbar>
 
     <router-outlet></router-outlet>
 
