@@ -1,0 +1,18 @@
+main .container .example-form{
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 150px;
+  max-width: 800px;
+  width: 100%;
+}
+
+main .container .example-form .mat-form-field {
+
+  width: 500px;
+}
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}

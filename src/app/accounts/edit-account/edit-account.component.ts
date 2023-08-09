@@ -12,13 +12,13 @@ export class EditAccountComponent implements OnInit{
 
   accountForm: AccountModel = {
     id: 0,
-    account: 0,
-    iban: '',
-    swift: '',
-    ibn: '',
-    owner: '',
-    initialBalance: '',
-    currency: '',
+    account: "00123",
+    iban: "",
+    swift: "",
+    owner: "",
+    initialBalance: "",
+    currentBalance: "",
+    currency: "",
     isActive: true
   };
 

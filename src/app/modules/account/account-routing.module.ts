@@ -5,6 +5,7 @@ import { AddAccountComponent } from 'src/app/accounts/add-account/add-account.co
 import { UpdateAccountComponent } from 'src/app/accounts/update-account/update-account.component';
 
 
+
 const routes: Routes = [
   {path: 'account/home', component: HomeAccountComponent },
   {path: 'account/add', component: AddAccountComponent },

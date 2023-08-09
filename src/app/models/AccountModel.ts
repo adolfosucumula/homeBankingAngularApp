@@ -1,9 +1,8 @@
 export interface AccountModel {
   id: number,
-  account: number,
+  account: string,
   iban: string,
   swift: string,
-  ibn: string,
   owner: string,
   initialBalance: string,
   currentBalance: string,

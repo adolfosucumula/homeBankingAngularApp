@@ -1,1 +1,63 @@
-<p>add-account works!</p>
+<style>
+  .mat-form-field {
+
+width: 500px;
+}
+
+</style>
+
+<main>
+  <div class="container">
+    <form class="example-form">
+
+        <mat-form-field hintLabel="Max 10 characters" appearance="outline">
+          <mat-label>Account number</mat-label>
+          <input matInput #input maxlength="10" placeholder="Account number">
+          <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>IBAN number</mat-label>
+          <input matInput placeholder="IBAN number" name="iba">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Swift code</mat-label>
+          <input matInput placeholder="Swift code" name="swift">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Initial Balance</mat-label>
+          <input matInput placeholder="Initial Balance" name="initialBalance">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Currency</mat-label>
+          <mat-select>
+            <mat-option value="option">Option</mat-option>
+            <mat-option value="option">Euro</mat-option>
+            <mat-option value="option">Dollar</mat-option>
+            <mat-option value="option">Kwanza</mat-option>
+          </mat-select>
+
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Owner</mat-label>
+          <input matInput placeholder="Account owner" name="owner">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-radio-group aria-label="Account is?" name="isActive">
+          <mat-radio-button value="1">Anabled</mat-radio-button>
+          <mat-radio-button value="0">Disabled</mat-radio-button>
+        </mat-radio-group>
+
+    </form>
+  </div>
+</main>

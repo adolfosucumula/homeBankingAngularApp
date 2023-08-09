@@ -24,6 +24,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
+import { RouterModule } from '@angular/router';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
+import {MatRadioModule} from '@angular/material/radio';
 
 //Importing Http client module because we have components that make http requests throught HttpClient module
 import { HttpClientModule } from '@angular/common/http';
@@ -32,16 +41,17 @@ import { HomeAccountComponent } from './accounts/home-account/home-account.compo
 import { EditAccountComponent } from './accounts/edit-account/edit-account.component';
 import { AddAccountComponent } from './accounts/add-account/add-account.component';
 import { UpdateAccountComponent } from './accounts/update-account/update-account.component';
-import { RouterModule } from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     //LoginComponent,
     SignupComponent,
-    AccountsComponent,
+    //AccountsComponent,
     TransactionComponent,
-    DashboardComponent,
+    //DashboardComponent,
     InputTransactionComponent,
     OutputTransactionComponent,
     EditAccountComponent,
@@ -65,7 +75,15 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    NgIf
+    NgIf,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonToggleModule,
+    MatSelectModule,
+    MatCardModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

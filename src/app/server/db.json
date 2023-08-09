@@ -47,10 +47,14 @@
   "accounts": [
     {
       "id": 1,
-      "account": "0022244",
-      "owner": "admin@email.com",
-      "balance": "100000",
-      "currency": "$"
+      "account": "00123",
+      "iban": "",
+      "swift": "",
+      "owner": "",
+      "initialBalance": "",
+      "currentBalance": "",
+      "currency": "",
+      "isActive": true
     }
   ],
   "inputs": [],
