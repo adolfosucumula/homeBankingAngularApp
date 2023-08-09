@@ -19,11 +19,15 @@ width: 500px;
            >
            <span *ngIf="submitted && _fC['account'].errors" class="invalid-feedback">
             <span *ngIf="_fC['account'].errors['required']">The account number is required</span>
+
             <span *ngIf="_fC['account'].errors['maxlength']">
               The account number must not exceed 13 characters
             </span>
             <span *ngIf="_fC['account'].errors['minlength']">
               The account number must have at least 13 characters
+            </span>
+            <span *ngIf="_fC['account'].errors['pattern']">
+              This field accepts only numbers as value
             </span>
           </span>
           <!--<mat-hint align="end">{{input.value.length}}/10</mat-hint>-->
@@ -45,6 +49,9 @@ width: 500px;
           <span *ngIf="_fC['iban'].errors['minlength']">
             The iban filed must have exactly 19 characters
           </span>
+          <span *ngIf="_fC['iban'].errors['pattern']">
+            This field accepts only numbers and characters as value
+          </span>
         </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
@@ -64,6 +71,9 @@ width: 500px;
         <span *ngIf="_fC['swift'].errors['minlength']">
           The swift filed must have exactly 8 characters
         </span>
+        <span *ngIf="_fC['swift'].errors['pattern']">
+          This field accepts only uppercase characters as value.
+        </span>
       </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
@@ -77,9 +87,7 @@ width: 500px;
        >
        <span *ngIf="submitted && _fC['initialBalance'].errors" class="invalid-feedback">
         <span *ngIf="_fC['initialBalance'].errors['required']">The initial balance filed is required</span>
-        <span *ngIf="_fC['initialBalance'].errors['minlength']">
-          The initial balance filed must have at least 2,00 dollars
-        </span>
+
       </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
@@ -115,6 +123,9 @@ width: 500px;
         <span *ngIf="_fC['owner'].errors['required']">The owner filed is required</span>
         <span *ngIf="_fC['owner'].errors['maxlength']">
           The owner filed must not exceed 200 characters
+        </span>
+        <span *ngIf="_fC['owner'].errors['pattern']">
+          This field accepts only characters as value
         </span>
       </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>

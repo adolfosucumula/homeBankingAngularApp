@@ -8,9 +8,13 @@ main .container .example-form{
   width: 100%;
 }
 
+.mat-form-field{
+  width: 1000px;
+}
+
 main .container .example-form .mat-form-field {
 
-  width: 500px;
+
 }
 
 .mat-mdc-radio-button ~ .mat-mdc-radio-button {

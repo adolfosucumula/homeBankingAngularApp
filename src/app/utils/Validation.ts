@@ -20,4 +20,14 @@ export default class myValidation {
 
     }
   }
+
+   /**
+   * Function to check the values typing by user on the currency field.
+   * First the non digite is removed
+   * */
+  isDigite(){
+
+  }
+
+
 }

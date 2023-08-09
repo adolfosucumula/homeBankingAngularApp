@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder,FormGroup,FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
+import { CurrencyPipe } from '@angular/common';
 //import { myValidation } from '../../utils/Validation';
 
 @Component({
   selector: 'app-add-account',
   templateUrl: './add-account.component.html',
-  styleUrls: ['./add-account.component.css']
+  styleUrls: ['./add-account.component.css'],
+  providers: [CurrencyPipe]
 })
 export class AddAccountComponent {
 
@@ -28,26 +30,42 @@ export class AddAccountComponent {
   submitted = false;
 
   //
-  constructor(private formBuilder: FormBuilder, private accountServices: AccountServicesService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe, private accountServices: AccountServicesService, private router: Router) { }
 
 
   ngOnInit(): void {
     //Function to validate the form fields according to the specific rules
     this.accountForm = this.formBuilder.group({
-      account: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(13)] ],
-      iban: ['', [Validators.required, Validators.minLength(19), Validators.maxLength(19)]],
-      swift: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)] ],
-      owner: ['', [Validators.required, Validators.maxLength(200)] ],
-      initialBalance: ['', [Validators.required, Validators.minLength(1)] ],
+      account: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(13), Validators.pattern('^[0-9]+$')] ],
+      iban: ['', [Validators.required, Validators.pattern('^[0-9A-Z]+$'), Validators.minLength(19), Validators.maxLength(19)]],
+      swift: ['', [Validators.required, Validators.pattern('^[A-Z]+$'), Validators.minLength(8), Validators.maxLength(8)] ],
+      owner: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$'), Validators.maxLength(200)] ],
+      initialBalance: ['', [Validators.required] ],
       currency: ['', [Validators.required, Validators.minLength(2)] ],
       isActive: [false, Validators.required],
-    })
+    });
+
+
+    /**
+     * Function to catch the event typing from currency field to check the values being typing by user
+     * are valid or not.
+     * First is removed the all non digit from field, next remove the leading zeros meaning the values might make sense,
+     * at the end its neccessary to stop/disable function to emit any event, otherwise its gonna be on the infinity loop.
+     * */
+    this.accountForm.valueChanges.subscribe( form => {
+      if(form.initialBalance){
+        this.accountForm.patchValue({
+          initialBalance: this.currencyPipe.transform(form.initialBalance.replace(/\D/g, '').replace(/^0+/, ''), 'EUR', 'symbol', '1.0-0')
+        }, {emitEvent: false})
+      }
+    });
+
   };
 
   //Call AbstractControl class to check if the data from form fields conforms to the rule defined above
   get _fC(): {[key: string]: AbstractControl } {
     return this.accountForm.controls;
-  }
+  };
 
   onSubmit(): void {
     this.submitted = true;
@@ -88,7 +106,9 @@ export class AddAccountComponent {
     });
 
 
-  }
+  };
+
+
 
 
 
