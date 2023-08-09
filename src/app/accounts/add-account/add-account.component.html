@@ -8,56 +8,134 @@ width: 500px;
 
 <main>
   <div class="container">
-    <form class="example-form">
+    <form class="example-form" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
 
         <mat-form-field hintLabel="Max 10 characters" appearance="outline">
           <mat-label>Account number</mat-label>
-          <input matInput #input maxlength="10" placeholder="Account number">
-          <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+          <input matInput type="text"
+            formControlName="account"
+            [ngClass]="{ 'is-invalid': submitted && _fC['account'].errors }"
+            placeholder="Account number"
+           >
+           <span *ngIf="submitted && _fC['account'].errors" class="invalid-feedback">
+            <span *ngIf="_fC['account'].errors['required']">The account number is required</span>
+            <span *ngIf="_fC['account'].errors['maxlength']">
+              The account number must not exceed 13 characters
+            </span>
+            <span *ngIf="_fC['account'].errors['minlength']">
+              The account number must have at least 13 characters
+            </span>
+          </span>
+          <!--<mat-hint align="end">{{input.value.length}}/10</mat-hint>-->
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>IBAN number</mat-label>
-          <input matInput placeholder="IBAN number" name="iba">
+          <input matInput placeholder="IBAN number" type="text"
+            formControlName="iban"
+            [ngClass]="{ 'is-invalid': submitted && _fC['iban'].errors }"
+            placeholder="Account number"
+         >
+         <span *ngIf="submitted && _fC['iban'].errors" class="invalid-feedback">
+          <span *ngIf="_fC['iban'].errors['required']">The iban filed is required</span>
+          <span *ngIf="_fC['iban'].errors['maxlength']">
+            The iban filed must have exactly 19 characters
+          </span>
+          <span *ngIf="_fC['iban'].errors['minlength']">
+            The iban filed must have exactly 19 characters
+          </span>
+        </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Swift code</mat-label>
-          <input matInput placeholder="Swift code" name="swift">
+          <input matInput placeholder="Swift code" type="text"
+          formControlName="swift"
+          [ngClass]="{ 'is-invalid': submitted && _fC['swift'].errors }"
+          placeholder="Account number"
+       >
+       <span *ngIf="submitted && _fC['swift'].errors" class="invalid-feedback">
+        <span *ngIf="_fC['swift'].errors['required']">The swift filed is required</span>
+        <span *ngIf="_fC['swift'].errors['maxlength']">
+          The swift filed must have exactly 8 characters
+        </span>
+        <span *ngIf="_fC['swift'].errors['minlength']">
+          The swift filed must have exactly 8 characters
+        </span>
+      </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Initial Balance</mat-label>
-          <input matInput placeholder="Initial Balance" name="initialBalance">
+          <input matInput placeholder="Initial Balance" type="text"
+          formControlName="initialBalance"
+          [ngClass]="{ 'is-invalid': submitted && _fC['initialBalance'].errors }"
+          placeholder="Account number"
+       >
+       <span *ngIf="submitted && _fC['initialBalance'].errors" class="invalid-feedback">
+        <span *ngIf="_fC['initialBalance'].errors['required']">The initial balance filed is required</span>
+        <span *ngIf="_fC['initialBalance'].errors['minlength']">
+          The initial balance filed must have at least 2,00 dollars
+        </span>
+      </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Currency</mat-label>
-          <mat-select>
-            <mat-option value="option">Option</mat-option>
-            <mat-option value="option">Euro</mat-option>
-            <mat-option value="option">Dollar</mat-option>
-            <mat-option value="option">Kwanza</mat-option>
-          </mat-select>
+          <mat-select appearance="outline" type="text"
+          formControlName="currency"
+          [ngClass]="{ 'is-invalid': submitted && _fC['currency'].errors }"
+       >
 
+            <mat-option value="">Option</mat-option>
+            <mat-option value="Euro">Euro</mat-option>
+            <mat-option value="Dollar">Dollar</mat-option>
+            <mat-option value="Kwanza">Kwanza</mat-option>
+          </mat-select>
+          <span *ngIf="submitted && _fC['currency'].errors" class="invalid-feedback">
+            <span *ngIf="_fC['currency'].errors['required']">The currency filed is required</span>
+            <span *ngIf="_fC['currency'].errors['minlength']">
+              The currency filed must have at least 2 characters
+            </span>
+          </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Owner</mat-label>
-          <input matInput placeholder="Account owner" name="owner">
+          <input matInput placeholder="Account owner" type="text"
+          formControlName="owner"
+          [ngClass]="{ 'is-invalid': submitted && _fC['owner'].errors }"
+       >
+       <span *ngIf="submitted && _fC['owner'].errors" class="invalid-feedback">
+        <span *ngIf="_fC['owner'].errors['required']">The owner filed is required</span>
+        <span *ngIf="_fC['owner'].errors['maxlength']">
+          The owner filed must not exceed 200 characters
+        </span>
+      </span>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
-        <mat-radio-group aria-label="Account is?" name="isActive">
+        <mat-radio-group aria-label="Account is?" type="radio"
+            formControlName="isActive"
+            [ngClass]="{ 'is-invalid': submitted && _fC['isActive'].errors }"
+        >
+
           <mat-radio-button value="1">Anabled</mat-radio-button>
           <mat-radio-button value="0">Disabled</mat-radio-button>
+
+          <span *ngIf="submitted && _fC['isActive'].errors" class="invalid-feedback">
+            <span *ngIf="_fC['isActive'].errors['required']">Select the status</span>
+          </span>
         </mat-radio-group>
 
+        <div class="example-button-row">
+          <button mat-raised-button type="submit" color="primary">Submit</button>
+        </div>
     </form>
   </div>
 </main>

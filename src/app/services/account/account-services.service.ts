@@ -13,8 +13,20 @@ export class AccountServicesService {
     return this.http.get < AccountModel [] >  ( this.baseUrl.URL_API() + 'accounts/' );
   }
 
-  create(payload: AccountModel){
-    return this.http.post < AccountModel > (this.baseUrl.URL_API() + 'accounts', payload );
+  create(account: number,
+    iban: string,
+    swift: string,
+    owner: string,
+    initialBalance: string,
+    currency: string,
+    isActive: boolean){
+    return this.http.post < AccountModel > (this.baseUrl.URL_API() + 'accounts', {account,
+      iban,
+      swift,
+      owner,
+      initialBalance,
+      currency,
+      isActive} );
   }
 
   getById(id: number){
