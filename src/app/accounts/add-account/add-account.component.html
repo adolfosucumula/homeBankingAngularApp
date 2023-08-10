@@ -15,10 +15,9 @@ width: 500px;
         <mat-form-field hintLabel="Max 10 characters" appearance="outline">
           <mat-label>Account number</mat-label>
           <input matInput type="text"
+            placeholder="Account number"
             formControlName="account"
             [ngClass]="{ 'is-invalid': submitted && _fC['account'].errors }"
-            placeholder="Account number"
-
            >
            <span *ngIf="submitted && _fC['account'].errors" class="invalid-feedback">
             <span *ngIf="_fC['account'].errors['required']">The account number is required</span>
@@ -38,11 +37,10 @@ width: 500px;
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>IBAN number</mat-label>
-          <input matInput placeholder="IBAN number" type="text"
+          <mat-label>IBAN </mat-label>
+          <input matInput placeholder="IBAN " type="text"
             formControlName="iban"
             [ngClass]="{ 'is-invalid': submitted && _fC['iban'].errors }"
-            placeholder="Account number"
          >
          <span *ngIf="submitted && _fC['iban'].errors" class="invalid-feedback">
           <span *ngIf="_fC['iban'].errors['required']">The iban filed is required</span>
@@ -64,7 +62,6 @@ width: 500px;
           <input matInput placeholder="Swift code" type="text"
           formControlName="swift"
           [ngClass]="{ 'is-invalid': submitted && _fC['swift'].errors }"
-          placeholder="Account number"
        >
        <span *ngIf="submitted && _fC['swift'].errors" class="invalid-feedback">
         <span *ngIf="_fC['swift'].errors['required']">The swift filed is required</span>
@@ -86,7 +83,6 @@ width: 500px;
           <input matInput placeholder="Initial Balance" type="text"
           formControlName="initialBalance"
           [ngClass]="{ 'is-invalid': submitted && _fC['initialBalance'].errors }"
-          placeholder="Account number"
        >
        <span *ngIf="submitted && _fC['initialBalance'].errors" class="invalid-feedback">
         <span *ngIf="_fC['initialBalance'].errors['required']">The initial balance filed is required</span>

@@ -44,7 +44,28 @@
       "id": 7
     }
   ],
-  "accounts": [],
+  "accounts": [
+    {
+      "account": "0028828222222",
+      "iban": "ASS8828288299999999",
+      "swift": "AZZZZZZA",
+      "owner": "Sasa Junior",
+      "initialBalance": "€12,221,112",
+      "currency": "Euro",
+      "isActive": false,
+      "id": 1
+    },
+    {
+      "account": "0029929399377",
+      "iban": "00000000999999HHHHH",
+      "swift": "AAAAAAAA",
+      "owner": "Laurindo Bambi",
+      "initialBalance": "€122,222",
+      "currency": "Euro",
+      "isActive": true,
+      "id": 2
+    }
+  ],
   "credits": [
     {
       "id": "1",

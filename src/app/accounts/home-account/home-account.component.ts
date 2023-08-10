@@ -70,7 +70,7 @@ export class HomeAccountComponent implements OnInit{
     });
   }
 
-  displayedColumns: string[] = ['id', 'account', 'iban', 'initialBalance', 'amount', 'isActive', 'edit', 'remove'];
+  displayedColumns: string[] = ['id', 'account', 'iban', 'initialBalance', 'amount', 'owner', 'isActive', 'edit', 'remove'];
   //dataSource = ELEMENT_DATA;
 
   /**
