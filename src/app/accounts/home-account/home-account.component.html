@@ -7,22 +7,17 @@
   <mat-card-header>
     <div mat-card-avatar></div>
     <mat-card-title>Accounts</mat-card-title>
-    <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+    <mat-card-subtitle>Table</mat-card-subtitle>
     <section>
-      <div class="example-button-row">
-        <button mat-button color="primary" [routerLink]="['/account/add']">
-          <mat-icon>add_circle</mat-icon>
-          Add
-        </button>
-        <button mat-button color="accent">Accent</button>
-        <button mat-button color="warn">Warn</button>
-        <button mat-button disabled>Disabled</button>
-      </div>
+
     </section>
   </mat-card-header>
   <div mat-card-image></div>
   <mat-card-content>
-
+    <button mat-raised-button color="primary" [routerLink]="['/account/add']">
+      <mat-icon>add_circle</mat-icon>
+      Add
+    </button>
 
  <!---
     <div>
@@ -80,16 +75,37 @@
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="balance">
-      <th mat-header-cell *matHeaderCellDef> Balance </th>
-      <td mat-cell *matCellDef="let element"> {{element.currentBalance}} {{element.currency}} </td>
+    <ng-container matColumnDef="initialBalance">
+      <th mat-header-cell *matHeaderCellDef> I.Balance </th>
+      <td mat-cell *matCellDef="let element"> {{element.initialBalance}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> C.Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.currentBalance}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef> Is Active </th>
+      <td mat-cell *matCellDef="let element"> {{element.isActive}} </td>
     </ng-container>
 
      <!-- Symbol Column -->
-     <ng-container matColumnDef="btn">
-      <th mat-header-cell *matHeaderCellDef> Option </th>
+     <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit </th>
       <td mat-cell *matCellDef="let element"> <button mat-button [routerLink]="['/account/edit/',element.id]" >
-        <mat-icon>edit</mat-icon>Edit</button> </td>
+        <mat-icon>edit</mat-icon>Edit</button>
+      </td>
+     </ng-container>
+
+     <ng-container matColumnDef="remove">
+      <th mat-header-cell *matHeaderCellDef> Remove </th>
+
+      <td mat-cell *matCellDef="let element"> <button mat-button (click)="removeAccount(element.id)" >
+        <mat-icon>delete</mat-icon>Remove</button>
+      </td>
      </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -99,11 +115,15 @@
 
 
 
+  <!--    DIALOG -->
+
+
+
 
 
   </mat-card-content>
-  <mat-card-actions>
+  <!--<mat-card-actions>
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
-  </mat-card-actions>
+  </mat-card-actions>-->
 </mat-card>

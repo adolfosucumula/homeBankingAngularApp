@@ -44,28 +44,7 @@
       "id": 7
     }
   ],
-  "accounts": [
-    {
-      "account": "0999999292992",
-      "iban": "PTHB000001230001006",
-      "swift": "PTHBJJJJ",
-      "owner": "admin User",
-      "initialBalance": "€1,000",
-      "currency": "Dollar",
-      "isActive": true,
-      "id": 1
-    },
-    {
-      "account": "1001222333333",
-      "iban": "AP88992993939399339",
-      "swift": "ASSSSSSS",
-      "owner": "Amoz Jorge",
-      "initialBalance": "€122,323",
-      "currency": "Euro",
-      "isActive": false,
-      "id": 2
-    }
-  ],
+  "accounts": [],
   "credits": [
     {
       "id": "1",

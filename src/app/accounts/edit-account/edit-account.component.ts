@@ -87,7 +87,7 @@ export class EditAccountComponent implements OnInit{
     this.accountService.getById(id).subscribe({
       next: data => {
 
-        console.log(JSON.stringify(data, null, 2));
+        //console.log(JSON.stringify(data, null, 2));
         this.accountForm.patchValue(data);
 
       },
@@ -110,24 +110,24 @@ export class EditAccountComponent implements OnInit{
       return;
     }
 
-    const { account,
+   /* const { account,
     iban,
     swift,
     owner,
     initialBalance,
     currency,
     isActive} = this.accountForm.value;
+*/
+    //console.log(JSON.stringify(this.utils.getFormData(this.accountForm), null, 4));
 
-
-    console.log(JSON.stringify(this.accountForm.value, null, 2));
-
-    this.accountService.update(this.id,account,
-      iban,
-      swift,
-      owner,
-      initialBalance,
-      currency,
-      isActive  === "1" ? true: false)
+    this.accountService.update(this.id,
+      this.utils.getFormData(this.accountForm).account,
+      this.utils.getFormData(this.accountForm).iban,
+      this.utils.getFormData(this.accountForm).swift,
+      this.utils.getFormData(this.accountForm).owner,
+      this.utils.getFormData(this.accountForm).initialBalance,
+      this.utils.getFormData(this.accountForm).currency,
+      this.utils.getFormData(this.accountForm).isActive)
     .subscribe({
       next: data => {
         this.router.navigate(['account/home']);

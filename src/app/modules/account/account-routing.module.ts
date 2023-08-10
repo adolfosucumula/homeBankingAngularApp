@@ -11,6 +11,7 @@ const routes: Routes = [
   {path: 'account/home', component: HomeAccountComponent },
   {path: 'account/add', component: AddAccountComponent },
   {path: 'account/edit/:id', component: EditAccountComponent },
+  {path: 'account/delete/:id', component: HomeAccountComponent },
 ];
 
 @NgModule({
