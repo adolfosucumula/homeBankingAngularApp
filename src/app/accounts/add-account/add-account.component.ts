@@ -41,7 +41,7 @@ export class AddAccountComponent {
       account: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(13), Validators.pattern('^[0-9]+$')] ],
       iban: ['', [Validators.required, Validators.pattern('^[0-9A-Z]+$'), Validators.minLength(19), Validators.maxLength(19)]],
       swift: ['', [Validators.required, Validators.pattern('^[A-Z]+$'), Validators.minLength(8), Validators.maxLength(8)] ],
-      owner: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$'), Validators.maxLength(200)] ],
+      owner: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+'), Validators.maxLength(200)] ],
       initialBalance: ['', [Validators.required] ],
       currency: ['', [Validators.required, Validators.minLength(2)] ],
       isActive: [false, Validators.required],
