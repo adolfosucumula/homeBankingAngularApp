@@ -20,7 +20,8 @@ export class AccountUtils {
    */
   getFormData(form: FormGroup){
 
-    let {account,
+    let {
+      account,
       iban,
       swift,
       owner,
@@ -32,7 +33,8 @@ export class AccountUtils {
 
       isActive = isActive === "1" ? true : false;
 
-    return {account,
+    return {
+      account,
       iban,
       swift,
       owner,
@@ -40,7 +42,8 @@ export class AccountUtils {
       initialBalance,
       currency,
       createdAt,
-      isActive};
+      isActive
+    };
   };
 
   getBalance(balance: String){

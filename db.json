@@ -52,10 +52,10 @@
       "owner": "Kakka",
       "ownerDoc": "12221",
       "initialBalance": "€12,121",
-      "currentBalance": "€124886",
+      "currentBalance": "€125009",
       "currency": "Euro",
       "createdAt": "2023-08-09T23:00:00.000Z",
-      "updatedAt": "2023-08-23T23:00:00.000Z",
+      "updatedAt": "2023-08-15T23:00:00.000Z",
       "isActive": true,
       "id": 3
     },
@@ -66,10 +66,10 @@
       "owner": "As",
       "ownerDoc": "1212121211",
       "initialBalance": "€111",
-      "currentBalance": "€111",
+      "currentBalance": "€232",
       "currency": "Euro",
       "createdAt": "2023-08-15T23:00:00.000Z",
-      "updatedAt": "",
+      "updatedAt": "2023-08-23T23:00:00.000Z",
       "isActive": false,
       "id": 4
     },
@@ -80,10 +80,10 @@
       "owner": "Famint Gaia",
       "ownerDoc": "AASS6666",
       "initialBalance": "€200,000",
-      "currentBalance": "€200,000",
+      "currentBalance": "€200122",
       "currency": "Euro",
       "createdAt": "2023-08-16T23:00:00.000Z",
-      "updatedAt": "",
+      "updatedAt": "2023-08-22T23:00:00.000Z",
       "isActive": true,
       "id": 5
     },
@@ -104,7 +104,7 @@
   ],
   "credits": [
     {
-      "id": "1",
+      "id": 1,
       "sourceAccount": "0029929232333",
       "owner": "Santos Bascos",
       "account": "00123",
@@ -114,11 +114,32 @@
       "operator": "Admin",
       "status": "finalized",
       "createdAt": "2023-08-09T23:00:00.000Z"
+    },
+    {
+      "sourceAccount": "2121212121211",
+      "owner": "Azx",
+      "account": "2121212121212",
+      "amount": "€123",
+      "operator": "Ax",
+      "createdAt": "2023-08-15T23:00:00.000Z",
+      "id": 2
+    },
+    {
+      "sourceAccount": "9928828288226",
+      "owner": "Axx",
+      "account": "9928828288222",
+      "balanceBefore": "€111",
+      "amount": "€121",
+      "balanceAfter": "€232",
+      "operator": "Acccc",
+      "status": "finalized",
+      "createdAt": "2023-08-23T23:00:00.000Z",
+      "id": 3
     }
   ],
   "debits": [
     {
-      "id": "1",
+      "id": 1,
       "sourceAccount": "0029929232333",
       "owner": "Santos Bascos",
       "account": "00123",

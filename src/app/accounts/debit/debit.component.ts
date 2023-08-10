@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {NgFor, AsyncPipe} from '@angular/common';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import { AccountUtils } from '../accountUtils';
 import { AccountModel } from 'src/app/models/AccountModel';
+import { DebitAccountUtils } from '../utils/DebitAccountUtils';
 
 @Component({
   selector: 'app-output-transaction',
@@ -28,12 +29,20 @@ import { AccountModel } from 'src/app/models/AccountModel';
 })
 export class DebitComponent implements OnInit{
 
-  constructor (private router: Router, private accountServices: AccountServicesService, private utils: AccountUtils) {}
+  constructor (private router: Router, private accountServices: AccountServicesService, private utils: AccountUtils
+    , private debiUtils: DebitAccountUtils) {}
 
   //Instances to controll the autocomplete field
   myControl = new FormControl('');
   allAccounts: AccountModel[] = [];
   filteredOptions: Observable<AccountModel[]> | undefined;
+
+  /**
+   * Create an object of instance using the FormGroup
+   * class to manage the form fields value, controlling and validate them
+   */
+  accountForm: FormGroup = this.debiUtils.debitFormGroup();
+
 
   ngOnInit() {
     //First catch the typing event from form field and filter data using the filter method

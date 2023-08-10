@@ -111,35 +111,6 @@ export class CreditComponent implements OnInit{
     };
 
 
-    getBalanceByAccount(account: string) {
-      if(!account){
-        console.log("Account is required")
-      }else{
-
-        this.accountServices.getAll().subscribe({
-          next: data => {
-            //console.log(JSON.stringify(data, null, 2))
-            for (let index = 0; index < data.length; index++) {
-              const element = data[index].account;
-
-              if(element === account){
-                console.log(JSON.stringify(data[index], null, 6))
-
-                this.c_balance = data[index].currentBalance;
-                console.log("My Balance: "+ this.c_balance)
-                this.utils.setBalance(data[index].currentBalance);
-                break;
-              }
-            }
-          },
-          error: err => {
-            alert( "Error")
-          }
-        })
-      }
-    };
-
-
     /**
      * Snackbar alert message
      * For horizontal position the values allowed are: start, center, end, left, right

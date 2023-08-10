@@ -96,7 +96,7 @@ export class CreditAccountUtils {
           if(element === account){
             console.log(JSON.stringify(data[index], null, 6))
             this.acc = element;
-            this.balance = data[index].currentBalance;
+            //this.balance = data[index].currentBalance;
             var bala = data[index].currentBalance.replaceAll("€","");
             bala = bala.replaceAll(",","");
             var amoun = form.value.amount.replaceAll("€","");
@@ -105,6 +105,8 @@ export class CreditAccountUtils {
 
             currentBalance.toString(), data[index].createdAt
 
+            // First update the account current balance  and next save
+            // Credit register to the database server
             this.editAcUtils.updateAccountBalance(data[index].id,
               account,
               data[index].iban,
@@ -118,6 +120,10 @@ export class CreditAccountUtils {
               form.value.createdAt,
               data[index].isActive
               );
+
+              this.creditAccount(form, data[index].currentBalance,
+                "€" + currentBalance.toString(), "finalized");
+
             break;
           }
         }
@@ -128,25 +134,27 @@ export class CreditAccountUtils {
     })
   };
 
-  creditAccount(form: FormGroup){
+  creditAccount(form: FormGroup, balanceBefore: string,
+    balanceAfter: string, status: string
+    ){
     this.creditServices.create(
         this.getFormData(form).sourceAccount,
         this.getFormData(form).owner,
         this.getFormData(form).account,
-        this.getFormData(form).balanceBefore,
+        balanceBefore,
         this.getFormData(form).amount,
-        this.getFormData(form).balanceAfter,
+        balanceAfter,
         this.getFormData(form).operator,
-        this.getFormData(form).status,
+        status,
         this.getFormData(form).createdAt,
       ).subscribe({
         next: data => {
-          //console.log("========= Success to credit account! =============")
-          //console.log(JSON.stringify(data, null, 2))
+          console.log("========= Success to credit account! =============")
+          console.log(JSON.stringify(data, null, 2))
         },
         error: err => {
-          //console.log("========= Failed to credit account! =============")
-          //console.log(JSON.stringify(err, null, 2))
+          console.log("========= Failed to credit account! =============")
+          console.log(JSON.stringify(err, null, 2))
         }
     })
   }

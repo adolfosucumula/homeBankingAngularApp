@@ -8,10 +8,12 @@ import { AccountServicesService } from "../../services/account/account-services.
   providedIn: 'root'
 })
 
-export class CreditAccountUtils {
+export class DebitAccountUtils {
 
   debitFormGroup (): FormGroup  {
     return new FormGroup({
+      sourceAccount: new FormControl(''),
+      owner: new FormControl(''),
       account: new FormControl(''),
       balanceBefore: new FormControl(''),
       amount: new FormControl(''),

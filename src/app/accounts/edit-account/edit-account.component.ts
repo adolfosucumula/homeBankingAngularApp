@@ -124,7 +124,7 @@ export class EditAccountComponent implements OnInit{
     initialBalance,
     currency,
     isActive} = this.accountForm.value;
-*/
+    */
     //console.log(JSON.stringify(this.utils.getFormData(this.accountForm), null, 4));
 
     this.accountService.update(this.id,
