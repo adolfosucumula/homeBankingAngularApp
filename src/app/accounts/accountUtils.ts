@@ -1,6 +1,8 @@
 
 import { Injectable } from "@angular/core";
 import { FormGroup } from "@angular/forms";
+import { AccountServicesService } from "../services/account/account-services.service";
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,7 @@ import { FormGroup } from "@angular/forms";
 
 export class AccountUtils {
 
+  constructor (private accountServices: AccountServicesService) {}
 
   /**
    *  This method gets the Form Group data comes from a form and pass them
@@ -21,8 +24,10 @@ export class AccountUtils {
       iban,
       swift,
       owner,
+      ownerDoc,
       initialBalance,
       currency,
+      createdAt,
       isActive} = form.value;
 
       isActive = isActive === "1" ? true : false;
@@ -31,9 +36,13 @@ export class AccountUtils {
       iban,
       swift,
       owner,
+      ownerDoc,
       initialBalance,
       currency,
+      createdAt,
       isActive};
-  }
+  };
+
+
 
 }

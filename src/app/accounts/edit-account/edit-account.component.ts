@@ -14,6 +14,9 @@ import { AccountUtils } from '../accountUtils';
 })
 export class EditAccountComponent implements OnInit{
 
+  date = new FormControl(new Date());
+  serializedDate = new FormControl(new Date().toISOString());
+
    /**
    * Create an object of instance using the FormGroup
    * class to manage the form fields value, controlling and validate them
@@ -23,8 +26,10 @@ export class EditAccountComponent implements OnInit{
     iban: new FormControl(''),
     swift: new FormControl(''),
     owner: new FormControl(''),
+    ownerDoc: new FormControl(''),
     initialBalance: new FormControl(''),
     currency: new FormControl(''),
+    createdAt: new FormControl(''),
     isActive: new FormControl(false),
   });
 
@@ -48,8 +53,10 @@ export class EditAccountComponent implements OnInit{
       iban: ['', [Validators.required, Validators.pattern('^[0-9A-Z]+$'), Validators.minLength(19), Validators.maxLength(19)]],
       swift: ['', [Validators.required, Validators.pattern('^[A-Z]+$'), Validators.minLength(8), Validators.maxLength(8)] ],
       owner: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+'), Validators.maxLength(200)] ],
+      ownerDoc: ['', [Validators.required, Validators.pattern('^[0-9A-Z]+$'), Validators.maxLength(10)] ],
       initialBalance: ['', [Validators.required] ],
       currency: ['', [Validators.required, Validators.minLength(2)] ],
+      createdAt: ['', [Validators.required, Validators.maxLength(9)] ],
       isActive: [false, Validators.required],
     });
 
@@ -125,8 +132,10 @@ export class EditAccountComponent implements OnInit{
       this.utils.getFormData(this.accountForm).iban,
       this.utils.getFormData(this.accountForm).swift,
       this.utils.getFormData(this.accountForm).owner,
+      this.utils.getFormData(this.accountForm).ownerDoc,
       this.utils.getFormData(this.accountForm).initialBalance,
       this.utils.getFormData(this.accountForm).currency,
+      this.utils.getFormData(this.accountForm).createdAt,
       this.utils.getFormData(this.accountForm).isActive)
     .subscribe({
       next: data => {

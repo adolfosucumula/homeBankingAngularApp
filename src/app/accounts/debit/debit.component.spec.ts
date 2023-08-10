@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OutputTransactionComponent } from './output-transaction.component';
+import { DebitComponent } from './debit.component';
 
 describe('OutputTransactionComponent', () => {
-  let component: OutputTransactionComponent;
-  let fixture: ComponentFixture<OutputTransactionComponent>;
+  let component: DebitComponent;
+  let fixture: ComponentFixture<DebitComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OutputTransactionComponent]
+      declarations: [DebitComponent]
     });
-    fixture = TestBed.createComponent(OutputTransactionComponent);
+    fixture = TestBed.createComponent(DebitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

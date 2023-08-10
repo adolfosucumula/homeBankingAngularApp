@@ -7,6 +7,15 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 //Importing resources for Table component
 
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -26,8 +35,9 @@ export interface PeriodicElement {
   styleUrls: ['./home-account.component.css'],
   standalone: true,
   imports: [MatCardModule,MatButtonModule, MatButtonToggleModule, MatTableModule, NgFor, RouterModule,
-    MatDialogModule,
-    MatSidenavModule,MatIconModule],
+    MatDialogModule,MatDividerModule,
+    MatSidenavModule,MatIconModule,MatMenuModule,
+  ],
 })
 export class HomeAccountComponent implements OnInit{
 
@@ -70,7 +80,7 @@ export class HomeAccountComponent implements OnInit{
     });
   }
 
-  displayedColumns: string[] = ['id', 'account', 'iban', 'initialBalance', 'amount', 'owner', 'isActive', 'edit', 'remove'];
+  displayedColumns: string[] = ['id', 'account', 'iban', 'initialBalance', 'amount', 'owner', 'isActive', 'edit'];
   //dataSource = ELEMENT_DATA;
 
   /**

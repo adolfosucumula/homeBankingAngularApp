@@ -15,12 +15,15 @@ export class AccountServicesService {
     return this.http.get < AccountModel [] >  ( this.baseUrl.URL_API() + 'accounts/' );
   }
 
-  create(account: number,
+  create(
+    account: number,
     iban: string,
     swift: string,
     owner: string,
+    ownerDoc: string,
     initialBalance: string,
     currency: string,
+    createdAt: string,
     isActive: boolean): Observable <any>{
 
     return this.http.post < AccountModel > (this.baseUrl.URL_API() + 'accounts', {
@@ -28,8 +31,10 @@ export class AccountServicesService {
       iban,
       swift,
       owner,
+      ownerDoc,
       initialBalance,
       currency,
+      createdAt,
       isActive
     });
   }
@@ -43,20 +48,25 @@ export class AccountServicesService {
   }
 
 
-  update(id: number, account: number,
+  update(id: number,
+    account: number,
     iban: string,
     swift: string,
     owner: string,
+    ownerDoc: string,
     initialBalance: string,
     currency: string,
+    createdAt: string,
     isActive: boolean): Observable <any>{
     return this.http.put < AccountModel > ( this.baseUrl.URL_API() + `accounts/${ id }`, {
       account,
       iban,
       swift,
       owner,
+      ownerDoc,
       initialBalance,
       currency,
+      createdAt,
       isActive
     } );
   }

@@ -3,6 +3,8 @@ import { AbstractControl, FormBuilder,FormGroup,FormControl,Validators } from '@
 import { Router } from '@angular/router';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import { CurrencyPipe } from '@angular/common';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 //import { myValidation } from '../../utils/Validation';
 
@@ -14,6 +16,9 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class AddAccountComponent {
 
+  date = new FormControl(new Date());
+  serializedDate = new FormControl(new Date().toISOString());
+
   /**
    * Create an object of instance using the FormGroup
    * class to manage the form fields value, controlling and validate them
@@ -23,8 +28,10 @@ export class AddAccountComponent {
     iban: new FormControl(''),
     swift: new FormControl(''),
     owner: new FormControl(''),
+    ownerDoc: new FormControl(''),
     initialBalance: new FormControl(''),
     currency: new FormControl(''),
+    createdAt: new FormControl(''),
     isActive: new FormControl(false),
   });
 
@@ -42,8 +49,10 @@ export class AddAccountComponent {
       iban: ['', [Validators.required, Validators.pattern('^[0-9A-Z]+$'), Validators.minLength(19), Validators.maxLength(19)]],
       swift: ['', [Validators.required, Validators.pattern('^[A-Z]+$'), Validators.minLength(8), Validators.maxLength(8)] ],
       owner: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+'), Validators.maxLength(200)] ],
+      ownerDoc: ['', [Validators.required, Validators.pattern('^[0-9A-Z]+$'), Validators.maxLength(10)] ],
       initialBalance: ['', [Validators.required] ],
       currency: ['', [Validators.required, Validators.minLength(2)] ],
+      createdAt: ['', [Validators.required, Validators.maxLength(9)] ],
       isActive: [false, Validators.required],
     });
 
@@ -80,19 +89,23 @@ export class AddAccountComponent {
     iban,
     swift,
     owner,
+    ownerDoc,
     initialBalance,
     currency,
+    createdAt,
     isActive} = this.accountForm.value;
 
 
-    console.log(JSON.stringify(this.accountForm.value, null, 2));
+    //console.log(JSON.stringify(this.accountForm.value, null, 2));
 
     this.accountServices.create(account,
       iban,
       swift,
       owner,
+      ownerDoc,
       initialBalance,
       currency,
+      createdAt,
       isActive  === 1 ? true: false).subscribe({
       next: res => {
         console.log(res)

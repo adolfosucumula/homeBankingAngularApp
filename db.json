@@ -50,8 +50,11 @@
       "iban": "ASS8828288299999999",
       "swift": "AZZZZZZA",
       "owner": "Sasa Junior",
+      "ownerDoc": "",
       "initialBalance": "€12,221,112",
       "currency": "Euro",
+      "createdAt": "",
+      "updatedAt": "",
       "isActive": false,
       "id": 1
     },
@@ -60,10 +63,36 @@
       "iban": "00000000999999HHHHH",
       "swift": "AAAAAAAA",
       "owner": "Laurindo Bambi",
+      "idOwner": "A2222222",
       "initialBalance": "€122,222",
       "currency": "Euro",
+      "createdAt": "2023-08-24T23:00:00.000Z",
       "isActive": true,
       "id": 2
+    },
+    {
+      "account": "2121212121212",
+      "iban": "AAA2222222222222222",
+      "swift": "ASASASAS",
+      "owner": "Kakka",
+      "ownerDoc": "12221",
+      "initialBalance": "€12,121",
+      "currency": "Euro",
+      "createdAt": "2023-08-09T23:00:00.000Z",
+      "isActive": true,
+      "id": 3
+    },
+    {
+      "account": "9928828288222",
+      "iban": "2222222AAAA22222222",
+      "swift": "AAAAAAAA",
+      "owner": "As",
+      "ownerDoc": "1212121211",
+      "initialBalance": "€111",
+      "currency": "Euro",
+      "createdAt": "2023-08-15T23:00:00.000Z",
+      "isActive": false,
+      "id": 4
     }
   ],
   "credits": [

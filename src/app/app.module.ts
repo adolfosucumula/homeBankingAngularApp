@@ -12,8 +12,6 @@ import { AccountModule } from './modules/account/account.module';
 import { TransactionComponent } from './transaction/transaction.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { InputTransactionComponent } from './input-transaction/input-transaction.component';
-import { OutputTransactionComponent } from './output-transaction/output-transaction.component';
 
 //
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -33,6 +31,12 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import {NgFor, AsyncPipe} from '@angular/common';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 //Importing Http client module because we have components that make http requests throught HttpClient module
 import { HttpClientModule } from '@angular/common/http';
@@ -41,6 +45,8 @@ import { HomeAccountComponent } from './accounts/home-account/home-account.compo
 import { EditAccountComponent } from './accounts/edit-account/edit-account.component';
 import { AddAccountComponent } from './accounts/add-account/add-account.component';
 import { UpdateAccountComponent } from './accounts/update-account/update-account.component';
+import { DebitComponent } from './accounts/debit/debit.component';
+import { CreditComponent } from './accounts/credit/credit.component';
 
 
 
@@ -52,12 +58,12 @@ import { UpdateAccountComponent } from './accounts/update-account/update-account
     //AccountsComponent,
     TransactionComponent,
     //DashboardComponent,
-    InputTransactionComponent,
-    OutputTransactionComponent,
     EditAccountComponent,
     AddAccountComponent,
     UpdateAccountComponent,
-    //HomeAccountComponent
+    //HomeAccountComponent,
+    //DebitComponent,
+    //CreditComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +89,9 @@ import { UpdateAccountComponent } from './accounts/update-account/update-account
     MatButtonToggleModule,
     MatSelectModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,9 +4,12 @@ export interface AccountModel {
   iban: string,
   swift: string,
   owner: string,
+  idOwner: string,
   initialBalance: string,
   currentBalance: string,
   currency: string,
+  createdAt: string,
+  updatedAt: string,
   isActive: boolean
 
 }

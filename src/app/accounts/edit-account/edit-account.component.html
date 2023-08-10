@@ -10,7 +10,7 @@ width: 500px;
   <div class="container">
     <form class="example-form" [formGroup]="accountForm" (ngSubmit)="onSubmit()">
       <div class="title">
-        <h2>Update Account</h2>
+        <h2>Regist new account</h2>
       </div>
       <mat-form-field hintLabel="Max 10 characters" appearance="outline">
         <mat-label>Account number</mat-label>
@@ -117,19 +117,58 @@ width: 500px;
         <input matInput placeholder="Account owner" type="text"
         formControlName="owner"
         [ngClass]="{ 'is-invalid': submitted && _fC['owner'].errors }"
-     >
-     <span *ngIf="submitted && _fC['owner'].errors" class="invalid-feedback">
-      <span *ngIf="_fC['owner'].errors['required']">The owner filed is required</span>
-      <span *ngIf="_fC['owner'].errors['maxlength']">
-        The owner filed must not exceed 200 characters
-      </span>
-      <span *ngIf="_fC['owner'].errors['pattern']">
-        This field accepts only characters as value
-      </span>
-    </span>
+      >
+        <span *ngIf="submitted && _fC['owner'].errors" class="invalid-feedback">
+          <span *ngIf="_fC['owner'].errors['required']">The owner filed is required</span>
+          <span *ngIf="_fC['owner'].errors['maxlength']">
+            The owner filed must not exceed 200 characters
+          </span>
+          <span *ngIf="_fC['owner'].errors['pattern']">
+            This field accepts only characters as value
+          </span>
+        </span>
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
       </mat-form-field>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Owner Document</mat-label>
+        <input matInput placeholder="Owner document" type="text"
+        formControlName="ownerDoc"
+        [ngClass]="{ 'is-invalid': submitted && _fC['ownerDoc'].errors }"
+      >
+        <span *ngIf="submitted && _fC['ownerDoc'].errors" class="invalid-feedback">
+          <span *ngIf="_fC['ownerDoc'].errors['required']">The owner document is required</span>
+          <span *ngIf="_fC['ownerDoc'].errors['maxlength']">
+            The ownerDoc filed must not exceed 10 characters
+          </span>
+          <span *ngIf="_fC['ownerDoc'].errors['pattern']">
+            This field accepts only characters as value
+          </span>
+        </span>
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
+
+
+      <!--  DatePicker -->
+
+      <mat-form-field>
+        <mat-label>Created at</mat-label>
+        <input matInput [matDatepicker]="picker3" [value]="date.value" required formControlName="createdAt"
+        [ngClass]="{ 'is-invalid': submitted && _fC['createdAt'].errors }"
+        >
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+
+        <span *ngIf="submitted && _fC['createdAt'].errors" class="invalid-feedback">
+          <span *ngIf="_fC['createdAt'].errors['required']">The data is required</span>
+          <span *ngIf="_fC['createdAt'].errors['maxlength']">
+            The date must not exceed 9 characters
+          </span>
+        </span>
+      </mat-form-field>
+
+      <!---- RadioButton-->
       <mat-radio-group aria-label="Account is?" type="radio"
           formControlName="isActive"
           [ngClass]="{ 'is-invalid': submitted && _fC['isActive'].errors }"
