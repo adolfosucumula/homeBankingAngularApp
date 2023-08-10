@@ -2,9 +2,13 @@ import { AccountModel } from "./AccountModel";
 
 export interface AccountTransactionModel {
   id: number,
-  account: AccountModel,
-  transaction: string,
+  sourceAccount: string,
+  owner: string,
+  account: string,
+  balanceBefore: string,
   amount: string,
-  regist_date: string,
-  operator: string
+  balanceAfter: string,
+  operator: string,
+  status: string,
+  createdAt: string
 }

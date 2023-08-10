@@ -46,39 +46,16 @@
   ],
   "accounts": [
     {
-      "account": "0028828222222",
-      "iban": "ASS8828288299999999",
-      "swift": "AZZZZZZA",
-      "owner": "Sasa Junior",
-      "ownerDoc": "",
-      "initialBalance": "€12,221,112",
-      "currency": "Euro",
-      "createdAt": "",
-      "updatedAt": "",
-      "isActive": false,
-      "id": 1
-    },
-    {
-      "account": "0029929399377",
-      "iban": "00000000999999HHHHH",
-      "swift": "AAAAAAAA",
-      "owner": "Laurindo Bambi",
-      "idOwner": "A2222222",
-      "initialBalance": "€122,222",
-      "currency": "Euro",
-      "createdAt": "2023-08-24T23:00:00.000Z",
-      "isActive": true,
-      "id": 2
-    },
-    {
       "account": "2121212121212",
       "iban": "AAA2222222222222222",
       "swift": "ASASASAS",
       "owner": "Kakka",
       "ownerDoc": "12221",
       "initialBalance": "€12,121",
+      "currentBalance": "€124886",
       "currency": "Euro",
       "createdAt": "2023-08-09T23:00:00.000Z",
+      "updatedAt": "2023-08-23T23:00:00.000Z",
       "isActive": true,
       "id": 3
     },
@@ -89,30 +66,68 @@
       "owner": "As",
       "ownerDoc": "1212121211",
       "initialBalance": "€111",
+      "currentBalance": "€111",
       "currency": "Euro",
       "createdAt": "2023-08-15T23:00:00.000Z",
+      "updatedAt": "",
       "isActive": false,
       "id": 4
+    },
+    {
+      "account": "0019919918111",
+      "iban": "HA99999999999999999",
+      "swift": "AFAGHGHA",
+      "owner": "Famint Gaia",
+      "ownerDoc": "AASS6666",
+      "initialBalance": "€200,000",
+      "currentBalance": "€200,000",
+      "currency": "Euro",
+      "createdAt": "2023-08-16T23:00:00.000Z",
+      "updatedAt": "",
+      "isActive": true,
+      "id": 5
+    },
+    {
+      "account": "0029929232333",
+      "iban": "88287782A8888888883",
+      "swift": "ASAAASAS",
+      "owner": "Santos Bascos",
+      "ownerDoc": "D9988",
+      "initialBalance": "€123,212",
+      "currentBalance": "€123,212",
+      "currency": "Euro",
+      "createdAt": "2023-08-09T23:00:00.000Z",
+      "updatedAt": "",
+      "isActive": true,
+      "id": 6
     }
   ],
   "credits": [
     {
       "id": "1",
+      "sourceAccount": "0029929232333",
+      "owner": "Santos Bascos",
       "account": "00123",
-      "transaction": "0001",
-      "amount": 23,
-      "regist_date": "12-09-2023",
-      "operator": "Laura"
+      "balanceBefore": "€0,00",
+      "amount": "€100,00",
+      "balanceAfter": "€100,00",
+      "operator": "Admin",
+      "status": "finalized",
+      "createdAt": "2023-08-09T23:00:00.000Z"
     }
   ],
   "debits": [
     {
       "id": "1",
+      "sourceAccount": "0029929232333",
+      "owner": "Santos Bascos",
       "account": "00123",
-      "transaction": "0001",
-      "amount": 5,
-      "regist_date": "12-09-2023 09:23",
-      "operator": "Laura"
+      "balanceBefore": "€100,00",
+      "amount": "€2,00",
+      "balanceAfter": "€98,00",
+      "operator": "Admin",
+      "status": "finalized",
+      "createdAt": "2023-08-09T23:05:00.000Z"
     }
   ],
   "currencies": [

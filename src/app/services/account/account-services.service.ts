@@ -43,7 +43,7 @@ export class AccountServicesService {
     return this.http.get < AccountModel > ( this.baseUrl.URL_API() + `accounts/${ id }` );
   }
 
-  getByAccount(account: number){
+  getByAccount(account: string){
     return this.http.get < AccountModel > ( this.baseUrl.URL_API() + `accounts/${ account }` );
   }
 
@@ -67,6 +67,34 @@ export class AccountServicesService {
       initialBalance,
       currency,
       createdAt,
+      isActive
+    } );
+  }
+
+  updateBalance(id: number,
+    account: string,
+    iban: string,
+    swift: string,
+    owner: string,
+    ownerDoc: string,
+    initialBalance: string,
+    currentBalance: string,
+    currency: string,
+    createdAt: string,
+    updatedAt: string,
+    isActive: boolean
+    ): Observable <any>{
+    return this.http.put < AccountModel > ( this.baseUrl.URL_API() + `accounts/${ id }`, {
+      account,
+      iban,
+      swift,
+      owner,
+      ownerDoc,
+      initialBalance,
+      currentBalance,
+      currency,
+      createdAt,
+      updatedAt,
       isActive
     } );
   }

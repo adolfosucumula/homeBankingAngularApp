@@ -12,7 +12,7 @@ width: 500px;
       <div class="title">
         <h2>Regist new account</h2>
       </div>
-      <mat-form-field hintLabel="Max 10 characters" appearance="outline">
+      <mat-form-field appearance="outline">
         <mat-label>Account number</mat-label>
         <input matInput type="text"
           placeholder="Account number"
@@ -33,7 +33,7 @@ width: 500px;
           </span>
         </span>
         <!--<mat-hint align="end">{{input.value.length}}/10</mat-hint>-->
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-icon matSuffix>done</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -54,7 +54,7 @@ width: 500px;
           This field accepts only numbers and characters as value
         </span>
       </span>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-icon matSuffix>done</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -75,7 +75,7 @@ width: 500px;
         This field accepts only uppercase characters as value.
       </span>
     </span>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-icon matSuffix>done</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -88,17 +88,17 @@ width: 500px;
       <span *ngIf="_fC['initialBalance'].errors['required']">The initial balance filed is required</span>
 
     </span>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-icon matSuffix>done</mat-icon>
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Currency</mat-label>
-        <mat-select appearance="outline" type="text"
+      <mat-form-field appearance="outline">
+        <mat-label>Select a currency</mat-label>
+        <mat-select  type="text"
         formControlName="currency"
         [ngClass]="{ 'is-invalid': submitted && _fC['currency'].errors }"
      >
 
-          <mat-option value="">Option</mat-option>
+          <mat-option value="">Currency</mat-option>
           <mat-option value="Euro">Euro</mat-option>
           <mat-option value="Dollar">Dollar</mat-option>
           <mat-option value="Kwanza">Kwanza</mat-option>
@@ -109,7 +109,7 @@ width: 500px;
             The currency filed must have at least 2 characters
           </span>
         </span>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-icon matSuffix>done</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -127,7 +127,7 @@ width: 500px;
             This field accepts only characters as value
           </span>
         </span>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-icon matSuffix>done</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
@@ -145,13 +145,13 @@ width: 500px;
             This field accepts only characters as value
           </span>
         </span>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-icon matSuffix>done</mat-icon>
       </mat-form-field>
 
 
       <!--  DatePicker -->
 
-      <mat-form-field>
+      <mat-form-field appearance="outline">
         <mat-label>Created at</mat-label>
         <input matInput [matDatepicker]="picker3" [value]="date.value" required formControlName="createdAt"
         [ngClass]="{ 'is-invalid': submitted && _fC['createdAt'].errors }"

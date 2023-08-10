@@ -37,6 +37,7 @@ import {NgFor, AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 //Importing Http client module because we have components that make http requests throught HttpClient module
 import { HttpClientModule } from '@angular/common/http';
@@ -47,6 +48,10 @@ import { AddAccountComponent } from './accounts/add-account/add-account.componen
 import { UpdateAccountComponent } from './accounts/update-account/update-account.component';
 import { DebitComponent } from './accounts/debit/debit.component';
 import { CreditComponent } from './accounts/credit/credit.component';
+import { Page404Component } from './errorPages/page404/page404.component';
+import { Page500Component } from './errorPages/page500/page500.component';
+import { Page403Component } from './errorPages/page403/page403.component';
+import { RouterGuardsComponent } from './guards/router-guards/router-guards.component';
 
 
 
@@ -61,9 +66,13 @@ import { CreditComponent } from './accounts/credit/credit.component';
     EditAccountComponent,
     AddAccountComponent,
     UpdateAccountComponent,
+    Page404Component,
+    Page500Component,
+    Page403Component,
+    RouterGuardsComponent,
     //HomeAccountComponent,
-    //DebitComponent,
-    //CreditComponent
+   // DebitComponent,
+    CreditComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +91,7 @@ import { CreditComponent } from './accounts/credit/credit.component';
     MatIconModule,
     MatButtonModule,
     NgIf,
+    NgFor,
     MatToolbarModule,
     MatMenuModule,
     MatSidenavModule,
@@ -91,7 +101,13 @@ import { CreditComponent } from './accounts/credit/credit.component';
     MatCardModule,
     MatRadioModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    AsyncPipe,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

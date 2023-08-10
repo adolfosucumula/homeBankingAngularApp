@@ -4,7 +4,7 @@ export interface AccountModel {
   iban: string,
   swift: string,
   owner: string,
-  idOwner: string,
+  ownerDoc: string,
   initialBalance: string,
   currentBalance: string,
   currency: string,

@@ -15,7 +15,7 @@ export class AccountUtils {
   /**
    *  This method gets the Form Group data comes from a form and pass them
    * to a variables and returns the same variables with the values received
-   * @param form
+   * @param form is a group of form fields
    * @returns
    */
   getFormData(form: FormGroup){
@@ -42,6 +42,11 @@ export class AccountUtils {
       createdAt,
       isActive};
   };
+
+  getBalance(balance: String){
+    console.log(balance);
+    return balance;
+  }
 
 
 

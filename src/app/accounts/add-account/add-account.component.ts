@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder,FormGroup,FormControl,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
@@ -14,7 +14,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
   styleUrls: ['./add-account.component.css'],
   providers: [CurrencyPipe]
 })
-export class AddAccountComponent {
+export class AddAccountComponent implements OnInit{
 
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
@@ -55,7 +55,6 @@ export class AddAccountComponent {
       createdAt: ['', [Validators.required, Validators.maxLength(9)] ],
       isActive: [false, Validators.required],
     });
-
 
     /**
      * Function to catch the event typing from currency field to check the values being typing by user

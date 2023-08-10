@@ -53,21 +53,32 @@
         </button>
         <mat-menu #aboveMenu="matMenu" yPosition="below">
           <button mat-menu-item [routerLink]="['/account/home']">List All</button>
-          <button mat-menu-item>Item 2</button>
+
+        </mat-menu>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button [routerLink]="['/account/trans/debit']">
+          <mat-icon>remove_circle</mat-icon>
+          Send money</button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button [routerLink]="['/account/trans/credit']">
+          <mat-icon>add_circle</mat-icon>
+          Credit</button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button [matMenuTriggerFor]="aboveMenu02">
+          <mat-icon>monetization_on</mat-icon>
+          Moviments
+        </button>
+        <mat-menu #aboveMenu02="matMenu" yPosition="below">
+          <button mat-menu-item >Historic</button>
+          <button mat-menu-item>List Debits</button>
+          <button mat-menu-item>List Credits</button>
         </mat-menu>
       </mat-list-item>
       <mat-list-item role="listitem">
         <button mat-button >
-          <mat-icon>send</mat-icon>
-          Send money</button>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        <button mat-button >
-          <mat-icon>monetization_on</mat-icon>
-          Moviments</button>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        <button mat-button [matMenuTriggerFor]="aboveMenu">
           <mat-icon>settings</mat-icon>
           Settings
         </button>

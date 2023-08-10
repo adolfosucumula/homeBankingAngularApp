@@ -6,6 +6,9 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
+@Injectable({
+  providedIn: 'root'
+})
 
 export class Utils {
 

@@ -30,12 +30,14 @@ export class DebitComponent implements OnInit{
 
   constructor (private router: Router, private accountServices: AccountServicesService, private utils: AccountUtils) {}
 
-
+  //Instances to controll the autocomplete field
   myControl = new FormControl('');
   allAccounts: AccountModel[] = [];
   filteredOptions: Observable<AccountModel[]> | undefined;
 
   ngOnInit() {
+    //First catch the typing event from form field and filter data using the filter method
+    //that returns the object found on database list
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
