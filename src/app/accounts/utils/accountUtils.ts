@@ -1,7 +1,7 @@
 
 import { Injectable } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { AccountServicesService } from "../services/account/account-services.service";
+import { AccountServicesService } from "../../services/account/account-services.service";
 
 
 @Injectable({
@@ -46,10 +46,6 @@ export class AccountUtils {
     };
   };
 
-  getBalance(balance: String){
-    console.log(balance);
-    return balance;
-  }
 
 
 

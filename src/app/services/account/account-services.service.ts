@@ -22,6 +22,7 @@ export class AccountServicesService {
     owner: string,
     ownerDoc: string,
     initialBalance: string,
+    currentBalance: string,
     currency: string,
     createdAt: string,
     isActive: boolean): Observable <any>{
@@ -33,6 +34,7 @@ export class AccountServicesService {
       owner,
       ownerDoc,
       initialBalance,
+      currentBalance,
       currency,
       createdAt,
       isActive
@@ -43,8 +45,9 @@ export class AccountServicesService {
     return this.http.get < AccountModel > ( this.baseUrl.URL_API() + `accounts/${ id }` );
   }
 
-  getByAccount(account: string){
-    return this.http.get < AccountModel > ( this.baseUrl.URL_API() + `accounts/${ account }` );
+  getByAccount(account: string): Observable<any> {
+    return this.http.get < AccountModel > ( this.baseUrl.URL_API() + `accounts/${ account }` )
+    ;
   }
 
 
@@ -55,6 +58,7 @@ export class AccountServicesService {
     owner: string,
     ownerDoc: string,
     initialBalance: string,
+    currentBalance: string,
     currency: string,
     createdAt: string,
     isActive: boolean): Observable <any>{
@@ -65,6 +69,7 @@ export class AccountServicesService {
       owner,
       ownerDoc,
       initialBalance,
+      currentBalance,
       currency,
       createdAt,
       isActive

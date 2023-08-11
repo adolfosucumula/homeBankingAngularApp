@@ -42,6 +42,11 @@
       "email": "admin@email.com",
       "password": "123",
       "id": 7
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 8
     }
   ],
   "accounts": [
@@ -52,24 +57,22 @@
       "owner": "Kakka",
       "ownerDoc": "12221",
       "initialBalance": "€12,121",
-      "currentBalance": "€125009",
-      "currency": "Euro",
-      "createdAt": "2023-08-09T23:00:00.000Z",
-      "updatedAt": "2023-08-15T23:00:00.000Z",
+      "currentBalance": "€12,121",
+      "currency": "Dollar",
+      "createdAt": "2023-08-16T23:00:00.000Z",
       "isActive": true,
       "id": 3
     },
     {
       "account": "9928828288222",
       "iban": "2222222AAAA22222222",
-      "swift": "AAAAAAAA",
-      "owner": "As",
+      "swift": "As",
+      "owner": "AAAAAAAA",
       "ownerDoc": "1212121211",
       "initialBalance": "€111",
-      "currentBalance": "€232",
+      "currentBalance": "€230",
       "currency": "Euro",
-      "createdAt": "2023-08-15T23:00:00.000Z",
-      "updatedAt": "2023-08-23T23:00:00.000Z",
+      "createdAt": "2023-08-10T21:45:41.117Z",
       "isActive": false,
       "id": 4
     },
@@ -100,6 +103,58 @@
       "updatedAt": "",
       "isActive": true,
       "id": 6
+    },
+    {
+      "account": "5525527288288",
+      "iban": "A777777777777777777",
+      "swift": "AGGGAAAA",
+      "owner": "mauro",
+      "ownerDoc": "A232323",
+      "initialBalance": "€122,222",
+      "currentBalance": "€122,222",
+      "currency": "Euro",
+      "createdAt": "2023-08-15T23:00:00.000Z",
+      "isActive": false,
+      "id": 7
+    },
+    {
+      "account": "2121212121212",
+      "iban": "ASA2121212121212323",
+      "swift": "ABBGGGGG",
+      "owner": "Azz",
+      "ownerDoc": "ABK88",
+      "initialBalance": "€12,121",
+      "currentBalance": "€12,121",
+      "currency": "Euro",
+      "createdAt": "2023-08-22T23:00:00.000Z",
+      "isActive": false,
+      "id": 8
+    },
+    {
+      "account": "0029929232333",
+      "iban": "AAS4432434343434347",
+      "swift": "ASSSAAAA",
+      "owner": "Ass",
+      "ownerDoc": "ASAA",
+      "initialBalance": "€1,212",
+      "currentBalance": "€1,212",
+      "currency": "Euro",
+      "createdAt": "2023-08-24T23:00:00.000Z",
+      "isActive": false,
+      "id": 9
+    },
+    {
+      "account": "0029929232333",
+      "iban": "ASS0029929232333212",
+      "swift": "ASASAAAA",
+      "owner": "ASS",
+      "ownerDoc": "AXSX",
+      "initialBalance": "€121",
+      "currentBalance": "€121",
+      "currency": "Euro",
+      "createdAt": "2023-08-23T23:00:00.000Z",
+      "isActive": false,
+      "id": 10
     }
   ],
   "credits": [
@@ -149,6 +204,94 @@
       "operator": "Admin",
       "status": "finalized",
       "createdAt": "2023-08-09T23:05:00.000Z"
+    },
+    {
+      "owner": "Santos Bascos",
+      "account": "0029929232333",
+      "balanceBefore": "123212",
+      "amount": "€133",
+      "balanceAfter": "123079",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-10T20:54:45.900Z",
+      "id": 2
+    },
+    {
+      "owner": "Kakka",
+      "account": "2121212121212",
+      "balanceBefore": "125009",
+      "amount": "€11",
+      "balanceAfter": "124998",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-10T21:00:25.618Z",
+      "id": 3
+    },
+    {
+      "owner": "Kakka",
+      "account": "2121212121212",
+      "balanceBefore": "125009",
+      "amount": "€122",
+      "balanceAfter": "124887",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-10T21:00:56.484Z",
+      "id": 4
+    },
+    {
+      "owner": "Kakka",
+      "account": "2121212121212",
+      "balanceBefore": "€125009",
+      "amount": "€122",
+      "balanceAfter": "€124887",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-10T21:03:16.708Z",
+      "id": 5
+    },
+    {
+      "owner": "Kakka",
+      "account": "2121212121212",
+      "balanceBefore": "€125009",
+      "amount": "€1",
+      "balanceAfter": "€125008",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-10T21:03:44.354Z",
+      "id": 6
+    },
+    {
+      "owner": "Kakka",
+      "account": "2121212121212",
+      "balanceBefore": "€125009",
+      "amount": "€122",
+      "balanceAfter": "€124887",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-10T21:39:18.973Z",
+      "id": 7
+    },
+    {
+      "owner": "ASASASAS",
+      "account": "2121212121212",
+      "balanceBefore": "€124887",
+      "amount": "€87",
+      "balanceAfter": "€124800",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-10T21:39:54.019Z",
+      "id": 8
+    },
+    {
+      "owner": "As",
+      "account": "9928828288222",
+      "balanceBefore": "€232",
+      "amount": "€2",
+      "balanceAfter": "€230",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-10T21:45:41.117Z",
+      "id": 9
     }
   ],
   "currencies": [

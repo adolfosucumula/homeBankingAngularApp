@@ -10,6 +10,7 @@ import {
   providedIn: 'root'
 })
 
+
 export class Utils {
 
   private horizontalPosition: MatSnackBarHorizontalPosition = 'start';
@@ -24,4 +25,14 @@ export class Utils {
     });
   }
 
+  public isLogged!: boolean;
+
+  userLogin(value: boolean){
+    this.isLogged = value;
+    return this.isLogged;
+  }
+
 }
+
+
+

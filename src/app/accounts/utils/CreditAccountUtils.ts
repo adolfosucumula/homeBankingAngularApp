@@ -69,13 +69,6 @@ export class CreditAccountUtils {
     };
   };
 
-  setBalance(balanc: String){
-    this.balance = String(balanc);
-  }
-
-  getBalance(){
-    return this.balance;
-  }
 
   getBalanceByAccount(account: string, form: FormGroup){
 
@@ -149,19 +142,16 @@ export class CreditAccountUtils {
         this.getFormData(form).createdAt,
       ).subscribe({
         next: data => {
-          console.log("========= Success to credit account! =============")
-          console.log(JSON.stringify(data, null, 2))
+          //console.log("========= Success to credit account! =============")
+          //console.log(JSON.stringify(data, null, 2))
         },
         error: err => {
-          console.log("========= Failed to credit account! =============")
-          console.log(JSON.stringify(err, null, 2))
+          //console.log("========= Failed to credit account! =============")
+          //console.log(JSON.stringify(err, null, 2))
         }
     })
   }
 
 
-  updateAccountBalance(id: number, balance: string){
-
-  }
 
 }

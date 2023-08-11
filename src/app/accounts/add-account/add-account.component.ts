@@ -5,6 +5,8 @@ import { AccountServicesService } from 'src/app/services/account/account-service
 import { CurrencyPipe } from '@angular/common';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { AddAccountUtils } from '../utils/AddAccountUtils';
+import { myGlobalVariablesEditAcount } from '../utils/AccountVariables';
 
 //import { myValidation } from '../../utils/Validation';
 
@@ -23,23 +25,14 @@ export class AddAccountComponent implements OnInit{
    * Create an object of instance using the FormGroup
    * class to manage the form fields value, controlling and validate them
    */
-  accountForm: FormGroup = new FormGroup({
-    account: new FormControl(''),
-    iban: new FormControl(''),
-    swift: new FormControl(''),
-    owner: new FormControl(''),
-    ownerDoc: new FormControl(''),
-    initialBalance: new FormControl(''),
-    currency: new FormControl(''),
-    createdAt: new FormControl(''),
-    isActive: new FormControl(false),
-  });
+  accountForm: FormGroup = this.addAccountUtils.getAddFormGroup();
 
   submitted = false;
 
   //
   constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe,
-    private accountServices: AccountServicesService, private router: Router) { }
+    private accountServices: AccountServicesService, private router: Router,
+    private addAccountUtils: AddAccountUtils, private globalVariable: myGlobalVariablesEditAcount) { }
 
 
   ngOnInit(): void {
@@ -84,6 +77,7 @@ export class AddAccountComponent implements OnInit{
       return;
     }
 
+    console.log("The account exists: "+ this.addAccountUtils.theAccountExists(this.accountForm.value.account))
     const { account,
     iban,
     swift,
@@ -102,6 +96,7 @@ export class AddAccountComponent implements OnInit{
       swift,
       owner,
       ownerDoc,
+      initialBalance,
       initialBalance,
       currency,
       createdAt,

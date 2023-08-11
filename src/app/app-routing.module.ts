@@ -4,8 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountsComponent } from './accounts/accounts.component';
-import { TransactionComponent } from './transaction/transaction.component';
 import { Page404Component } from './errorPages/page404/page404.component';
+import { HistoricComponent } from './accounts/historic/historic.component';
 
 //Here we define our routes
 const routes: Routes = [
@@ -16,7 +16,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'accounts', component: AccountsComponent},
-  { path: 'trans', component: TransactionComponent},
+  { path: 'accounts/historics', component: HistoricComponent},
+
   //{ path: '**', component: Page404Component },  // Wildcard route for a 404 page
 ];
 

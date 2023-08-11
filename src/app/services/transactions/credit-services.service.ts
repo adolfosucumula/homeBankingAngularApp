@@ -42,8 +42,8 @@ export class CreditServicesService {
     return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ id }`);
   }
 
-  getByAccount(acount: number) {
-    return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ acount }`);
+  getByAccount(account: number) {
+    return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ account }`);
   }
 
 }

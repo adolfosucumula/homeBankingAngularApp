@@ -1,1 +1,42 @@
-<p>update-account works!</p>
+
+<style>
+  .mat-form-field {
+
+width: 500px;
+}
+
+</style>
+
+<main>
+
+  <div class="container">
+    <!-------  Form to search accounts -->
+
+
+
+  <form class="example-form">
+    <div class="title">
+      <h2>Update account data</h2>
+    </div>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Number</mat-label>
+      <input type="text"
+            placeholder="Pick one"
+            aria-label="Number"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id"
+        >
+          {{option.account}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+
+
+  </div>
+</main>

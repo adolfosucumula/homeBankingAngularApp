@@ -4,7 +4,7 @@ import { AccountModel } from 'src/app/models/AccountModel';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import { AbstractControl, FormBuilder,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
-import { AccountUtils } from '../accountUtils';
+import { AccountUtils } from '../utils/accountUtils';
 
 @Component({
   selector: 'app-edit-account',
@@ -133,6 +133,7 @@ export class EditAccountComponent implements OnInit{
       this.utils.getFormData(this.accountForm).swift,
       this.utils.getFormData(this.accountForm).owner,
       this.utils.getFormData(this.accountForm).ownerDoc,
+      this.utils.getFormData(this.accountForm).initialBalance,
       this.utils.getFormData(this.accountForm).initialBalance,
       this.utils.getFormData(this.accountForm).currency,
       this.utils.getFormData(this.accountForm).createdAt,

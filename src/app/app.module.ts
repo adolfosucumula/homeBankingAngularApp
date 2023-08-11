@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountModule } from './modules/account/account.module';
-import { TransactionComponent } from './transaction/transaction.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -37,7 +36,9 @@ import {NgFor, AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatPaginatorModule} from '@angular/material/paginator';
+
 
 //Importing Http client module because we have components that make http requests throught HttpClient module
 import { HttpClientModule } from '@angular/common/http';
@@ -52,6 +53,7 @@ import { Page404Component } from './errorPages/page404/page404.component';
 import { Page500Component } from './errorPages/page500/page500.component';
 import { Page403Component } from './errorPages/page403/page403.component';
 import { RouterGuardsComponent } from './guards/router-guards/router-guards.component';
+import { HistoricComponent } from './accounts/historic/historic.component';
 
 
 
@@ -61,7 +63,6 @@ import { RouterGuardsComponent } from './guards/router-guards/router-guards.comp
     //LoginComponent,
     SignupComponent,
     //AccountsComponent,
-    TransactionComponent,
     //DashboardComponent,
     EditAccountComponent,
     AddAccountComponent,
@@ -71,8 +72,9 @@ import { RouterGuardsComponent } from './guards/router-guards/router-guards.comp
     Page403Component,
     RouterGuardsComponent,
     //HomeAccountComponent,
-   // DebitComponent,
-    CreditComponent
+    DebitComponent,
+    CreditComponent,
+    HistoricComponent
   ],
   imports: [
     BrowserModule,
@@ -107,7 +109,9 @@ import { RouterGuardsComponent } from './guards/router-guards/router-guards.comp
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

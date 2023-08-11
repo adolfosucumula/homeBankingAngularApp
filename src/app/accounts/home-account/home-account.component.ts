@@ -21,6 +21,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { Utils } from 'src/app/utils/Utils';
 
 export interface PeriodicElement {
   name: string;
@@ -47,7 +48,7 @@ export class HomeAccountComponent implements OnInit{
 
   //creating an instance of the account services that provide the crud methods and so on.
   constructor( private accountServices: AccountServicesService, private route: ActivatedRoute, private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog, private utils: Utils
     ){ }
 
   ngOnInit(): void {

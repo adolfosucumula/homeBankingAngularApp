@@ -9,16 +9,16 @@
 </button>
  <span class="example-spacer"></span>
  <!--   Menu buttons -->
-  <button mat-button class="btn-menu-01">Sign In
+  <button mat-button class="btn-menu-01" [routerLink]="['/login']">Sign In
   </button>
-  <button mat-button class="btn-menu-01"> Sign Up
+  <button mat-button class="btn-menu-01" [routerLink]="['/signup']"> Sign Up
   </button>
 
   <button mat-icon-button class="btn-menu" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item [routerLink]="['/login']">
       <mat-icon>dialpad</mat-icon>
       <span>Sign In</span>
     </button>
@@ -26,7 +26,7 @@
       <mat-icon>voicemail</mat-icon>
       <span>Sign Up</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item [routerLink]="['/signup']">
       <mat-icon>notifications_off</mat-icon>
       <span>Sign Up</span>
     </button>
@@ -72,7 +72,7 @@
           Moviments
         </button>
         <mat-menu #aboveMenu02="matMenu" yPosition="below">
-          <button mat-menu-item >Historic</button>
+          <button mat-menu-item [routerLink]="['/accounts/historics']">Historic</button>
           <button mat-menu-item>List Debits</button>
           <button mat-menu-item>List Credits</button>
         </mat-menu>

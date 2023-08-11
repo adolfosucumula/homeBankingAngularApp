@@ -8,6 +8,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Utils } from '../utils/Utils';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class LoginComponent {
 
   //Creating properties
   public signInForm !: FormGroup;
-  constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router){};
+  constructor(private formBuilder : FormBuilder, private http: HttpClient, private router: Router, private utils: Utils){};
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -47,6 +48,9 @@ export class LoginComponent {
 
 //Method to get data from form
   ngOnInit(): void{
+
+    this.utils.userLogin(true)
+
     this.signInForm = this.formBuilder.group({
       email: [''],
       password: [''],

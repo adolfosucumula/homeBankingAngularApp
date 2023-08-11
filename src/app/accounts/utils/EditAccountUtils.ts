@@ -48,6 +48,7 @@ export class EditAccountUtils {
       owner,
       ownerDoc,
       initialBalance,
+      currentBalance,
       currency,
       createdAt,
       isActive} = form.value;
@@ -61,11 +62,27 @@ export class EditAccountUtils {
       owner,
       ownerDoc,
       initialBalance,
+      currentBalance,
       currency,
       createdAt,
       isActive
     };
 
+  };
+
+  replaceData(form: FormGroup, currentBalance: string, createdAt: string): FormGroup{
+    return new FormGroup({
+      account: new FormControl(form.value.account),
+      iban: new FormControl(form.value.iban),
+      swift: new FormControl(form.value.swift),
+      owner: new FormControl(form.value.owner),
+      ownerDoc: new FormControl(form.value.ownerDoc),
+      initialBalance: new FormControl(form.value.initialBalance),
+      currentBalance: new FormControl(currentBalance),
+      currency: new FormControl(form.value.currency),
+      createdAt: new FormControl(createdAt),
+      isActive: new FormControl(form.value.isActive),
+    });
   };
 
   updateAccount(id: number, form: FormGroup){
@@ -77,6 +94,7 @@ export class EditAccountUtils {
       this.getFormData(form).swift,
       this.getFormData(form).ownerDoc,
       this.getFormData(form).initialBalance,
+      this.getFormData(form).currentBalance,
       this.getFormData(form).currency,
       this.getFormData(form).createdAt,
       this.getFormData(form).isActive)
@@ -130,12 +148,12 @@ export class EditAccountUtils {
       )
       .subscribe({
       next: data => {
-        console.log("========= Success to credit account! =============")
+        console.log("========= Success to update account! =============")
         console.log(JSON.stringify(data, null, 2))
         this.router.navigate(['account/home']);
       },
       error: err => {
-        console.log("========= Failed to credit account! =============")
+        console.log("========= Failed to update account! =============")
         console.log(JSON.stringify(err, null, 2))
         if (err.error) {
           //this.errorMessage = JSON.parse(err.error).message;

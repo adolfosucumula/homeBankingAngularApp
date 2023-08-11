@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Utils } from './utils/Utils';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 })
 export class AppComponent {
+
+  constructor(private route: ActivatedRoute, private router: Router, private utils: Utils){}
+
   title = 'homeBankingApp';
 
   public isVisited = true;
+
+  rout = '';
 
   checkVisited(){
     let btn = document.querySelector('.btn-menu-sidebar');
@@ -19,4 +26,12 @@ export class AppComponent {
     //btn?.setAttribute(`style`,`display:flex;`);
     //sidebar?.classList.toggle('active');
   }
+
+  ngOnInit(): void{
+
+    this.utils.userLogin(false);
+  }
+
+
+
 }

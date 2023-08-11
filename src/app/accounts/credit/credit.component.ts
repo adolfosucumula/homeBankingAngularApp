@@ -22,7 +22,6 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 })
 export class CreditComponent implements OnInit{
 
-  c_balance = "";
 
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
@@ -36,11 +35,8 @@ export class CreditComponent implements OnInit{
     sourceAccount: new FormControl(''),
     owner: new FormControl(''),
     account: new FormControl(''),
-    //balanceBefore: new FormControl(''),
     amount: new FormControl(''),
-    //balanceAfter: new FormControl(''),
     operator: new FormControl(''),
-    //status: new FormControl(''),
     createdAt: new FormControl(this.date),
   });
 
