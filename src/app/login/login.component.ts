@@ -49,7 +49,8 @@ export class LoginComponent {
 //Method to get data from form
   ngOnInit(): void{
 
-    this.utils.userLogin(true)
+
+
 
     this.signInForm = this.formBuilder.group({
       email: [''],
@@ -59,12 +60,14 @@ export class LoginComponent {
 
   //Method to post data to the database. In ou case we are using a JSON Server database
   signIn(){
+    this.utils.storageUserData({id: 0, username: "", isLogged: false });
+
     if(!this.signInForm.value){
       alert("Sign in successfull! ");
     }else{
       this.http.post<any>("http://localhost:3000/logins", this.signInForm.value)
       .subscribe(res =>{
-        alert("Sign in successfull! "+res);
+        //alert("Sign in successfull! "+res);
         //Function to clear the form fields
         this.signInForm.reset();
         this.router.navigate(['dashboard']);

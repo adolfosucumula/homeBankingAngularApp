@@ -16,6 +16,7 @@ export class AppComponent {
   title = 'homeBankingApp';
 
   public isVisited = true;
+  isLogged = false;
 
   rout = '';
 
@@ -29,7 +30,7 @@ export class AppComponent {
 
   ngOnInit(): void{
 
-    this.utils.userLogin(false);
+
   }
 
 

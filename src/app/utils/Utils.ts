@@ -32,6 +32,10 @@ export class Utils {
     return this.isLogged;
   }
 
+  storageUserData(user: any){
+    localStorage.setItem('session', user);
+  }
+
 }
 
 
