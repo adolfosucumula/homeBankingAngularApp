@@ -60,11 +60,14 @@ export class AuthServicesComponent {
   }
 
 
-  logout(): Observable<any> {
+  logout(username: string, date: string): Observable<any> {
     this.localStore.clearSession();
     this.localStore.saveUser({}, 0);
     this.localStore.isLoggedIn();
-    return this.http.post(this.httpReq.URL_API() + 'signout', {signout: true}
+    return this.http.post(this.httpReq.URL_API() + 'signout',
+    {
+      username: username, date: date, signout: true
+    }
     , this.httpReq.myHttpOption()
     );
   }

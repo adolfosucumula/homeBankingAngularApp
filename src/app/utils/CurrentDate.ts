@@ -16,13 +16,13 @@ export class CurrentDate {
 
   }
 
-  getDate(format: string){
+  getDate(format: string = "dd/MM/YYYY hh:mm"){
     format = format ? format : "dd/MM/YYYY hh:mm";
     const cDate = formatDate(this.today, format, 'en-US');
     return cDate;
   }
 
-  getDateTime(format: string){
+  getDateTime(format: string = "dd/MM/YYYY hh:mm"){
     format = format ? format : "dd/MM/YYYY hh:mm";
     const cDate = formatDate(this.today, format, 'en-US');
     return cDate;

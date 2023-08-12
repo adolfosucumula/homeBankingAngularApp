@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServicesComponent } from 'src/app/services/auth/auth-services/auth-services.component';
+import { CurrentDate } from 'src/app/utils/CurrentDate';
 import { StorageService } from 'src/app/utils/StorageService.service';
 
 @Component({
@@ -9,32 +11,38 @@ import { StorageService } from 'src/app/utils/StorageService.service';
 })
 export class SignoutComponent implements OnInit {
 
-    constructor(private router: Router, private localStore: StorageService){}
+    constructor(private router: Router, private localStore: StorageService,
+      private authServices: AuthServicesComponent, private currentDate: CurrentDate
+      ){}
 
     okay = true;
+    user: any;
 
     ngOnInit(): void {
-      //this.localStore.saveUser({},0);
-      //this.localStore.clearSession();
-      //window.location.reload();
-      //this.localStore.isLoggedIn();
-      //this.localStore.redirectToLoginPage();
-
-      //alert("You are logout")
       this.signOut();
     }
 
     signOut(){
-      this.localStore.clearSession();
-      this.localStore.saveUser({},0);
-      this.okay = this.localStore.isLoggedIn();
+      //this.localStore.clearSession();
+      //this.localStore.saveUser({},0);
+      this.user = this.localStore.getUser();
+      this.authServices.logout(this.user.username, this.currentDate.getDate())
+      .subscribe({
+        next: data => {
+          this.okay = this.localStore.isLoggedIn();
 
-      if(!this.okay){
-        //window.location.reload();
-        //this.localStore.redirectToLoginPage();
-        this.router.navigate(['/']);
+          if(!this.okay){
+            //window.location.reload();
+            //this.localStore.redirectToLoginPage();
+            this.router.navigate(['/']);
 
-      }
+          }
+        },
+        error: err => {
+
+        }
+      })
+
 
     }
 
