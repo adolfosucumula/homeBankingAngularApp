@@ -13,7 +13,19 @@ export class AccountServicesService {
   constructor(private http: HttpClient, private baseUrl: HttpReq  ) { }
 
   getAll(){
-    return this.http.get < AccountModel [] >  ( this.baseUrl.URL_API() + 'accounts/' );
+    return this.http.get < AccountModel [] >  ( this.baseUrl.URL_API() + 'accounts/' )
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      //catchError(this.handleError) // then handle the error
+      catchError((err) => {
+        console.log('error caught in service. When trying to load users')
+        console.error(err);
+
+        //Handle the error here
+
+        return throwError(err);    //Rethrow it back to component
+      })
+    );
   }
 
   create(
@@ -39,12 +51,11 @@ export class AccountServicesService {
       currency,
       createdAt,
       isActive
-    })
-    .pipe(
+    }).pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to create an account')
+        console.log('error caught in service. When trying to load users')
         console.error(err);
 
         //Handle the error here
@@ -60,7 +71,7 @@ export class AccountServicesService {
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to get account by id')
+        console.log('error caught in service. When trying to load users')
         console.error(err);
 
         //Handle the error here
@@ -76,7 +87,7 @@ export class AccountServicesService {
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to get data by account')
+        console.log('error caught in service. When trying to load users')
         console.error(err);
 
         //Handle the error here
@@ -114,7 +125,7 @@ export class AccountServicesService {
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to update account')
+        console.log('error caught in service. When trying to load users')
         console.error(err);
 
         //Handle the error here
@@ -149,12 +160,11 @@ export class AccountServicesService {
       createdAt,
       updatedAt,
       isActive
-    } )
-    .pipe(
+    } ).pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to update account balance')
+        console.log('error caught in service. When trying to load users')
         console.error(err);
 
         //Handle the error here
@@ -170,7 +180,7 @@ export class AccountServicesService {
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to delete account')
+        console.log('error caught in service. When trying to load users')
         console.error(err);
 
         //Handle the error here

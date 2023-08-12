@@ -4,7 +4,8 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { AccountServicesService } from "../../services/account/account-services.service";
 import { Observable } from "rxjs";
 import { CreditServicesService } from "src/app/services/transactions/credit-services.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { SnackBarAlertMessage } from "src/app/utils/snackBarAlertMessage";
 
 
 @Injectable({
@@ -14,7 +15,7 @@ import { Router } from "@angular/router";
 export class EditAccountUtils {
 
   constructor(private accountService: AccountServicesService, private creditServices: CreditServicesService
-    , private router: Router) {}
+    ,private route: ActivatedRoute, private router: Router, private snackAlert: SnackBarAlertMessage) {}
 
 
   editFormGroup (): FormGroup  {
@@ -85,24 +86,30 @@ export class EditAccountUtils {
     });
   };
 
-  updateAccount(id: number, form: FormGroup){
+  updateAccount(id: number,account: number, iban: string, owner: string, swift: string,
+    ownerDoc:string, bBefore: string, bAfter:string, currency: string, form: FormGroup){
 
     this.accountService.update(id,
-      this.getFormData(form).account,
-      this.getFormData(form).iban,
-      this.getFormData(form).owner,
-      this.getFormData(form).swift,
-      this.getFormData(form).ownerDoc,
-      this.getFormData(form).initialBalance,
-      this.getFormData(form).currentBalance,
-      this.getFormData(form).currency,
+      account,
+      iban,
+      owner,
+      swift,
+      ownerDoc,
+      bBefore,
+      bAfter,
+      currency,
       this.getFormData(form).createdAt,
-      this.getFormData(form).isActive)
+      true
+      )
     .subscribe({
       next: data => {
         console.log("========= Success to edit account! =============")
         console.log(JSON.stringify(data, null, 2))
-        this.router.navigate(['account/home']);
+        //this.router.navigate(['account/home']);
+
+        //this.router.navigate(['account/home'], {relativeTo: this.route.parent});
+        //this.snackAlert.openSnackBar("Regist updated successfull. ", "Information", 10, 'bottom', "left")
+        this.router.navigate(['/dashboard']);
       },
       error: err => {
         console.log("========= Failed to edit account! =============")
@@ -150,17 +157,15 @@ export class EditAccountUtils {
       next: data => {
         console.log("========= Success to update account! =============")
         console.log(JSON.stringify(data, null, 2))
-        this.router.navigate(['account/home']);
+        //this.router.navigate(['account/home']);
+        //this.router.navigate(['../account/home'], {relativeTo: this.route.parent});
+        this.snackAlert.openSnackBar("Regist updated successfull. ", "Information", 10, 'bottom', "left")
+        this.router.navigate(['/dashboard']);
       },
       error: err => {
         console.log("========= Failed to update account! =============")
         console.log(JSON.stringify(err, null, 2))
-        if (err.error) {
-          //this.errorMessage = JSON.parse(err.error).message;
-        } else {
 
-          //this.errorMessage = "Error with status: " + err.status;
-        }
       }
     })
 

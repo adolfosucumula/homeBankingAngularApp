@@ -122,7 +122,7 @@ export class CreditAccountUtils {
         }
       },
       error: err => {
-        alert( "Error")
+        console.log(JSON.stringify(err), null, 2)
       }
     })
   };
@@ -143,11 +143,11 @@ export class CreditAccountUtils {
       ).subscribe({
         next: data => {
           //console.log("========= Success to credit account! =============")
-          //console.log(JSON.stringify(data, null, 2))
+          console.log(JSON.stringify(data, null, 2))
         },
         error: err => {
           //console.log("========= Failed to credit account! =============")
-          //console.log(JSON.stringify(err, null, 2))
+          console.log(JSON.stringify(err, null, 2))
         }
     })
   }

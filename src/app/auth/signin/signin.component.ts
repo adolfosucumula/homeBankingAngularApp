@@ -103,6 +103,7 @@ export class SigninComponent {
     ).subscribe({
       next: data => {
         this.localStore.saveUser({
+          userID: data.id,
           username: data.username,
           role: userRole,
           createdAt: this.currentDate.getDate(),

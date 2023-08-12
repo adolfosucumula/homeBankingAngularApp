@@ -46,8 +46,18 @@ export class DashboardComponent {
 
   }
 
-  account(){
+  accountHome(){
     this.router.navigate(['account/home'], {relativeTo: this.route});
+  }
+
+
+
+  accountDebitNoParameter(){
+    this.router.navigate(['account/trans/debit'], {relativeTo: this.route});
+  }
+
+  accountCreditNoParameter(){
+    this.router.navigate(['account/trans/credit'], {relativeTo: this.route});
   }
 
 }

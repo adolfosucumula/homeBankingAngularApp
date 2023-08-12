@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {delay, map, startWith} from 'rxjs/operators';
 import {NgFor, AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
@@ -139,11 +139,15 @@ export class DebitComponent implements OnInit{
 
       let balanceBefore = this.accountForm.value.balanceBefore;
       let amount = this.accountForm.value.amount;
+      const account = this.accountForm.value.account;
 
       balanceBefore = balanceBefore.replaceAll("€","");
       balanceBefore = balanceBefore.replaceAll(",","");
       amount = amount.replaceAll("€","");
       amount = amount.replaceAll(",","");
+
+      //get the ID account from the account list
+
 
       if( balanceBefore === 0 || amount === 0){
         this.snackAlert.openSnackBar("Insufficient funds to continue the operation. ", "Information", 10, 'bottom', "left")
@@ -155,16 +159,45 @@ export class DebitComponent implements OnInit{
       }
 
       var balanceAfter = parseFloat(balanceBefore) - parseFloat(amount);
+
       /// ====================  Debit on database ====================
-      this.utils.debitAccount(this.accountForm, "€"+balanceBefore.toString(), "€"+balanceAfter.toString(), "O.Finalized");
 
-      //==============  Now update the currency balance form account
+        this.utils.debitAccount(this.accountForm, "€"+balanceBefore.toString(), "€"+balanceAfter.toString(), "O.Finalized");
 
-      this.editAccountUtils.updateAccount(this.id,
-        this.editAccountUtils.replaceData(this.accountData, "€"+balanceAfter.toString(), this.accountForm.value.createdAt)
-        );
+        //==============  Now update the currency balance form account
+
+        this.getAccount(account, balanceAfter.toString(), this.accountForm);
+
+
+
 
     };
+
+
+    /**
+     * Compare the value of this parameter with each account from the database to get its ID
+     * @param account the account entered in field form
+     */
+    getAccount(account: string, balanceAfter: string, form: FormGroup){ this.snackAlert.openSnackBar("Account"+ account, "Information", 10, 'bottom', "left")
+      if(account !=''){
+        this.accountServices.getAll().subscribe({
+          next: data => {
+            for (let index = 0; index < data.length; index++) {
+              if(data[index].account === account){
+                //this.id = data[index].id;
+                this.editAccountUtils.updateAccount(data[index].id,Number(data[index].account), data[index].iban, data[index].owner, data[index].swift,
+                  data[index].ownerDoc, data[index].currentBalance, "€"+balanceAfter, data[index].currency, form);
+
+                break;
+              }
+            }
+          },
+          error: err => {
+            console.log(JSON.stringify(err), null, 2)
+          }
+        })
+      }
+    }
 
 
 

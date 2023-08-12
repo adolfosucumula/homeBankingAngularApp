@@ -26,7 +26,7 @@ export class CreditServicesService {
     status: string,
     createdAt: string
   ): Observable <any>{
-    return this.http.post < AccountTransactionModel > ( this.base_url.URL_API() + 'credits', {
+    return this.http.post < AccountTransactionModel > ( this.base_url.URL_API() + 'credits/', {
       sourceAccount,
       owner,
       account,
@@ -40,7 +40,7 @@ export class CreditServicesService {
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to create a credit')
+        console.log('error caught in service. When trying to load users')
         console.error(err);
 
         //Handle the error here
@@ -51,11 +51,35 @@ export class CreditServicesService {
   }
 
   getById(id: number) {
-    return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ id }`);
+    return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ id }`)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      //catchError(this.handleError) // then handle the error
+      catchError((err) => {
+        console.log('error caught in service. When trying to load users')
+        console.error(err);
+
+        //Handle the error here
+
+        return throwError(err);    //Rethrow it back to component
+      })
+    );
   }
 
   getByAccount(account: number) {
-    return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ account }`);
+    return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ account }`)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      //catchError(this.handleError) // then handle the error
+      catchError((err) => {
+        console.log('error caught in service. When trying to load users')
+        console.error(err);
+
+        //Handle the error here
+
+        return throwError(err);    //Rethrow it back to component
+      })
+    );
   }
 
 }

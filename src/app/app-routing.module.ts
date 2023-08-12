@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountsComponent } from './accounts/accounts.component';
@@ -30,13 +29,19 @@ const routes: Routes = [
   { path: 'logout', component: SignoutComponent},
   { path: 'dashboard', component: DashboardComponent,
     children: [
-      {path: 'account/home', component: HomeAccountComponent },
-      {path: 'account/add', component: AddAccountComponent },
-      {path: 'account/edit/:id', component: EditAccountComponent },
-      {path: 'account/delete/:id', component: HomeAccountComponent },
-      {path: 'account/trans/debit/:id', component: DebitComponent },
+      {path: 'account/home', component: HomeAccountComponent,
+      children: [
+        {path: 'account/add', component: AddAccountComponent },
+        {path: 'account/trans/credit/:id', component: CreditComponent },
+        {path: 'account/edit/:id', component: EditAccountComponent },
+        {path: 'account/delete/:id', component: HomeAccountComponent },
+        {path: 'account/trans/debit/:id', component: DebitComponent },
+      ]
+      },
+
+
       {path: 'account/trans/debit', component: DebitComponent },
-      {path: 'account/trans/credit/:id', component: CreditComponent },
+
       {path: 'account/trans/credit', component: CreditComponent },
     ]
   },

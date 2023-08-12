@@ -15,7 +15,7 @@
   <div mat-card-image></div>
   <mat-card-content>
 
-    <button mat-raised-button color="primary" [routerLink]="['/account/add']">
+    <button mat-raised-button color="primary" (click)="accountAdd()">
       <mat-icon>add_circle</mat-icon>
       Add
     </button>
@@ -73,6 +73,8 @@
 
 
   -->
+
+  <router-outlet></router-outlet>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -152,6 +154,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
 
 
 

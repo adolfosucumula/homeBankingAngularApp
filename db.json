@@ -129,6 +129,18 @@
       "password": "12345678",
       "createdAt": "12/08/2023 11:13",
       "id": 14
+    },
+    {
+      "username": "admin",
+      "password": "12345678",
+      "createdAt": "12/08/2023 04:07",
+      "id": 15
+    },
+    {
+      "username": "admin",
+      "password": "12345678",
+      "createdAt": "12/08/2023 05:16",
+      "id": 16
     }
   ],
   "signout": [
@@ -155,46 +167,50 @@
       "date": "12/08/2023 11:13",
       "signout": true,
       "id": 4
+    },
+    {
+      "date": "12/08/2023 05:16",
+      "signout": true,
+      "id": 5
     }
   ],
   "accounts": [
     {
-      "account": "2121212121212",
-      "iban": "AAA2222222222222222",
-      "swift": "ASASASAS",
-      "owner": "Kakka",
-      "ownerDoc": "12221",
-      "initialBalance": "€12,121",
-      "currentBalance": "€12,121",
-      "currency": "Dollar",
-      "createdAt": "2023-08-16T23:00:00.000Z",
-      "isActive": true,
+      "account": "",
+      "iban": "",
+      "swift": "",
+      "owner": "",
+      "ownerDoc": "",
+      "initialBalance": "",
+      "currentBalance": "€16760",
+      "currency": "",
+      "createdAt": "2023-08-29T23:00:00.000Z",
+      "isActive": false,
       "id": 3
     },
     {
-      "account": "9928828288222",
-      "iban": "2222222AAAA22222222",
-      "swift": "As",
-      "owner": "AAAAAAAA",
-      "ownerDoc": "1212121211",
-      "initialBalance": "€111",
-      "currentBalance": "€230",
-      "currency": "Euro",
-      "createdAt": "2023-08-10T21:45:41.117Z",
+      "account": "",
+      "iban": "",
+      "swift": "",
+      "owner": "",
+      "ownerDoc": "",
+      "initialBalance": "",
+      "currentBalance": "€270",
+      "currency": "",
+      "createdAt": "2023-08-22T23:00:00.000Z",
       "isActive": false,
       "id": 4
     },
     {
-      "account": "0019919918111",
+      "account": 19919918111,
       "iban": "HA99999999999999999",
-      "swift": "AFAGHGHA",
-      "owner": "Famint Gaia",
+      "swift": "Famint Gaia",
+      "owner": "AFAGHGHA",
       "ownerDoc": "AASS6666",
-      "initialBalance": "€200,000",
-      "currentBalance": "€200122",
+      "initialBalance": "€200122",
+      "currentBalance": "€200100",
       "currency": "Euro",
-      "createdAt": "2023-08-16T23:00:00.000Z",
-      "updatedAt": "2023-08-22T23:00:00.000Z",
+      "createdAt": "2023-08-22T23:00:00.000Z",
       "isActive": true,
       "id": 5
     },
@@ -298,6 +314,162 @@
       "status": "finalized",
       "createdAt": "2023-08-23T23:00:00.000Z",
       "id": 3
+    },
+    {
+      "sourceAccount": "9928828288224",
+      "owner": "Asss",
+      "account": "9928828288222",
+      "balanceBefore": "€230",
+      "amount": "€13",
+      "balanceAfter": "€243",
+      "operator": "Azzz",
+      "status": "finalized",
+      "createdAt": "2023-08-16T23:00:00.000Z",
+      "id": 4
+    },
+    {
+      "sourceAccount": "9928828288224",
+      "owner": "Asss",
+      "account": "9928828288222",
+      "balanceBefore": "€243",
+      "amount": "€13",
+      "balanceAfter": "€256",
+      "operator": "Azzz",
+      "status": "finalized",
+      "createdAt": "2023-08-16T23:00:00.000Z",
+      "id": 5
+    },
+    {
+      "sourceAccount": "9928828288227",
+      "owner": "Azzz",
+      "account": "9928828288222",
+      "balanceBefore": "€256",
+      "amount": "€13",
+      "balanceAfter": "€269",
+      "operator": "Assss",
+      "status": "finalized",
+      "createdAt": "2023-08-23T23:00:00.000Z",
+      "id": 6
+    },
+    {
+      "sourceAccount": "9928828288225",
+      "owner": "Ass",
+      "account": "9928828288222",
+      "balanceBefore": "€269",
+      "amount": "€1",
+      "balanceAfter": "€270",
+      "operator": "Axx",
+      "status": "finalized",
+      "createdAt": "2023-08-23T23:00:00.000Z",
+      "id": 7
+    },
+    {
+      "sourceAccount": "9928828288228",
+      "owner": "Azz",
+      "account": "9928828288222",
+      "balanceBefore": "€270",
+      "amount": "€1",
+      "balanceAfter": "€271",
+      "operator": "Az",
+      "status": "finalized",
+      "createdAt": "2023-08-29T23:00:00.000Z",
+      "id": 8
+    },
+    {
+      "sourceAccount": "2121212121215",
+      "owner": "Azz",
+      "account": "2121212121212",
+      "balanceBefore": "€12,121",
+      "amount": "€12",
+      "balanceAfter": "€12133",
+      "operator": "AAA",
+      "status": "finalized",
+      "createdAt": "2023-08-23T23:00:00.000Z",
+      "id": 9
+    },
+    {
+      "sourceAccount": "2121212121214",
+      "owner": "Azz",
+      "account": "2121212121212",
+      "balanceBefore": "€12133",
+      "amount": "€33",
+      "balanceAfter": "€12166",
+      "operator": "Axxx",
+      "status": "finalized",
+      "createdAt": "2023-08-28T23:00:00.000Z",
+      "id": 10
+    },
+    {
+      "sourceAccount": "2121212121215",
+      "owner": "Azz",
+      "account": "2121212121212",
+      "balanceBefore": "€12166",
+      "amount": "€22",
+      "balanceAfter": "€12188",
+      "operator": "Zu",
+      "status": "finalized",
+      "createdAt": "2023-08-24T23:00:00.000Z",
+      "id": 11
+    },
+    {
+      "sourceAccount": "2121212121767",
+      "owner": "Azz",
+      "account": "2121212121212",
+      "balanceBefore": "€12188",
+      "amount": "€22",
+      "balanceAfter": "€12210",
+      "operator": "Azzz",
+      "status": "finalized",
+      "createdAt": "2023-08-21T23:00:00.000Z",
+      "id": 12
+    },
+    {
+      "sourceAccount": "2121212121216",
+      "owner": "qqq",
+      "account": "2121212121212",
+      "balanceBefore": "€12210",
+      "amount": "€11",
+      "balanceAfter": "€12221",
+      "operator": "Azz",
+      "status": "finalized",
+      "createdAt": "2023-08-16T23:00:00.000Z",
+      "id": 13
+    },
+    {
+      "sourceAccount": "2121212121219",
+      "owner": "aaa",
+      "account": "2121212121212",
+      "balanceBefore": "€12221",
+      "amount": "€1,111",
+      "balanceAfter": "€13332",
+      "operator": "Azzz",
+      "status": "finalized",
+      "createdAt": "2023-08-15T23:00:00.000Z",
+      "id": 14
+    },
+    {
+      "sourceAccount": "2121212121219",
+      "owner": "asa",
+      "account": "2121212121212",
+      "balanceBefore": "€13332",
+      "amount": "€2,222",
+      "balanceAfter": "€15554",
+      "operator": "Azz",
+      "status": "finalized",
+      "createdAt": "2023-08-29T23:00:00.000Z",
+      "id": 15
+    },
+    {
+      "sourceAccount": "2121212121216",
+      "owner": "Axx",
+      "account": "2121212121212",
+      "balanceBefore": "€15554",
+      "amount": "€1,212",
+      "balanceAfter": "€16766",
+      "operator": "zzz",
+      "status": "finalized",
+      "createdAt": "2023-08-22T23:00:00.000Z",
+      "id": 16
     }
   ],
   "debits": [
@@ -400,6 +572,61 @@
       "status": "O.Finalized",
       "createdAt": "2023-08-10T21:45:41.117Z",
       "id": 9
+    },
+    {
+      "owner": "kakka",
+      "account": "2121212121212",
+      "balanceBefore": "€16766",
+      "amount": "€6",
+      "balanceAfter": "€16760",
+      "operator": "Admin",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-16T23:00:00.000Z",
+      "id": 10
+    },
+    {
+      "owner": "kakka",
+      "account": "2121212121212",
+      "balanceBefore": "€16766",
+      "amount": "€6",
+      "balanceAfter": "€16760",
+      "operator": "Am",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-24T23:00:00.000Z",
+      "id": 11
+    },
+    {
+      "owner": "kakka",
+      "account": "2121212121212",
+      "balanceBefore": "€16766",
+      "amount": "€6",
+      "balanceAfter": "€16760",
+      "operator": "Azz",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-29T23:00:00.000Z",
+      "id": 12
+    },
+    {
+      "owner": "AAAAAAAAA",
+      "account": "9928828288222",
+      "balanceBefore": "€271",
+      "amount": "€1",
+      "balanceAfter": "€270",
+      "operator": "Ass",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-22T23:00:00.000Z",
+      "id": 13
+    },
+    {
+      "owner": "Famint",
+      "account": "0019919918111",
+      "balanceBefore": "€200122",
+      "amount": "€22",
+      "balanceAfter": "€200100",
+      "operator": "Aaa",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-22T23:00:00.000Z",
+      "id": 14
     }
   ],
   "currencies": [

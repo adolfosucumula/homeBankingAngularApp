@@ -78,17 +78,17 @@
           Accounts
         </button>
         <mat-menu #aboveMenu="matMenu" yPosition="below">
-          <button mat-menu-item [routerLink]="['/account/home']">List All</button>
+          <button mat-menu-item (click)="accountHome()">List All</button>
 
         </mat-menu>
       </mat-list-item>
       <mat-list-item role="listitem">
-        <button mat-button [routerLink]="['/account/trans/debit']">
+        <button mat-button (click)="accountDebitNoParameter()">
           <mat-icon>remove_circle</mat-icon>
           Send money</button>
       </mat-list-item>
       <mat-list-item role="listitem">
-        <button mat-button [routerLink]="['/account/trans/credit']">
+        <button mat-button (click)="accountCreditNoParameter()">
           <mat-icon>add_circle</mat-icon>
           Credit</button>
       </mat-list-item>
@@ -104,7 +104,7 @@
         </mat-menu>
       </mat-list-item>
       <mat-list-item role="listitem" *ngIf="username.role == 'ROOT' || username.role == 'AMIN'">
-        <button mat-button (click)="account()">
+        <button mat-button (click)="accountHome()">
           <mat-icon>settings</mat-icon>
           Settings
         </button>

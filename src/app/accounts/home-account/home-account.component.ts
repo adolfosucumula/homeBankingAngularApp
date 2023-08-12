@@ -105,6 +105,10 @@ export class HomeAccountComponent implements OnInit{
   };
 
 
+  accountAdd(){
+    this.router.navigate(['account/add'], {relativeTo: this.route});
+  }
+
 
 
 

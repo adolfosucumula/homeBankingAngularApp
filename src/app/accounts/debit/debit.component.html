@@ -64,7 +64,7 @@ width: 500px;
             placeholder="Account number"
             formControlName="account"
             [ngClass]="{ 'is-invalid': submitted && _fC['account'].errors }"
-            readonly="true"
+            readonly="false"
            >
            <span *ngIf="submitted && _fC['account'].errors" class="invalid-feedback">
             <span *ngIf="_fC['account'].errors['required']">The account number is required</span>

@@ -77,7 +77,8 @@ export class AddAccountComponent implements OnInit{
       return;
     }
 
-    console.log("The account exists: "+ this.addAccountUtils.theAccountExists(this.accountForm.value.account))
+    //console.log("The account exists: "+ this.addAccountUtils.theAccountExists(this.accountForm.value.account))
+
     const { account,
     iban,
     swift,
@@ -104,7 +105,7 @@ export class AddAccountComponent implements OnInit{
       next: res => {
         console.log(res)
 
-        this.router.navigate(['/account/home'])
+        this.router.navigate(['/dashboard'])
         this.submitted = false;
         this.accountForm.reset();
       },
