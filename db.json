@@ -5,8 +5,8 @@
       "fullname": "Administrator",
       "username": "admin",
       "email": "admin@email.com",
-      "password": "123",
-      "role": "admin",
+      "password": "12345678",
+      "role": "ROOT",
       "isActive": true,
       "createdAt": "2023-08-09T23:00:00.000Z",
       "updatedAt": "2023-08-22T23:00:00.000Z"
@@ -111,6 +111,24 @@
       "password": "12345678",
       "createdAt": "12/08/2023 11:07",
       "id": 11
+    },
+    {
+      "username": "avelino",
+      "password": "12345678",
+      "createdAt": "12/08/2023 11:11",
+      "id": 12
+    },
+    {
+      "username": "avelino",
+      "password": "12345678",
+      "createdAt": "12/08/2023 11:11",
+      "id": 13
+    },
+    {
+      "username": "admin",
+      "password": "12345678",
+      "createdAt": "12/08/2023 11:13",
+      "id": 14
     }
   ],
   "signout": [
@@ -125,6 +143,18 @@
       "date": "12/08/2023 09:01",
       "signout": true,
       "id": 2
+    },
+    {
+      "username": "avelino",
+      "date": "12/08/2023 11:07",
+      "signout": true,
+      "id": 3
+    },
+    {
+      "username": "admin",
+      "date": "12/08/2023 11:13",
+      "signout": true,
+      "id": 4
     }
   ],
   "accounts": [
