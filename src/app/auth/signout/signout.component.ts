@@ -22,9 +22,11 @@ export class SignoutComponent implements OnInit {
       this.signOut();
     }
 
+    /**
+     * Sign out method. First post the data to the database server and then check if the
+     * user is logged yet. If false don't do nothing if true redirect to the root page
+     */
     signOut(){
-      //this.localStore.clearSession();
-      //this.localStore.saveUser({},0);
       this.user = this.localStore.getUser();
       this.authServices.logout(this.user.username, this.currentDate.getDate())
       .subscribe({

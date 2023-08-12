@@ -20,6 +20,7 @@ export class AuthUtils {
       username: new FormControl(''),
       email: new FormControl(''),
       password: new FormControl(''),
+      confirmPassword: new FormControl(''),
       role: new FormControl(''),
       isActive: new FormControl(''),
       createdAt: new FormControl(this.date.value),

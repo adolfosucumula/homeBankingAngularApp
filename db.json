@@ -10,6 +10,17 @@
       "isActive": true,
       "createdAt": "2023-08-09T23:00:00.000Z",
       "updatedAt": "2023-08-22T23:00:00.000Z"
+    },
+    {
+      "fullname": "Marcos",
+      "username": "marcos",
+      "email": "marcos@email.com",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "12/08/2023 10:45",
+      "updatedAt": "12/08/2023 10:45",
+      "id": 2
     }
   ],
   "loggeds": [
@@ -60,6 +71,12 @@
       "password": "12345678",
       "createdAt": "12/08/2023 04:33",
       "id": 8
+    },
+    {
+      "username": "Admin",
+      "password": "12345678",
+      "createdAt": "12/08/2023 09:00",
+      "id": 9
     }
   ],
   "signout": [
@@ -68,6 +85,12 @@
       "username": "admin",
       "email": "admin@email.com",
       "password": "123"
+    },
+    {
+      "username": "Admin",
+      "date": "12/08/2023 09:01",
+      "signout": true,
+      "id": 2
     }
   ],
   "accounts": [
