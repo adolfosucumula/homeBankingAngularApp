@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Utils } from './utils/Utils';
+import { StorageService } from './utils/StorageService.service';
+
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,11 @@ import { Utils } from './utils/Utils';
 })
 export class AppComponent {
 
-  constructor(private route: ActivatedRoute, private router: Router, private utils: Utils){}
+  @Input() item = ''; // decorate the property with @Input()
+  currentItem = 'Television';
+
+  constructor(private route: ActivatedRoute, private router: Router, private utils: Utils,
+    private localStore: StorageService){}
 
   title = 'homeBankingApp';
 
@@ -30,9 +36,20 @@ export class AppComponent {
 
   ngOnInit(): void{
 
-
+    console.log("From APP COMPO")
+    console.log(JSON.stringify(this.localStore.getUser()))
+    console.log(JSON.stringify(this.localStore.isLoggedIn()))
+    this.isLogged = this.localStore.isLoggedIn();
+    console.log("Is logged: "+this.isLogged);
   }
 
+  signOut(){
+
+    this.localStore.clearSession();
+    this.localStore.isLoggedIn();
+    //this.router.navigate(['/login']);
+
+  }
 
 
 }

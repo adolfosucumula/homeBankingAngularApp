@@ -60,7 +60,7 @@ export class LoginComponent {
 
   //Method to post data to the database. In ou case we are using a JSON Server database
   signIn(){
-    this.utils.storageUserData({id: 0, username: "", isLogged: false });
+
 
     if(!this.signInForm.value){
       alert("Sign in successfull! ");

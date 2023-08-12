@@ -1,34 +1,45 @@
 
-  <mat-toolbar color="primary">
+  <!--<mat-toolbar color="primary"> -->
       <!--<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
    <mat-icon>menu</mat-icon>
  </button>-->
- <span>My App</span>
+
+ <!--<span>My App</span>
  <button mat-button class="btn-menu-sidebar" [class.visited] ="isVisited == true" (click)="checkVisited()">
   <mat-icon>more_vert</mat-icon>
 </button>
- <span class="example-spacer"></span>
+ <span class="example-spacer"></span>-->
  <!--   Menu buttons -->
-  <button mat-button class="btn-menu-01" [routerLink]="['/login']">Sign In
+
+ <!--<button mat-button *ngIf="isLogged" class="btn-menu-01" [routerLink]="['/logout']" >Logout
+</button>
+  <button mat-button *ngIf="!isLogged" class="btn-menu-01" [routerLink]="['/login']">Sign In
   </button>
-  <button mat-button class="btn-menu-01" [routerLink]="['/signup']"> Sign Up
+  <button mat-button *ngIf="!isLogged" class="btn-menu-01" [routerLink]="['/signup']"> Sign Up
   </button>
 
   <button mat-icon-button class="btn-menu" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="['/login']">
+    <button mat-menu-item *ngIf="!isLogged" [routerLink]="['/login']">
       <mat-icon>dialpad</mat-icon>
       <span>Sign In</span>
     </button>
-    <button mat-menu-item disabled>
+    <button mat-menu-item *ngIf="!isLogged" disabled>
       <mat-icon>voicemail</mat-icon>
       <span>Sign Up</span>
     </button>
-    <button mat-menu-item [routerLink]="['/signup']">
+    <button mat-menu-item *ngIf="!isLogged" [routerLink]="['/signup']">
       <mat-icon>notifications_off</mat-icon>
       <span>Sign Up</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #menu="matMenu" *ngIf="isLogged">
+    <button mat-menu-item [routerLink]="['/logout']" >
+      <mat-icon>dialpad</mat-icon>
+      <span>Logout</span>
     </button>
   </mat-menu>
 
@@ -86,10 +97,10 @@
     </mat-list>
   </mat-drawer>
   <mat-drawer-content>
+  -->
 
-
-
+  <!--<h1 *ngIf="!isLogged">Homepage</h1>-->
     <router-outlet></router-outlet>
 
-  </mat-drawer-content>
-</mat-drawer-container>
+  <!--</mat-drawer-content>
+</mat-drawer-container> -->

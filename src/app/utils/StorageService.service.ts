@@ -17,8 +17,10 @@ export class StorageService {
    * Method to clear the storage session
    */
   clearSession(): void{
+    window.sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.removeItem(LOGGED_KEY);
     window.sessionStorage.clear();
-  }
+  };
 
 
   /**
@@ -27,14 +29,15 @@ export class StorageService {
    * @param isLogged accept 1 or 0 as parameter
    */
   saveUser(user: any, isLogged: number): void {
-    if( Number(isLogged) != 1 || Number(isLogged) != 0 ) console.log(JSON.stringify("Failed to store user data."), null, 1);
+    if( isLogged > 1 || 0 > isLogged )
+      console.log(JSON.stringify("Failed to store user data. The login status value is not correct."), null, 1);
     else{
       window.sessionStorage.removeItem(USER_KEY);
       window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
       window.sessionStorage.setItem(LOGGED_KEY, isLogged.toString());
     }
 
-  }
+  };
 
   //This method get  the user data
   getUser(): any {
@@ -45,7 +48,7 @@ export class StorageService {
 
     return {};
 
-  }
+  };
 
   //This method store the status of the user. If logged in return true, otherwise return false
   isLoggedIn(): boolean {
@@ -53,7 +56,22 @@ export class StorageService {
     if(Number(ok) && Number(ok) === 1) return true;
 
     return false;
+  };
+
+  //Method to redirect the route to the login page when user is not logged
+  public redirectToLoginPage(): void {
+    window.onload
+    if(this.isLoggedIn()){
+
+      //alert(" you'r logged")
+      //this.router.navigate(['/account/home']);
+    }
+    else{
+      //alert(" you'r loggout")
+      //this.router.navigate(['/login']);
+    }
   }
+
 
 
 }

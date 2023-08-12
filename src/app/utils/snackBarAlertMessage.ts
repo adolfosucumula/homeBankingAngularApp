@@ -15,9 +15,9 @@ export class SnackBarAlertMessage {
   constructor(private _snackBar: MatSnackBar){}
 
 
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-  durationInSeconds = 10;
+  private horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  private verticalPosition: MatSnackBarVerticalPosition = 'top';
+  private durationInSeconds = 10;
 
    /**
      * Snackbar alert message

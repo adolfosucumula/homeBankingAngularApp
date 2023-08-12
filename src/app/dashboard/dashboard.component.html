@@ -1,1 +1,105 @@
-<p>dashboard works!</p>
+
+  <mat-toolbar color="primary">
+      <!--<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>menu</mat-icon>
+ </button>-->
+ <span>Dashboard</span>
+ <button mat-button class="btn-menu-sidebar" [class.visited] ="isVisited == true" (click)="checkVisited()">
+  <mat-icon>more_vert</mat-icon>
+</button>
+ <span class="example-spacer"></span>
+ <!--   Menu buttons -->
+  <button mat-button *ngIf="isLogged" class="btn-menu-01" [routerLink]="['/logout']" >
+  Logout
+  </button>
+  <button mat-button *ngIf="!isLogged" class="btn-menu-01" [routerLink]="['/login']">Sign In
+  </button>
+  <button mat-button *ngIf="!isLogged" class="btn-menu-01" [routerLink]="['/signup']"> Sign Up
+  </button>
+
+  <button mat-icon-button class="btn-menu" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngIf="!isLogged" [routerLink]="['/login']">
+      <mat-icon>dialpad</mat-icon>
+      <span>Sign In</span>
+    </button>
+    <button mat-menu-item *ngIf="!isLogged" disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Sign Up</span>
+    </button>
+    <button mat-menu-item *ngIf="!isLogged" [routerLink]="['/signup']">
+      <mat-icon>notifications_off</mat-icon>
+      <span>Sign Up</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #menu="matMenu" *ngIf="isLogged">
+    <button mat-menu-item [routerLink]="['/logout']" >
+      <mat-icon>dialpad</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+
+   </mat-toolbar>
+
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened class="sidbar">
+    <mat-list role="list">
+      <button mat-button [routerLink]="['/']" >
+        <mat-icon>account_balance</mat-icon>
+        Home
+      </button>
+      <mat-list-item role="listitem">
+        <button mat-button >
+          <mat-icon>supervised_user_circle</mat-icon>
+          Users</button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button [matMenuTriggerFor]="aboveMenu">
+          <mat-icon>account_box</mat-icon>
+          Accounts
+        </button>
+        <mat-menu #aboveMenu="matMenu" yPosition="below">
+          <button mat-menu-item [routerLink]="['/account/home']">List All</button>
+
+        </mat-menu>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button [routerLink]="['/account/trans/debit']">
+          <mat-icon>remove_circle</mat-icon>
+          Send money</button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button [routerLink]="['/account/trans/credit']">
+          <mat-icon>add_circle</mat-icon>
+          Credit</button>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button [matMenuTriggerFor]="aboveMenu02">
+          <mat-icon>monetization_on</mat-icon>
+          Moviments
+        </button>
+        <mat-menu #aboveMenu02="matMenu" yPosition="below">
+          <button mat-menu-item [routerLink]="['/accounts/historics']">Historic</button>
+          <button mat-menu-item>List Debits</button>
+          <button mat-menu-item>List Credits</button>
+        </mat-menu>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <button mat-button (click)="account()">
+          <mat-icon>settings</mat-icon>
+          Settings
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content>
+
+
+
+    <router-outlet></router-outlet>
+
+  </mat-drawer-content>
+</mat-drawer-container>

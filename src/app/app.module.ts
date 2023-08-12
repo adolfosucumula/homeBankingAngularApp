@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 
 //import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+
 import { AccountsComponent } from './accounts/accounts.component';
 import { AccountModule } from './modules/account/account.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -54,6 +54,11 @@ import { Page500Component } from './errorPages/page500/page500.component';
 import { Page403Component } from './errorPages/page403/page403.component';
 import { RouterGuardsComponent } from './guards/router-guards/router-guards.component';
 import { HistoricComponent } from './accounts/historic/historic.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { AuthServicesComponent } from './services/auth/auth-services/auth-services.component';
+import { SignoutComponent } from './auth/signout/signout.component';
+import { HomePageComponent } from './web/home-page/home-page.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 
@@ -63,7 +68,7 @@ import { HistoricComponent } from './accounts/historic/historic.component';
     //LoginComponent,
     SignupComponent,
     //AccountsComponent,
-    //DashboardComponent,
+    DashboardComponent,
     EditAccountComponent,
     AddAccountComponent,
     UpdateAccountComponent,
@@ -74,7 +79,11 @@ import { HistoricComponent } from './accounts/historic/historic.component';
     //HomeAccountComponent,
     DebitComponent,
     CreditComponent,
-    HistoricComponent
+    HistoricComponent,
+    SigninComponent,
+    AuthServicesComponent,
+    SignoutComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
