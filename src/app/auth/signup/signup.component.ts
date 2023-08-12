@@ -73,17 +73,20 @@ export class SignupComponent {
             const email = data[index].email;
             if(login === this.entityForm.value.username){
               this.erroMessage = "This user is already registered!";
+              break;
             }else if(email === this.entityForm.value.email){
               this.erroMessage = "This email is already registered!";
+              break;
             }else{
               this.erroMessage = "";
               this.saveUser(this.entityForm);
+
             }
 
           }
         },
         error: err => {
-
+          console.log(JSON.stringify(err), null, 3)
         }
       })
 
@@ -105,7 +108,7 @@ export class SignupComponent {
           this.router.navigate(['/login']);
         },
         error: err => {
-
+          console.log(JSON.stringify(err), null, 3)
         }
       })
     }

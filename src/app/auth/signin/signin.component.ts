@@ -66,32 +66,7 @@ export class SigninComponent {
      * to the database and make login. But at the end I decided to implement
      * the submit method only
      */
-    //this.getAllUsers();
-
-      this.authServices.signIn(
-        this.authUtils.getLoginFormData(this.entityForm).username,
-        this.authUtils.getLoginFormData(this.entityForm).password,
-        this.currentDate.getDate('dd/MM/YYYY hh:mm')
-      ).subscribe({
-        next: data => {
-          this.localStore.saveUser({
-            username: data.username,
-            role: "Normal",
-            createdAt: this.currentDate.getDate('dd/MM/YYYY hh:mm'),
-            isActive: true
-          },1);
-          this.isLogged = this.localStore.isLoggedIn();
-          if(this.isLogged){
-            this.snackbarAlert.openSnackBar("You are logged in","Okay", 10, "bottom", "center");
-            //window.location.reload();
-            this.router.navigate(['/dashboard']);
-          }
-        },
-        error: err => {
-          this.snackbarAlert.openSnackBar("Login failed!","Okay", 12, "bottom", "center");
-          console.log(err)
-        }
-      })
+    this.getAllUsers();
 
 
   };
@@ -99,21 +74,53 @@ export class SigninComponent {
   getAllUsers(){
     this.authServices.allUsers().subscribe({
       next: data => {
-        this.localStore.saveUser({
-          username: data.username,
-          role: "ROOT",
-          createdAt: this.currentDate.getDate('dd/MM/YYYY hh:mm'),
-          isActive: true
-        },1);
-        this.isLogged = this.localStore.isLoggedIn();
-        //console.log("Users got: ")
-        //console.log(JSON.stringify(data, null, 4))
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index];
+          //
+          if(this.entityForm.value.username != data[index].username){
+            this.snackbarAlert.openSnackBar("This username does not exists!","Okay", 12, "bottom", "center");
+          }else if(this.entityForm.value.password != data[index].password){
+            this.snackbarAlert.openSnackBar("You've entered a wrong password!","Okay", 12, "bottom", "center");
+          }
+         else{
+          this.signIn(this.entityForm, data[index].role );
+         }
+        }
       },
       error: err => {
         this.snackbarAlert.openSnackBar("Login failed!","Okay", 12, "bottom", "center");
-        console.log(err)
+        console.log(JSON.stringify(err), null, 3)
       }
     })
   };
+
+
+  signIn(form: FormGroup, userRole: string ){
+    this.authServices.signIn(
+      this.authUtils.getLoginFormData(form).username,
+      this.authUtils.getLoginFormData(form).password,
+      this.currentDate.getDate()
+    ).subscribe({
+      next: data => {
+        this.localStore.saveUser({
+          username: data.username,
+          role: userRole,
+          createdAt: this.currentDate.getDate(),
+          isActive: true
+        },1);
+        this.isLogged = this.localStore.isLoggedIn();
+        if(this.isLogged){
+          this.snackbarAlert.openSnackBar("You are logged in","Okay", 10, "bottom", "center");
+          //window.location.reload();
+          this.router.navigate(['/dashboard']);
+        }
+      },
+      error: err => {
+        this.snackbarAlert.openSnackBar("Login failed!","Okay", 12, "bottom", "center");
+        console.log(JSON.stringify(err), null, 3)
+      }
+    })
+
+  }
 
 }

@@ -21,6 +21,28 @@
       "createdAt": "12/08/2023 10:45",
       "updatedAt": "12/08/2023 10:45",
       "id": 2
+    },
+    {
+      "fullname": "Avelino",
+      "username": "avelino",
+      "email": "Avelino@email.com",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "12/08/2023 11:01",
+      "updatedAt": "12/08/2023 11:01",
+      "id": 3
+    },
+    {
+      "fullname": "Avelino",
+      "username": "avelino",
+      "email": "Avelino@email.com",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "12/08/2023 11:01",
+      "updatedAt": "12/08/2023 11:01",
+      "id": 4
     }
   ],
   "loggeds": [
@@ -77,6 +99,18 @@
       "password": "12345678",
       "createdAt": "12/08/2023 09:00",
       "id": 9
+    },
+    {
+      "username": "avelino",
+      "password": "12345678",
+      "createdAt": "12/08/2023 11:07",
+      "id": 10
+    },
+    {
+      "username": "avelino",
+      "password": "12345678",
+      "createdAt": "12/08/2023 11:07",
+      "id": 11
     }
   ],
   "signout": [
