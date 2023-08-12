@@ -22,6 +22,7 @@ export class DashboardComponent {
 
   public isLogged = false;
   public isVisited = true;
+  username: any;
 
   checkVisited(){
     let btn = document.querySelector('.btn-menu-sidebar');
@@ -32,7 +33,7 @@ export class DashboardComponent {
   }
 
   ngOnInit(): void {
-    console.log("From dashboard")
+
     console.log(JSON.stringify(this.localStore.getUser()))
     console.log(JSON.stringify(this.localStore.isLoggedIn()))
     this.isLogged = this.localStore.isLoggedIn();
@@ -40,6 +41,9 @@ export class DashboardComponent {
       console.log("User not logged")
       this.router.navigate(['/login']);
     }
+
+    this.username = this.localStore.getUser();
+
   }
 
   account(){

@@ -368,7 +368,7 @@
               <h2>Sign In</h2>
             </div>
             <mat-form-field appearance="outline">
-              <mat-label>Username</mat-label>
+              <mat-label>Enter your username</mat-label>
               <input matInput type="text"
                 placeholder="Username"
                 formControlName="username"
@@ -388,11 +388,38 @@
               <mat-icon matSuffix>done</mat-icon>
             </mat-form-field>
 
+            <!--      Password field -->
+
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'"
+                placeholder="Password"
+                formControlName="password"
+                [ngClass]="{ 'is-invalid': submitted && _fC['password'].errors }"
+              >
+              <span *ngIf="submitted && _fC['password'].errors" class="invalid-feedback">
+                <span *ngIf="_fC['password'].errors['required']">The password is required</span>
+              </span>
+              <span *ngIf="submitted && _fC['password'].errors" class="invalid-feedback">
+                <span *ngIf="_fC['password'].errors['minlength']">The password must have at least 8 characters</span>
+              </span>
+
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+
 
             <div class="example-button-row">
               <button mat-raised-button type="submit" color="primary">Submit</button>
             </div>
-            <a mat-button routerLink="/signup" >Link</a>
+            <br>
+            <div class="example-button-row">
+              <a mat-button routerLink="/signup" >Create an account</a>
+              <a routerLink="/signup" rel="noopener">
+                <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="#1976d2"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+              </a>
+            </div>
         </form>
       </div>
     </main>

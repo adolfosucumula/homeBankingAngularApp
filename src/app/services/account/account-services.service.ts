@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AccountModel } from 'src/app/models/AccountModel';
-import { ApiUrl } from 'src/app/server/ApiUrl';
+import { HttpReq } from 'src/app/server/HttpReq';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AccountServicesService {
 
-  constructor(private http: HttpClient, private baseUrl: ApiUrl  ) { }
+  constructor(private http: HttpClient, private baseUrl: HttpReq  ) { }
 
   getAll(){
     return this.http.get < AccountModel [] >  ( this.baseUrl.URL_API() + 'accounts/' );

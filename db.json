@@ -2,66 +2,72 @@
   "users": [
     {
       "id": 1,
+      "fullname": "Administrator",
       "username": "admin",
       "email": "admin@email.com",
-      "password": "123"
+      "password": "123",
+      "role": "admin",
+      "isActive": true,
+      "createdAt": "2023-08-09T23:00:00.000Z",
+      "updatedAt": "2023-08-22T23:00:00.000Z"
     }
   ],
-  "logins": [
+  "loggeds": [
     {
       "id": 1,
-      "login": "admin@email.com",
-      "password": "123"
+      "username": "admin",
+      "password": "123",
+      "createdAt": "2023-08-09T23:00:00.000Z"
     },
     {
-      "email": "",
-      "password": "",
+      "username": "Axzzx",
+      "password": "12345678",
+      "createdAt": "12/08/2023",
       "id": 2
     },
     {
-      "email": "",
-      "password": "",
+      "username": "Asa",
+      "password": "12345678",
+      "createdAt": "12/08/2023 04:00",
       "id": 3
     },
     {
-      "email": "xx@email.com",
-      "password": "1222",
+      "username": "Asa",
+      "password": "12345678",
+      "createdAt": "12/08/2023 04:04",
       "id": 4
     },
     {
-      "email": "",
-      "password": "",
+      "username": "Asa",
+      "password": "12345678",
+      "createdAt": "12/08/2023 04:05",
       "id": 5
     },
     {
-      "email": "",
-      "password": "",
+      "username": "asa",
+      "password": "12345678",
+      "createdAt": "12/08/2023 04:09",
       "id": 6
     },
     {
-      "email": "admin@email.com",
-      "password": "123",
+      "username": "Asxx",
+      "password": "123233222",
+      "createdAt": "12/08/2023 04:29",
       "id": 7
     },
     {
-      "email": "",
-      "password": "",
+      "username": "Asa",
+      "password": "12345678",
+      "createdAt": "12/08/2023 04:33",
       "id": 8
-    },
+    }
+  ],
+  "signout": [
     {
-      "email": "",
-      "password": "",
-      "id": 9
-    },
-    {
-      "email": "",
-      "password": "",
-      "id": 10
-    },
-    {
-      "email": "",
-      "password": "",
-      "id": 11
+      "id": 1,
+      "username": "admin",
+      "email": "admin@email.com",
+      "password": "123"
     }
   ],
   "accounts": [
