@@ -24,6 +24,7 @@ export class HistoricComponent  implements OnInit{
     userAccount: any = "0000000";
     userData: any;
     accountCredits!: AccountTransactionModel[];
+    accountDebits!: AccountTransactionModel[];
     dataSource!: any;
 
     displayedColumns: string[] = ['id'];
@@ -33,6 +34,9 @@ export class HistoricComponent  implements OnInit{
 
     this.getAccount();
 
+    this.getCredits();
+
+    console.log(JSON.stringify(this.accountCredits))
   }
 
   //dataSource = new MatTableDataSource<AccountTransactionModel>(this.accountCredits);
@@ -57,7 +61,47 @@ export class HistoricComponent  implements OnInit{
         console.log(JSON.stringify(err))
       }
     })
-  }
+  };
+
+  getCredits(){
+    this.histServices.getAllCredits().subscribe({
+      next: data => {
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index].account;
+          console.log(this.userAccount +" == " +element)
+          console.log(Number(this.userAccount) === Number(element))
+          if(Number(this.userAccount) === Number(element)){
+
+          }
+        }
+      },
+      error: err => {
+        console.log(JSON.stringify(err))
+      }
+    })
+  };
+
+  getDebits(){
+    this.histServices.getAllDebits().subscribe({
+      next: data => {
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index].ownerDoc;
+          if(Number(element) === Number(this.userData.telephone)){
+            this.userAccount = data[index].account;
+            this.currentBalance = Number(data[index].currentBalance.replaceAll("€", ""));
+            this.currentBalance= new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(this.currentBalance);
+            break;
+          }else{
+            this.snackBarAlert.openSnackBar("No account found for this user!", "Information", 10, 'bottom', "left")
+            break;
+          }
+        }
+      },
+      error: err => {
+        console.log(JSON.stringify(err))
+      }
+    })
+  };
 
 }
 

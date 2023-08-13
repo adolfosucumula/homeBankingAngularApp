@@ -265,6 +265,12 @@
       "password": "12345678",
       "createdAt": "13/08/2023 04:33",
       "id": 22
+    },
+    {
+      "username": "marcos",
+      "password": "12345678",
+      "createdAt": "13/08/2023 05:05",
+      "id": 23
     }
   ],
   "signout": [
@@ -342,7 +348,7 @@
   ],
   "accounts": [
     {
-      "account": 19919918111,
+      "account": 1991991811123,
       "iban": "HA99999999999999999",
       "swift": "FGGGGGGG",
       "owner": "AFAGHGHA",
@@ -420,15 +426,16 @@
       "id": 10
     },
     {
-      "account": "9288282882999",
+      "account": 1991991811123,
       "iban": "2121212122222222222",
       "swift": "ASAAAAAA",
       "owner": "Azzz",
       "ownerDoc": "991111",
       "initialBalance": "€22,222,222",
-      "currentBalance": "€22,222,222",
+      "currentBalance": "€22224555",
       "currency": "Euro",
       "createdAt": "2023-08-22T23:00:00.000Z",
+      "updatedAt": "2023-08-25T23:00:00.000Z",
       "isActive": false,
       "id": 11
     },
@@ -491,6 +498,18 @@
       "status": "finalized",
       "createdAt": "2023-08-16T23:00:00.000Z",
       "id": 4
+    },
+    {
+      "sourceAccount": "1991991815555",
+      "owner": "Asss",
+      "account": "1991991811123",
+      "balanceBefore": "€22,222,222",
+      "amount": "€2,333",
+      "balanceAfter": "€22224555",
+      "operator": "Xx",
+      "status": "finalized",
+      "createdAt": "2023-08-25T23:00:00.000Z",
+      "id": 5
     }
   ],
   "debits": [
@@ -618,7 +637,7 @@
     },
     {
       "owner": "AFAGHGHA",
-      "account": 19919918111,
+      "account": 1991991811123,
       "balanceBefore": "€200122",
       "amount": "€2",
       "balanceAfter": "€200120",
@@ -629,7 +648,7 @@
     },
     {
       "owner": "FGGGGGGG",
-      "account": 19919918111,
+      "account": 1991991811123,
       "balanceBefore": "€200120",
       "amount": "€1",
       "balanceAfter": "€200119",
