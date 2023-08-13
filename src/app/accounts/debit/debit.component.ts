@@ -95,38 +95,39 @@ export class DebitComponent implements OnInit{
     };
 
 
-    getById(id: number){
+    getById(id: number = 0){
 
+      if(id > 0){
+        this.accountService.getById(id).subscribe({
+          next: data => {
 
-      this.accountService.getById(id).subscribe({
-        next: data => {
+           // console.log(JSON.stringify(data, null, 2));
 
-          console.log(JSON.stringify(data, null, 2));
+            this.accountForm.patchValue({
+              owner: data.owner,
+              account: data.account,
+              balanceBefore: data.currentBalance,
+              amount: '',
+              balanceAfter: '',
+              operator: 'Operator',
+              status: 'Pendent',
+              createdAt: this.date.value
+            });
 
-          this.accountForm.patchValue({
-            owner: data.owner,
-            account: data.account,
-            balanceBefore: data.currentBalance,
-            amount: '',
-            balanceAfter: '',
-            operator: 'Operator',
-            status: 'Pendent',
-            createdAt: this.date.value
-          });
+            //Preserve the account register to be used at next step
+            this.accountData.patchValue(data);
 
-          //Preserve the account register to be used at next step
-          this.accountData.patchValue(data);
+          },
+          error: err => {console.log(err)
+            if (err.error) {
+              //this.errorMessage = JSON.parse(err.error).message;
+            } else {
 
-        },
-        error: err => {console.log(err)
-          if (err.error) {
-            //this.errorMessage = JSON.parse(err.error).message;
-          } else {
-
-            //this.errorMessage = "Error with status: " + err.status;
+              //this.errorMessage = "Error with status: " + err.status;
+            }
           }
-        }
-      })
+        })
+      }
     };
 
 
@@ -178,15 +179,15 @@ export class DebitComponent implements OnInit{
      * Compare the value of this parameter with each account from the database to get its ID
      * @param account the account entered in field form
      */
-    getAccount(account: string, balanceAfter: string, form: FormGroup){ this.snackAlert.openSnackBar("Account"+ account, "Information", 10, 'bottom', "left")
-      if(account !=''){
+    getAccount(account: number = 0, balanceAfter: string, form: FormGroup){ this.snackAlert.openSnackBar("Account"+ account, "Information", 10, 'bottom', "left")
+      if(account > 0){
         this.accountServices.getAll().subscribe({
           next: data => {
             for (let index = 0; index < data.length; index++) {
               if(data[index].account === account){
                 //this.id = data[index].id;
                 this.editAccountUtils.updateAccount(data[index].id,Number(data[index].account), data[index].iban, data[index].owner, data[index].swift,
-                  data[index].ownerDoc, data[index].currentBalance, "€"+balanceAfter, data[index].currency, form);
+                  Number(data[index].ownerDoc), data[index].currentBalance, "€"+balanceAfter, data[index].currency, form);
 
                 break;
               }

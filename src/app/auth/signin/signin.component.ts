@@ -83,7 +83,7 @@ export class SigninComponent {
             this.snackbarAlert.openSnackBar("You've entered a wrong password!","Okay", 12, "bottom", "center");
           }
          else{
-          this.signIn(this.entityForm, data[index].role );
+          this.signIn(this.entityForm, data[index].username, data[index].email, data[index].telephone, data[index].id, data[index].role );
          }
         }
       },
@@ -95,7 +95,7 @@ export class SigninComponent {
   };
 
 
-  signIn(form: FormGroup, userRole: string ){
+  signIn(form: FormGroup, username: string, email: string, telephone: number, userID: number, userRole: string ){
     this.authServices.signIn(
       this.authUtils.getLoginFormData(form).username,
       this.authUtils.getLoginFormData(form).password,
@@ -103,8 +103,10 @@ export class SigninComponent {
     ).subscribe({
       next: data => {
         this.localStore.saveUser({
-          userID: data.id,
-          username: data.username,
+          userID: userID,
+          username: username,
+          email: email,
+          telephone: telephone,
           role: userRole,
           createdAt: this.currentDate.getDate(),
           isActive: true

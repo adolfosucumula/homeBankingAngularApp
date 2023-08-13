@@ -117,16 +117,6 @@ export class EditAccountComponent implements OnInit{
       return;
     }
 
-   /* const { account,
-    iban,
-    swift,
-    owner,
-    initialBalance,
-    currency,
-    isActive} = this.accountForm.value;
-    */
-    //console.log(JSON.stringify(this.utils.getFormData(this.accountForm), null, 4));
-
     this.accountService.update(this.id,
       this.utils.getFormData(this.accountForm).account,
       this.utils.getFormData(this.accountForm).iban,
@@ -140,15 +130,15 @@ export class EditAccountComponent implements OnInit{
       this.utils.getFormData(this.accountForm).isActive)
     .subscribe({
       next: data => {
-        this.router.navigate(['account/home']);
+        this.router.navigate(['dashboard']);
       },
       error: err => {
         if (err.error) {
           this.errorMessage = JSON.parse(err.error).message;
         } else {
-
           this.errorMessage = "Error with status: " + err.status;
         }
+        console.log(JSON.stringify(err, null, 2))
       }
     })
   }

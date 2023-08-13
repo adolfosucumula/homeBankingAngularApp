@@ -3,7 +3,7 @@
       <!--<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
    <mat-icon>menu</mat-icon>
  </button>-->
- <span>Dashboard</span>
+ <span routerLink="/dashboard/" style="cursor: pointer;">Dashboard</span>
  <button mat-button class="btn-menu-sidebar" [class.visited] ="isVisited == true" (click)="checkVisited()">
   <mat-icon>more_vert</mat-icon>
 </button>
@@ -67,11 +67,12 @@
         <mat-icon>account_balance</mat-icon>
         Home
       </button>
-      <mat-list-item role="listitem">
+      <mat-list-item role="listitem" *ngIf="username.role == 'ROOT' || username.role == 'AMIN'">
         <button mat-button >
           <mat-icon>supervised_user_circle</mat-icon>
           Users</button>
       </mat-list-item>
+
       <mat-list-item role="listitem" *ngIf="username.role == 'ROOT' || username.role == 'AMIN'">
         <button mat-button [matMenuTriggerFor]="aboveMenu" >
           <mat-icon>account_box</mat-icon>
@@ -92,13 +93,13 @@
           <mat-icon>add_circle</mat-icon>
           Credit</button>
       </mat-list-item>
-      <mat-list-item role="listitem">
+      <mat-list-item role="listitem" *ngIf="username.role != 'ROOT' && username.role != 'AMIN'">
         <button mat-button [matMenuTriggerFor]="aboveMenu02">
           <mat-icon>monetization_on</mat-icon>
           Moviments
         </button>
-        <mat-menu #aboveMenu02="matMenu" yPosition="below">
-          <button mat-menu-item [routerLink]="['/accounts/historics']">Historic</button>
+        <mat-menu #aboveMenu02="matMenu" yPosition="below" >
+          <button mat-menu-item (click)="accountHistoric()">Historic</button>
           <button mat-menu-item>List Debits</button>
           <button mat-menu-item>List Credits</button>
         </mat-menu>

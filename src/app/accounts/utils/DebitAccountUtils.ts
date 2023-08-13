@@ -20,7 +20,7 @@ export class DebitAccountUtils {
   debitFormGroup (): FormGroup  {
     return new FormGroup({
       owner: new FormControl(''),
-      account: new FormControl(''),
+      account: new FormControl(null),
       balanceBefore: new FormControl(''),
       amount: new FormControl(''),
       balanceAfter: new FormControl(''),

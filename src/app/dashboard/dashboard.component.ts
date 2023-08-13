@@ -34,11 +34,11 @@ export class DashboardComponent {
 
   ngOnInit(): void {
 
-    console.log(JSON.stringify(this.localStore.getUser()))
-    console.log(JSON.stringify(this.localStore.isLoggedIn()))
+    //console.log(JSON.stringify(this.localStore.getUser()))
+    //console.log(JSON.stringify(this.localStore.isLoggedIn()))
     this.isLogged = this.localStore.isLoggedIn();
     if(!this.isLogged){
-      console.log("User not logged")
+      //console.log("User not logged")
       this.router.navigate(['/login']);
     }
 
@@ -46,11 +46,13 @@ export class DashboardComponent {
 
   }
 
+  account(){
+    this.router.navigate(['xx/account'], {relativeTo: this.route});
+  }
+
   accountHome(){
     this.router.navigate(['account/home'], {relativeTo: this.route});
   }
-
-
 
   accountDebitNoParameter(){
     this.router.navigate(['account/trans/debit'], {relativeTo: this.route});
@@ -58,6 +60,10 @@ export class DashboardComponent {
 
   accountCreditNoParameter(){
     this.router.navigate(['account/trans/credit'], {relativeTo: this.route});
+  }
+
+  accountHistoric(){
+    this.router.navigate(['account/historics'], {relativeTo: this.route});
   }
 
 }

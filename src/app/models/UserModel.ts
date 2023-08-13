@@ -4,6 +4,7 @@ export interface UserModel {
   fullname: string,
   username: string,
   email: string,
+  telephone: number,
   password: string,
   role: string,
   isActive: boolean,

@@ -434,6 +434,28 @@
             <mat-icon matSuffix>done</mat-icon>
           </mat-form-field>
 
+          <!--  ------------ Telemovel field -->
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your telephone</mat-label>
+            <input matInput type="text"
+              placeholder="Telephone"
+              formControlName="telephone"
+              [ngClass]="{ 'is-invalid': submitted && _fC['telephone'].errors }"
+            >
+            <span *ngIf="submitted && _fC['telephone'].errors" class="invalid-feedback">
+              <span *ngIf="_fC['telephone'].errors['required']">The telephone is required</span>
+
+              <span *ngIf="_fC['telephone'].errors['maxlength']">
+                The telephone must have exactly 9 digits
+              </span>
+              <span *ngIf="_fC['telephone'].errors['minlength']">
+                The telephone must have exactly 9 digits
+              </span>
+            </span>
+            <!--<mat-hint align="end">{{input.value.length}}/10</mat-hint>-->
+            <mat-icon matSuffix>done</mat-icon>
+          </mat-form-field>
+
           <!--      Password field -->
 
           <mat-form-field appearance="outline">

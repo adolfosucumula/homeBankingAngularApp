@@ -42,6 +42,7 @@ export class SignupComponent {
         fullname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+'), Validators.maxLength(200)] ],
         username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(100)] ],
         email: ['', [Validators.required,Validators.email, Validators.maxLength(100)] ],
+        telephone: ['', [Validators.required,Validators.pattern('^[0-9]+$'), Validators.minLength(9), Validators.maxLength(9)] ],
         password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(8)] ],
         //confirmPassword: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(8)] ]
       });
@@ -71,16 +72,22 @@ export class SignupComponent {
           for (let index = 0; index < data.length; index++) {
             const login = data[index].username;
             const email = data[index].email;
+            const telephone = Number(data[index].telephone);
+            const tel = Number(this.entityForm.value.telephone);
             if(login === this.entityForm.value.username){
               this.erroMessage = "This user is already registered!";
               break;
             }else if(email === this.entityForm.value.email){
               this.erroMessage = "This email is already registered!";
               break;
+            }else if(telephone === tel){
+              this.erroMessage = "This telephone is already registered!";
+              break;
             }else{
               this.erroMessage = "";
               this.saveUser(this.entityForm);
 
+              break;
             }
 
           }
@@ -97,6 +104,7 @@ export class SignupComponent {
         this.authUtils.getRegisterFormData(formData).fullname,
         this.authUtils.getRegisterFormData(formData).username,
         this.authUtils.getRegisterFormData(formData).email,
+        this.authUtils.getRegisterFormData(formData).telephone,
         this.authUtils.getRegisterFormData(formData).password,
         "Normal",
         true,

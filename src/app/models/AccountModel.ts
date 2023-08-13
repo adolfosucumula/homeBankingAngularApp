@@ -1,10 +1,10 @@
 export interface AccountModel {
   id: number,
-  account: string,
+  account: number,
   iban: string,
   swift: string,
   owner: string,
-  ownerDoc: string,
+  ownerDoc: number,
   initialBalance: string,
   currentBalance: string,
   currency: string,

@@ -18,11 +18,11 @@ export class AddAccountUtils {
 
   getAddFormGroup (): FormGroup  {
     return new FormGroup({
-      account: new FormControl(''),
+      account: new FormControl(null),
       iban: new FormControl(''),
       swift: new FormControl(''),
       owner: new FormControl(''),
-      ownerDoc: new FormControl(''),
+      ownerDoc: new FormControl(null),
       initialBalance: new FormControl(''),
       currency: new FormControl(''),
       createdAt: new FormControl(''),

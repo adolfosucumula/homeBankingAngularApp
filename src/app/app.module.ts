@@ -58,6 +58,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignoutComponent } from './auth/signout/signout.component';
 import { HomePageComponent } from './web/home-page/home-page.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { BalanceComponent } from './accounts/balance/balance.component';
 
 
 
@@ -81,7 +82,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     HistoricComponent,
     SigninComponent,
     SignoutComponent,
-    HomePageComponent
+    HomePageComponent,
+    BalanceComponent
   ],
   imports: [
     BrowserModule,

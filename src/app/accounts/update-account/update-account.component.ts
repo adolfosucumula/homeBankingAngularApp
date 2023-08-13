@@ -44,7 +44,7 @@ export class UpdateAccountComponent {
   private _filter(value: string): AccountModel[] {
     const filterValue = value.toLowerCase();
 
-    return this.allAccounts.filter(option => option.account.toLowerCase().includes(filterValue));
+    return this.allAccounts.filter(option => option.account.toString().toLowerCase().includes(filterValue));
   }
 
   getAccounts(){

@@ -23,12 +23,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { Utils } from 'src/app/utils/Utils';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
 @Component({
   selector: 'app-home-account',
@@ -45,6 +39,7 @@ export class HomeAccountComponent implements OnInit{
   //Creating a list/array list instance of the accounts to store all accounts comes from the server
   allAccounts!: AccountModel[];
   errorMessage?: string;
+  calledChildren = false;
 
   //creating an instance of the account services that provide the crud methods and so on.
   constructor( private accountServices: AccountServicesService, private route: ActivatedRoute, private router: Router,
@@ -52,6 +47,7 @@ export class HomeAccountComponent implements OnInit{
     ){ }
 
   ngOnInit(): void {
+
     this.getAll();
 
     this.route.paramMap.subscribe( ( param ) => {
@@ -105,10 +101,22 @@ export class HomeAccountComponent implements OnInit{
   };
 
 
+
   accountAdd(){
     this.router.navigate(['account/add'], {relativeTo: this.route});
   }
 
+  accountEdit(id: number){
+    this.router.navigate(['account/edit/',id], {relativeTo: this.route});
+  }
+
+  accountCredit(id: number){
+    this.router.navigate(['account/trans/credit/',id], {relativeTo: this.route});
+  }
+
+  accountDebit(id: number){
+    this.router.navigate(['account/trans/debit/',id], {relativeTo: this.route});
+  }
 
 
 

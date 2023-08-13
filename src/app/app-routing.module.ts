@@ -14,6 +14,7 @@ import { DebitComponent } from './accounts/debit/debit.component';
 import { CreditComponent } from './accounts/credit/credit.component';
 import { HomePageComponent } from './web/home-page/home-page.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { BalanceComponent } from './accounts/balance/balance.component';
 
 //Here we define our routes
 const routes: Routes = [
@@ -29,24 +30,26 @@ const routes: Routes = [
   { path: 'logout', component: SignoutComponent},
   { path: 'dashboard', component: DashboardComponent,
     children: [
-      {path: 'account/home', component: HomeAccountComponent,
+      { path: 'xx/account', component: AccountsComponent },
+      { path: 'account/historics', component: HistoricComponent},
+      { path: 'account/home', component: HomeAccountComponent,
       children: [
-        {path: 'account/add', component: AddAccountComponent },
-        {path: 'account/trans/credit/:id', component: CreditComponent },
-        {path: 'account/edit/:id', component: EditAccountComponent },
-        {path: 'account/delete/:id', component: HomeAccountComponent },
-        {path: 'account/trans/debit/:id', component: DebitComponent },
-      ]
+          { path: 'account/add', component: AddAccountComponent },
+          { path: 'account/trans/credit/:id', component: CreditComponent },
+          { path: 'account/edit/:id', component: EditAccountComponent },
+          { path: 'account/delete/:id', component: HomeAccountComponent },
+          { path: 'account/trans/debit/:id', component: DebitComponent },
+        ]
       },
 
 
       {path: 'account/trans/debit', component: DebitComponent },
 
       {path: 'account/trans/credit', component: CreditComponent },
+      { path: 'xx/account', component:  BalanceComponent},
     ]
   },
-  { path: 'accounts', component: AccountsComponent},
-  { path: 'accounts/historics', component: HistoricComponent},
+
 
   //{ path: '**', component: Page404Component },  // Wildcard route for a 404 page
 ];

@@ -20,11 +20,11 @@ export class EditAccountUtils {
 
   editFormGroup (): FormGroup  {
     return new FormGroup({
-      account: new FormControl(''),
+      account: new FormControl(null),
       iban: new FormControl(''),
       swift: new FormControl(''),
       owner: new FormControl(''),
-      ownerDoc: new FormControl(''),
+      ownerDoc: new FormControl(null),
       initialBalance: new FormControl(''),
       currency: new FormControl(''),
       createdAt: new FormControl(''),
@@ -87,7 +87,7 @@ export class EditAccountUtils {
   };
 
   updateAccount(id: number,account: number, iban: string, owner: string, swift: string,
-    ownerDoc:string, bBefore: string, bAfter:string, currency: string, form: FormGroup){
+    ownerDoc: number, bBefore: string, bAfter:string, currency: string, form: FormGroup){
 
     this.accountService.update(id,
       account,
@@ -126,11 +126,11 @@ export class EditAccountUtils {
   }
 
   updateAccountBalance(id: number,
-      account: string,
+      account: number,
       iban: string,
       swift: string,
       owner: string,
-      ownerDoc: string,
+      ownerDoc: number,
       initialBalance: string,
       currentBalance: string,
       currency: string,

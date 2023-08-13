@@ -5,6 +5,7 @@
       "fullname": "Administrator",
       "username": "admin",
       "email": "admin@email.com",
+      "telephone": 21111,
       "password": "12345678",
       "role": "ROOT",
       "isActive": true,
@@ -15,6 +16,7 @@
       "fullname": "Marcos",
       "username": "marcos",
       "email": "marcos@email.com",
+      "telephone": 124333,
       "password": "12345678",
       "role": "Normal",
       "isActive": true,
@@ -26,6 +28,7 @@
       "fullname": "Avelino",
       "username": "avelino",
       "email": "Avelino@email.com",
+      "telephone": 9988,
       "password": "12345678",
       "role": "Normal",
       "isActive": true,
@@ -37,12 +40,97 @@
       "fullname": "Avelino",
       "username": "avelino",
       "email": "Avelino@email.com",
+      "telephone": 232323,
       "password": "12345678",
       "role": "Normal",
       "isActive": true,
       "createdAt": "12/08/2023 11:01",
       "updatedAt": "12/08/2023 11:01",
       "id": 4
+    },
+    {
+      "fullname": "Kali",
+      "username": "kalike",
+      "email": "kali@email.com",
+      "telephone": "939000287",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "13/08/2023 04:26",
+      "updatedAt": "13/08/2023 04:26",
+      "id": 5
+    },
+    {
+      "fullname": "Kali",
+      "username": "kalike",
+      "email": "kali@email.com",
+      "telephone": "939000287",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "13/08/2023 04:26",
+      "updatedAt": "13/08/2023 04:26",
+      "id": 6
+    },
+    {
+      "fullname": "Kali",
+      "username": "kalike",
+      "email": "kali@email.com",
+      "telephone": "939000287",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "13/08/2023 04:26",
+      "updatedAt": "13/08/2023 04:26",
+      "id": 7
+    },
+    {
+      "fullname": "Kali",
+      "username": "kalike",
+      "email": "kali@email.com",
+      "telephone": "939000287",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "13/08/2023 04:26",
+      "updatedAt": "13/08/2023 04:26",
+      "id": 8
+    },
+    {
+      "fullname": "Kali",
+      "username": "kalike",
+      "email": "kali@email.com",
+      "telephone": "939000287",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "13/08/2023 04:26",
+      "updatedAt": "13/08/2023 04:26",
+      "id": 9
+    },
+    {
+      "fullname": "Feeliciano",
+      "username": "feliciano",
+      "email": "feliciano@email.com",
+      "telephone": "939000287",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "13/08/2023 04:31",
+      "updatedAt": "13/08/2023 04:31",
+      "id": 10
+    },
+    {
+      "fullname": "Abel",
+      "username": "abel",
+      "email": "abel@email.com",
+      "telephone": "939000287",
+      "password": "12345678",
+      "role": "Normal",
+      "isActive": true,
+      "createdAt": "13/08/2023 04:33",
+      "updatedAt": "13/08/2023 04:33",
+      "id": 11
     }
   ],
   "loggeds": [
@@ -141,6 +229,42 @@
       "password": "12345678",
       "createdAt": "12/08/2023 05:16",
       "id": 16
+    },
+    {
+      "username": "marcos",
+      "password": "12345678",
+      "createdAt": "13/08/2023 02:51",
+      "id": 17
+    },
+    {
+      "username": "marcos",
+      "password": "12345678",
+      "createdAt": "13/08/2023 03:37",
+      "id": 18
+    },
+    {
+      "username": "marcos",
+      "password": "12345678",
+      "createdAt": "13/08/2023 03:54",
+      "id": 19
+    },
+    {
+      "username": "admin",
+      "password": "12345678",
+      "createdAt": "13/08/2023 04:26",
+      "id": 20
+    },
+    {
+      "username": "marcos",
+      "password": "12345678",
+      "createdAt": "13/08/2023 04:26",
+      "id": 21
+    },
+    {
+      "username": "abel",
+      "password": "12345678",
+      "createdAt": "13/08/2023 04:33",
+      "id": 22
     }
   ],
   "signout": [
@@ -172,68 +296,83 @@
       "date": "12/08/2023 05:16",
       "signout": true,
       "id": 5
+    },
+    {
+      "username": "admin",
+      "date": "13/08/2023 02:51",
+      "signout": true,
+      "id": 6
+    },
+    {
+      "username": "marcos",
+      "date": "13/08/2023 03:37",
+      "signout": true,
+      "id": 7
+    },
+    {
+      "username": "marcos",
+      "date": "13/08/2023 03:54",
+      "signout": true,
+      "id": 8
+    },
+    {
+      "username": "marcos",
+      "date": "13/08/2023 04:26",
+      "signout": true,
+      "id": 9
+    },
+    {
+      "username": "admin",
+      "date": "13/08/2023 04:26",
+      "signout": true,
+      "id": 10
+    },
+    {
+      "username": "marcos",
+      "date": "13/08/2023 04:26",
+      "signout": true,
+      "id": 11
+    },
+    {
+      "username": "abel",
+      "date": "13/08/2023 04:40",
+      "signout": true,
+      "id": 12
     }
   ],
   "accounts": [
     {
-      "account": "",
-      "iban": "",
-      "swift": "",
-      "owner": "",
-      "ownerDoc": "",
-      "initialBalance": "",
-      "currentBalance": "€16760",
-      "currency": "",
-      "createdAt": "2023-08-29T23:00:00.000Z",
-      "isActive": false,
-      "id": 3
-    },
-    {
-      "account": "",
-      "iban": "",
-      "swift": "",
-      "owner": "",
-      "ownerDoc": "",
-      "initialBalance": "",
-      "currentBalance": "€270",
-      "currency": "",
-      "createdAt": "2023-08-22T23:00:00.000Z",
-      "isActive": false,
-      "id": 4
-    },
-    {
       "account": 19919918111,
       "iban": "HA99999999999999999",
-      "swift": "Famint Gaia",
+      "swift": "FGGGGGGG",
       "owner": "AFAGHGHA",
-      "ownerDoc": "AASS6666",
-      "initialBalance": "€200122",
-      "currentBalance": "€200100",
+      "ownerDoc": 124333,
+      "initialBalance": "€200120",
+      "currentBalance": "€200119",
       "currency": "Euro",
-      "createdAt": "2023-08-22T23:00:00.000Z",
+      "createdAt": "2023-08-13T01:37:27.812Z",
       "isActive": true,
       "id": 5
     },
     {
-      "account": "0029929232333",
+      "account": 29929232333,
       "iban": "88287782A8888888883",
-      "swift": "ASAAASAS",
+      "swift": "ASAAASAA",
       "owner": "Santos Bascos",
-      "ownerDoc": "D9988",
+      "ownerDoc": 9988,
       "initialBalance": "€123,212",
       "currentBalance": "€123,212",
       "currency": "Euro",
-      "createdAt": "2023-08-09T23:00:00.000Z",
-      "updatedAt": "",
+      "createdAt": "2023-08-30T23:00:00.000Z",
       "isActive": true,
       "id": 6
     },
     {
-      "account": "5525527288288",
+      "account": 5525527288288,
       "iban": "A777777777777777777",
       "swift": "AGGGAAAA",
       "owner": "mauro",
-      "ownerDoc": "A232323",
+      "ownerDoc": 232323,
       "initialBalance": "€122,222",
       "currentBalance": "€122,222",
       "currency": "Euro",
@@ -242,11 +381,11 @@
       "id": 7
     },
     {
-      "account": "2121212121212",
+      "account": 2121212121212,
       "iban": "ASA2121212121212323",
       "swift": "ABBGGGGG",
       "owner": "Azz",
-      "ownerDoc": "ABK88",
+      "ownerDoc": 888888,
       "initialBalance": "€12,121",
       "currentBalance": "€12,121",
       "currency": "Euro",
@@ -255,11 +394,11 @@
       "id": 8
     },
     {
-      "account": "0029929232333",
+      "account": 29929232333,
       "iban": "AAS4432434343434347",
       "swift": "ASSSAAAA",
       "owner": "Ass",
-      "ownerDoc": "ASAA",
+      "ownerDoc": 5555,
       "initialBalance": "€1,212",
       "currentBalance": "€1,212",
       "currency": "Euro",
@@ -268,25 +407,51 @@
       "id": 9
     },
     {
-      "account": "0029929232333",
+      "account": 29929232333,
       "iban": "ASS0029929232333212",
       "swift": "ASASAAAA",
       "owner": "ASS",
-      "ownerDoc": "AXSX",
+      "ownerDoc": 5655566,
       "initialBalance": "€121",
       "currentBalance": "€121",
       "currency": "Euro",
       "createdAt": "2023-08-23T23:00:00.000Z",
       "isActive": false,
       "id": 10
+    },
+    {
+      "account": "9288282882999",
+      "iban": "2121212122222222222",
+      "swift": "ASAAAAAA",
+      "owner": "Azzz",
+      "ownerDoc": "991111",
+      "initialBalance": "€22,222,222",
+      "currentBalance": "€22,222,222",
+      "currency": "Euro",
+      "createdAt": "2023-08-22T23:00:00.000Z",
+      "isActive": false,
+      "id": 11
+    },
+    {
+      "account": "9899979999999",
+      "iban": "ASA3333333232333322",
+      "swift": "AZSSSUUU",
+      "owner": "ASaaaa",
+      "ownerDoc": "232323",
+      "initialBalance": "€233,322",
+      "currentBalance": "€233,322",
+      "currency": "Dollar",
+      "createdAt": "2023-08-23T23:00:00.000Z",
+      "isActive": false,
+      "id": 12
     }
   ],
   "credits": [
     {
       "id": 1,
-      "sourceAccount": "0029929232333",
+      "sourceAccount": 29929232333,
       "owner": "Santos Bascos",
-      "account": "00123",
+      "account": 123,
       "balanceBefore": "€0,00",
       "amount": "€100,00",
       "balanceAfter": "€100,00",
@@ -295,18 +460,18 @@
       "createdAt": "2023-08-09T23:00:00.000Z"
     },
     {
-      "sourceAccount": "2121212121211",
+      "sourceAccount": 2121212121211,
       "owner": "Azx",
-      "account": "2121212121212",
+      "account": 2121212121212,
       "amount": "€123",
       "operator": "Ax",
       "createdAt": "2023-08-15T23:00:00.000Z",
       "id": 2
     },
     {
-      "sourceAccount": "9928828288226",
+      "sourceAccount": 9928828288226,
       "owner": "Axx",
-      "account": "9928828288222",
+      "account": 9928828288222,
       "balanceBefore": "€111",
       "amount": "€121",
       "balanceAfter": "€232",
@@ -316,9 +481,9 @@
       "id": 3
     },
     {
-      "sourceAccount": "9928828288224",
+      "sourceAccount": 9928828288224,
       "owner": "Asss",
-      "account": "9928828288222",
+      "account": 9928828288222,
       "balanceBefore": "€230",
       "amount": "€13",
       "balanceAfter": "€243",
@@ -326,158 +491,14 @@
       "status": "finalized",
       "createdAt": "2023-08-16T23:00:00.000Z",
       "id": 4
-    },
-    {
-      "sourceAccount": "9928828288224",
-      "owner": "Asss",
-      "account": "9928828288222",
-      "balanceBefore": "€243",
-      "amount": "€13",
-      "balanceAfter": "€256",
-      "operator": "Azzz",
-      "status": "finalized",
-      "createdAt": "2023-08-16T23:00:00.000Z",
-      "id": 5
-    },
-    {
-      "sourceAccount": "9928828288227",
-      "owner": "Azzz",
-      "account": "9928828288222",
-      "balanceBefore": "€256",
-      "amount": "€13",
-      "balanceAfter": "€269",
-      "operator": "Assss",
-      "status": "finalized",
-      "createdAt": "2023-08-23T23:00:00.000Z",
-      "id": 6
-    },
-    {
-      "sourceAccount": "9928828288225",
-      "owner": "Ass",
-      "account": "9928828288222",
-      "balanceBefore": "€269",
-      "amount": "€1",
-      "balanceAfter": "€270",
-      "operator": "Axx",
-      "status": "finalized",
-      "createdAt": "2023-08-23T23:00:00.000Z",
-      "id": 7
-    },
-    {
-      "sourceAccount": "9928828288228",
-      "owner": "Azz",
-      "account": "9928828288222",
-      "balanceBefore": "€270",
-      "amount": "€1",
-      "balanceAfter": "€271",
-      "operator": "Az",
-      "status": "finalized",
-      "createdAt": "2023-08-29T23:00:00.000Z",
-      "id": 8
-    },
-    {
-      "sourceAccount": "2121212121215",
-      "owner": "Azz",
-      "account": "2121212121212",
-      "balanceBefore": "€12,121",
-      "amount": "€12",
-      "balanceAfter": "€12133",
-      "operator": "AAA",
-      "status": "finalized",
-      "createdAt": "2023-08-23T23:00:00.000Z",
-      "id": 9
-    },
-    {
-      "sourceAccount": "2121212121214",
-      "owner": "Azz",
-      "account": "2121212121212",
-      "balanceBefore": "€12133",
-      "amount": "€33",
-      "balanceAfter": "€12166",
-      "operator": "Axxx",
-      "status": "finalized",
-      "createdAt": "2023-08-28T23:00:00.000Z",
-      "id": 10
-    },
-    {
-      "sourceAccount": "2121212121215",
-      "owner": "Azz",
-      "account": "2121212121212",
-      "balanceBefore": "€12166",
-      "amount": "€22",
-      "balanceAfter": "€12188",
-      "operator": "Zu",
-      "status": "finalized",
-      "createdAt": "2023-08-24T23:00:00.000Z",
-      "id": 11
-    },
-    {
-      "sourceAccount": "2121212121767",
-      "owner": "Azz",
-      "account": "2121212121212",
-      "balanceBefore": "€12188",
-      "amount": "€22",
-      "balanceAfter": "€12210",
-      "operator": "Azzz",
-      "status": "finalized",
-      "createdAt": "2023-08-21T23:00:00.000Z",
-      "id": 12
-    },
-    {
-      "sourceAccount": "2121212121216",
-      "owner": "qqq",
-      "account": "2121212121212",
-      "balanceBefore": "€12210",
-      "amount": "€11",
-      "balanceAfter": "€12221",
-      "operator": "Azz",
-      "status": "finalized",
-      "createdAt": "2023-08-16T23:00:00.000Z",
-      "id": 13
-    },
-    {
-      "sourceAccount": "2121212121219",
-      "owner": "aaa",
-      "account": "2121212121212",
-      "balanceBefore": "€12221",
-      "amount": "€1,111",
-      "balanceAfter": "€13332",
-      "operator": "Azzz",
-      "status": "finalized",
-      "createdAt": "2023-08-15T23:00:00.000Z",
-      "id": 14
-    },
-    {
-      "sourceAccount": "2121212121219",
-      "owner": "asa",
-      "account": "2121212121212",
-      "balanceBefore": "€13332",
-      "amount": "€2,222",
-      "balanceAfter": "€15554",
-      "operator": "Azz",
-      "status": "finalized",
-      "createdAt": "2023-08-29T23:00:00.000Z",
-      "id": 15
-    },
-    {
-      "sourceAccount": "2121212121216",
-      "owner": "Axx",
-      "account": "2121212121212",
-      "balanceBefore": "€15554",
-      "amount": "€1,212",
-      "balanceAfter": "€16766",
-      "operator": "zzz",
-      "status": "finalized",
-      "createdAt": "2023-08-22T23:00:00.000Z",
-      "id": 16
     }
   ],
   "debits": [
     {
       "id": 1,
-      "sourceAccount": "0029929232333",
+      "sourceAccount": 29929232333,
       "owner": "Santos Bascos",
-      "account": "00123",
+      "account": 123,
       "balanceBefore": "€100,00",
       "amount": "€2,00",
       "balanceAfter": "€98,00",
@@ -487,7 +508,7 @@
     },
     {
       "owner": "Santos Bascos",
-      "account": "0029929232333",
+      "account": 29929232333,
       "balanceBefore": "123212",
       "amount": "€133",
       "balanceAfter": "123079",
@@ -498,7 +519,7 @@
     },
     {
       "owner": "Kakka",
-      "account": "2121212121212",
+      "account": 121212121212,
       "balanceBefore": "125009",
       "amount": "€11",
       "balanceAfter": "124998",
@@ -509,7 +530,7 @@
     },
     {
       "owner": "Kakka",
-      "account": "2121212121212",
+      "account": 2121212121212,
       "balanceBefore": "125009",
       "amount": "€122",
       "balanceAfter": "124887",
@@ -520,7 +541,7 @@
     },
     {
       "owner": "Kakka",
-      "account": "2121212121212",
+      "account": 2121212121212,
       "balanceBefore": "€125009",
       "amount": "€122",
       "balanceAfter": "€124887",
@@ -531,7 +552,7 @@
     },
     {
       "owner": "Kakka",
-      "account": "2121212121212",
+      "account": 2121212121212,
       "balanceBefore": "€125009",
       "amount": "€1",
       "balanceAfter": "€125008",
@@ -542,7 +563,7 @@
     },
     {
       "owner": "Kakka",
-      "account": "2121212121212",
+      "account": 2121212121212,
       "balanceBefore": "€125009",
       "amount": "€122",
       "balanceAfter": "€124887",
@@ -553,7 +574,7 @@
     },
     {
       "owner": "ASASASAS",
-      "account": "2121212121212",
+      "account": 2121212121212,
       "balanceBefore": "€124887",
       "amount": "€87",
       "balanceAfter": "€124800",
@@ -564,7 +585,7 @@
     },
     {
       "owner": "As",
-      "account": "9928828288222",
+      "account": 9928828288222,
       "balanceBefore": "€232",
       "amount": "€2",
       "balanceAfter": "€230",
@@ -575,7 +596,7 @@
     },
     {
       "owner": "kakka",
-      "account": "2121212121212",
+      "account": 2121212121212,
       "balanceBefore": "€16766",
       "amount": "€6",
       "balanceAfter": "€16760",
@@ -586,7 +607,7 @@
     },
     {
       "owner": "kakka",
-      "account": "2121212121212",
+      "account": 2121212121212,
       "balanceBefore": "€16766",
       "amount": "€6",
       "balanceAfter": "€16760",
@@ -596,37 +617,26 @@
       "id": 11
     },
     {
-      "owner": "kakka",
-      "account": "2121212121212",
-      "balanceBefore": "€16766",
-      "amount": "€6",
-      "balanceAfter": "€16760",
-      "operator": "Azz",
+      "owner": "AFAGHGHA",
+      "account": 19919918111,
+      "balanceBefore": "€200122",
+      "amount": "€2",
+      "balanceAfter": "€200120",
+      "operator": "Operator",
       "status": "O.Finalized",
-      "createdAt": "2023-08-29T23:00:00.000Z",
+      "createdAt": "2023-08-12T23:00:00.000Z",
       "id": 12
     },
     {
-      "owner": "AAAAAAAAA",
-      "account": "9928828288222",
-      "balanceBefore": "€271",
+      "owner": "FGGGGGGG",
+      "account": 19919918111,
+      "balanceBefore": "€200120",
       "amount": "€1",
-      "balanceAfter": "€270",
-      "operator": "Ass",
+      "balanceAfter": "€200119",
+      "operator": "Operator",
       "status": "O.Finalized",
-      "createdAt": "2023-08-22T23:00:00.000Z",
+      "createdAt": "2023-08-13T01:37:27.812Z",
       "id": 13
-    },
-    {
-      "owner": "Famint",
-      "account": "0019919918111",
-      "balanceBefore": "€200122",
-      "amount": "€22",
-      "balanceAfter": "€200100",
-      "operator": "Aaa",
-      "status": "O.Finalized",
-      "createdAt": "2023-08-22T23:00:00.000Z",
-      "id": 14
     }
   ],
   "currencies": [

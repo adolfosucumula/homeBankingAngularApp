@@ -22,9 +22,9 @@ export class CreditAccountUtils {
 
   creditFormGroup (): FormGroup  {
     return new FormGroup({
-      sourceAccount: new FormControl(''),
+      sourceAccount: new FormControl(null),
       owner: new FormControl(''),
-      account: new FormControl(''),
+      account: new FormControl(null),
       balanceBefore: new FormControl(''),
       amount: new FormControl(''),
       balanceAfter: new FormControl(''),
@@ -70,7 +70,7 @@ export class CreditAccountUtils {
   };
 
 
-  getBalanceByAccount(account: string, form: FormGroup){
+  getBalanceByAccount(account: number, form: FormGroup){
 
     this.accountService.getAll().subscribe({
       next: data => {
@@ -101,7 +101,7 @@ export class CreditAccountUtils {
             // First update the account current balance  and next save
             // Credit register to the database server
             this.editAcUtils.updateAccountBalance(data[index].id,
-              account,
+              Number(account),
               data[index].iban,
               data[index].swift,
               data[index].owner,

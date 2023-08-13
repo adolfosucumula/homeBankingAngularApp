@@ -5,7 +5,7 @@ import { AbstractControl,
   FormControl,
   Validators }
   from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import { CurrencyPipe } from '@angular/common';
 import {MatNativeDateModule} from '@angular/material/core';
@@ -13,6 +13,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CreditServicesService } from 'src/app/services/transactions/credit-services.service';
 import { CreditAccountUtils } from '../utils/CreditAccountUtils';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { SnackBarAlertMessage } from 'src/app/utils/snackBarAlertMessage';
+import { StorageService } from 'src/app/utils/StorageService.service';
 
 @Component({
   selector: 'app-input-transaction',
@@ -22,7 +24,13 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 })
 export class CreditComponent implements OnInit{
 
+    //
+    constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe,
+      private accountServices: AccountServicesService, private creditServices: CreditServicesService
+      , private utils: CreditAccountUtils, private route: ActivatedRoute, private router: Router,
+      private snackBarAlert: SnackBarAlertMessage, private localStore: StorageService, private _snackBar: MatSnackBar) { }
 
+  userData = this.localStore.getUser();
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
 
@@ -32,20 +40,16 @@ export class CreditComponent implements OnInit{
    * class to manage the form fields value, controlling and validate them
    */
   accountForm: FormGroup = new FormGroup({
-    sourceAccount: new FormControl(''),
+    sourceAccount: new FormControl(null),
     owner: new FormControl(''),
-    account: new FormControl(''),
+    account: new FormControl(null),
     amount: new FormControl(''),
-    operator: new FormControl(''),
+    operator: new FormControl(this.userData.username),
     createdAt: new FormControl(this.date),
   });
 
   submitted = false;
 
-  //
-  constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe,
-    private accountServices: AccountServicesService, private creditServices: CreditServicesService
-    , private utils: CreditAccountUtils, private router: Router, private _snackBar: MatSnackBar) { }
 
 
     ngOnInit(): void {
@@ -77,6 +81,13 @@ export class CreditComponent implements OnInit{
         }
       });
 
+      //get router parameter
+      this.route.paramMap.subscribe((param) => {
+        var id = Number(param.get('id'));
+
+        this.getAccountById(id);
+
+      });
 
     }
 
@@ -96,7 +107,7 @@ export class CreditComponent implements OnInit{
       //console.log(JSON.stringify(this.accountForm.value, null, 2))
 
       if(this.accountForm.value.account === this.accountForm.value.sourceAccount){
-        this.openSnackBar("The source account must be different from account", "Warning");
+        this.snackBarAlert.openSnackBar("The source account must be different from account", "Information", 10, 'bottom', "left")
         //alert("The source account must be different from account")
         return ;
       }
@@ -107,24 +118,17 @@ export class CreditComponent implements OnInit{
     };
 
 
-    /**
-     * Snackbar alert message
-     * For horizontal position the values allowed are: start, center, end, left, right
-     * For vertical position the values allowed are: top and bottom
-     */
-    horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-    verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-    durationInSeconds = 10;
-
-    openSnackBar(message: string, action: string) {
-      this._snackBar.open(message, action);
-      this._snackBar.open(message, action, {
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
-        duration: this.durationInSeconds * 1000,
-      });
+    getAccountById(id: number = 0){
+      if(id > 0){
+        this.accountServices.getById(id).subscribe({
+          next: data => {
+            this.accountForm.patchValue(data);
+          },
+          error: err => {
+            console.log(JSON.stringify(err));
+          }
+        })
+      }
     }
-
-
 
 }
