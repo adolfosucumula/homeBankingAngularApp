@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AccountModel } from 'src/app/models/AccountModel';
-import { EndPoint } from 'src/app/server/EndPoint';
 import { Observable } from 'rxjs';
+import { HttpReq } from '../server/HttpReq';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GenericServices {
 
-  constructor(private endPoint: EndPoint, private http: HttpClient){}
+  constructor(private endPoint: HttpReq, private http: HttpClient){}
 
   /**
    *
@@ -18,7 +17,7 @@ export class GenericServices {
    * @returns
    */
   create<T>(model: T | any, objToCreate: T | any): Observable <T | T []> {
-    return this.http.post <T | T[]>(`${this.endPoint.URL() + model.tableName}`, objToCreate);
+    return this.http.post <T | T[]>(`${this.endPoint.URL_API() + model.tableName}`, objToCreate);
   }
 
   /**
@@ -27,7 +26,7 @@ export class GenericServices {
    * @returns
    */
   read<T>(model: T | any): Observable <T | T[]> {
-    return this.http.get <T | T[]>(`${ this.endPoint.URL() + model.tableName }`);
+    return this.http.get <T | T[]>(`${ this.endPoint.URL_API() + model.tableName }`);
   }
 
   /**
@@ -36,7 +35,7 @@ export class GenericServices {
    * @returns
    */
   find<T>(model: T | any, objToFind: T | any): Observable <T | T[]> {
-    return this.http.get <T | T[]>(`${ this.endPoint.URL() + model.tableName }/${ objToFind }`);
+    return this.http.get <T | T[]>(`${ this.endPoint.URL_API() + model.tableName }/${ objToFind }`);
   }
 
   /**
@@ -46,11 +45,11 @@ export class GenericServices {
    * @returns
    */
   update<T>(model: T | any, objToUpdate: T | any): Observable <T | T[]> {
-    return this.http.patch <T | T[]> (`${this.endPoint.URL() + model.tableName}/${objToUpdate.id}`, objToUpdate);
+    return this.http.patch <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToUpdate.id}`, objToUpdate);
   }
 
   delete<T>(model: T | any, objToDelete: T): Observable <T | T[]> {
-    return this.http.delete <T | T[]> (`${this.endPoint.URL() + model.tableName}/${objToDelete}`)
+    return this.http.delete <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToDelete}`)
   }
 
 }
