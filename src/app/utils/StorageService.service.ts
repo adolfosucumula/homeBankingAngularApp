@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 
 const USER_KEY = 'auth-USER';
 const LOGGED_KEY = 'auth-OKAY';
+const __CREDITS = 'CREDITS';
 
 @Injectable({
   providedIn: 'root'

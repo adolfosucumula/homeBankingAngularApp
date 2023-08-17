@@ -12,7 +12,19 @@ export class CreditServicesService {
   constructor(private http: HttpClient, private base_url: HttpReq) { }
 
   getAll(){
-    return this.http.get < AccountTransactionModel [] > ( this.base_url.URL_API() + 'credits/');
+    return this.http.get < AccountTransactionModel [] > ( this.base_url.URL_API() + 'credits/')
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      //catchError(this.handleError) // then handle the error
+      catchError((err) => {
+        console.log('error caught in service. When trying to load users')
+        console.error(err);
+
+        //Handle the error here
+
+        return throwError(err);    //Rethrow it back to component
+      })
+    );
   }
 
   create(

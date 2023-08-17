@@ -36,9 +36,6 @@ export class AppComponent {
 
   ngOnInit(): void{
 
-    console.log("From APP COMPO")
-    console.log(JSON.stringify(this.localStore.getUser()))
-    console.log(JSON.stringify(this.localStore.isLoggedIn()))
     this.isLogged = this.localStore.isLoggedIn();
     console.log("Is logged: "+this.isLogged);
   }

@@ -271,6 +271,18 @@
       "password": "12345678",
       "createdAt": "13/08/2023 05:05",
       "id": 23
+    },
+    {
+      "username": "admin",
+      "password": "12345678",
+      "createdAt": "13/08/2023 06:08",
+      "id": 24
+    },
+    {
+      "username": "admin",
+      "password": "12345678",
+      "createdAt": "14/08/2023 01:38",
+      "id": 25
     }
   ],
   "signout": [
@@ -344,6 +356,12 @@
       "date": "13/08/2023 04:40",
       "signout": true,
       "id": 12
+    },
+    {
+      "username": "marcos",
+      "date": "13/08/2023 06:08",
+      "signout": true,
+      "id": 13
     }
   ],
   "accounts": [

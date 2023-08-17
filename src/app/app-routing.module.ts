@@ -32,10 +32,11 @@ const routes: Routes = [
     children: [
       { path: 'xx/account', component: AccountsComponent },
       { path: 'account/historics', component: HistoricComponent},
+      { path: 'account/trans/credit/:id', component: CreditComponent },
       { path: 'account/home', component: HomeAccountComponent,
       children: [
           { path: 'account/add', component: AddAccountComponent },
-          { path: 'account/trans/credit/:id', component: CreditComponent },
+
           { path: 'account/edit/:id', component: EditAccountComponent },
           { path: 'account/delete/:id', component: HomeAccountComponent },
           { path: 'account/trans/debit/:id', component: DebitComponent },

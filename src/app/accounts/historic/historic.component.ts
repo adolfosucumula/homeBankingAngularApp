@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { GetCreditFactory } from 'src/app/factories/getCreditFactory';
+
 import { AccountModel } from 'src/app/models/AccountModel';
 import { AccountTransactionModel } from 'src/app/models/AccountTransactionModel';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
@@ -17,7 +19,8 @@ import { SnackBarAlertMessage } from 'src/app/utils/snackBarAlertMessage';
 export class HistoricComponent  implements OnInit{
 
   constructor(private accountServices: AccountServicesService, private histServices: HistoricServices,
-    private localStore: StorageService, private snackBarAlert: SnackBarAlertMessage
+    private localStore: StorageService, private snackBarAlert: SnackBarAlertMessage,
+    private getCreditFactory: GetCreditFactory
      ) {}
 
     currentBalance: any = '0,00';
@@ -32,11 +35,12 @@ export class HistoricComponent  implements OnInit{
   ngOnInit(): void {
     this.userData = this.localStore.getUser();
 
-    this.getAccount();
+    //this.getAccount();
 
-    this.getCredits();
-
-    console.log(JSON.stringify(this.accountCredits))
+    //this.getCredits();
+    this.getCreditFactory.selectCredits();
+    //console.log("=================== I GET from the factory =================")
+    //console.log(JSON.stringify(this.getCreditFactory.getCredits()))
   }
 
   //dataSource = new MatTableDataSource<AccountTransactionModel>(this.accountCredits);

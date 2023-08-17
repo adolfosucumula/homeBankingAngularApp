@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AccountModel } from 'src/app/models/AccountModel';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import {NgFor} from '@angular/common';
@@ -35,6 +35,9 @@ import { Utils } from 'src/app/utils/Utils';
   ],
 })
 export class HomeAccountComponent implements OnInit{
+
+  //Get shared data from parent component
+  @Input() message?: string;
 
   //Creating a list/array list instance of the accounts to store all accounts comes from the server
   allAccounts!: AccountModel[];

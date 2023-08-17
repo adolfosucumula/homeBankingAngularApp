@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from '../material.module';
@@ -14,9 +14,8 @@ import { Utils } from '../utils/Utils';
 })
 export class DashboardComponent {
 
-  currentItem = 'Television';
-
   parentMessage = "Hello Child";
+
   constructor(private route: ActivatedRoute, private router: Router, private utils: Utils,
     private localStore: StorageService){}
 
@@ -58,6 +57,10 @@ export class DashboardComponent {
     this.router.navigate(['account/trans/debit'], {relativeTo: this.route});
   }
 
+  accountCredit(id: number){
+    if(id > 0) this.router.navigate(['account/trans/credit/', id], {relativeTo: this.route});
+  }
+
   accountCreditNoParameter(){
     this.router.navigate(['account/trans/credit'], {relativeTo: this.route});
   }
@@ -65,5 +68,7 @@ export class DashboardComponent {
   accountHistoric(){
     this.router.navigate(['account/historics'], {relativeTo: this.route});
   }
+
+
 
 }
