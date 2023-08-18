@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AccountModel } from 'src/app/models/AccountModel';
+import { AccountClass } from 'src/app/models/AccountModel';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import { AbstractControl, FormBuilder,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';

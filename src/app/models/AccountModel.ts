@@ -1,14 +1,17 @@
 export class AccountClass {
-  private id: number;
-  private account: string;
-  private iban: string;
-  private swift: string;
-  private owner: string;
-  private initialBalance: string;
-  private currentBalance: string;
-  private currency: string;
-  private isActive: boolean;
-  private tableName: string;
+  public id: number;
+  public account: string;
+  public iban: string;
+  public swift: string;
+  public owner: string;
+  public ownerDoc: string;
+  public initialBalance: string;
+  public currentBalance: string;
+  public currency: string;
+  public createdAt: string;
+  public updatedAt: string;
+  public isActive: boolean;
+  public tableName: string;
 
   constructor(
     id: number = 0,
@@ -16,10 +19,13 @@ export class AccountClass {
     iban: string = '',
     swift: string = '',
     owner: string = '',
+    ownerDoc: string = '',
     initialBalance: string = '',
     currentBalance: string = '',
     currency: string = '',
-    isActive: boolean = false
+    isActive: boolean = false,
+    createdAt: string = '',
+    updatedAt: string = '',
     ){
 
     this.id = id;
@@ -27,11 +33,14 @@ export class AccountClass {
     this.iban = iban;
     this.swift = swift;
     this.owner = owner;
+    this.ownerDoc = ownerDoc;
     this.initialBalance = initialBalance;
     this.currentBalance = currentBalance;
     this.currency = currency;
     this.isActive = isActive;
     this.tableName = 'accounts';
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
   }
 
 

@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import { AccountUtils } from '../utils/accountUtils';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AccountModel } from 'src/app/models/AccountModel';
+
 import { Observable } from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { AccountClass } from 'src/app/models/AccountModel';
 
 @Component({
   selector: 'app-update-account',
@@ -20,8 +21,8 @@ export class UpdateAccountComponent {
 
   //Instances to controll the autocomplete field
   myControl = new FormControl('');
-  allAccounts: AccountModel[] = [];
-  filteredOptions: Observable<AccountModel[]> | undefined;
+  allAccounts!: AccountClass[];
+  filteredOptions: Observable<AccountClass[]> | undefined;
 
   /**
    * Create an object of instance using the FormGroup
@@ -41,26 +42,15 @@ export class UpdateAccountComponent {
     this.getAccounts();
   }
 
-  private _filter(value: string): AccountModel[] {
+  private _filter(value: string): AccountClass[] {
     const filterValue = value.toLowerCase();
 
     return this.allAccounts.filter(option => option.account.toString().toLowerCase().includes(filterValue));
   }
 
   getAccounts(){
-    this.accountServices.getAll().subscribe({
-      next: data => {
-        this.allAccounts = data;
-        //this.dataSource = new MatTableDataSource(this.allAccounts);
-      },
-      error: err => {console.log(err)
-        if (err.error) {
-          //this.errorMessage = JSON.parse(err.error).message;
-        } else {
-
-          //this.errorMessage = "Error with status: " + err.status;
-        }
-      }
+    this.accountServices.getAll().subscribe((data: any) => {
+      this.allAccounts = data;
     });
   }
 

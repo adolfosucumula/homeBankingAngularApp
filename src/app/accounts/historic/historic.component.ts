@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import { GetCreditFactory } from 'src/app/factories/getCreditFactory';
 
-import { AccountModel } from 'src/app/models/AccountModel';
+
+import { AccountClass } from 'src/app/models/AccountModel';
 import { AccountTransactionModel } from 'src/app/models/AccountTransactionModel';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import { HistoricServices } from 'src/app/services/transactions/historic-services.service';
@@ -20,7 +20,7 @@ export class HistoricComponent  implements OnInit{
 
   constructor(private accountServices: AccountServicesService, private histServices: HistoricServices,
     private localStore: StorageService, private snackBarAlert: SnackBarAlertMessage,
-    private getCreditFactory: GetCreditFactory
+
      ) {}
 
     currentBalance: any = '0,00';
@@ -38,7 +38,7 @@ export class HistoricComponent  implements OnInit{
     //this.getAccount();
 
     //this.getCredits();
-    this.getCreditFactory.selectCredits();
+
     //console.log("=================== I GET from the factory =================")
     //console.log(JSON.stringify(this.getCreditFactory.getCredits()))
   }
@@ -46,64 +46,48 @@ export class HistoricComponent  implements OnInit{
   //dataSource = new MatTableDataSource<AccountTransactionModel>(this.accountCredits);
 
   getAccount(){
-    this.accountServices.getAll().subscribe({
-      next: data => {
-        for (let index = 0; index < data.length; index++) {
-          const element = data[index].ownerDoc;
-          if(Number(element) === Number(this.userData.telephone)){
-            this.userAccount = data[index].account;
-            this.currentBalance = Number(data[index].currentBalance.replaceAll("€", ""));
-            this.currentBalance= new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(this.currentBalance);
-            break;
-          }else{
-            this.snackBarAlert.openSnackBar("No account found for this user!", "Information", 10, 'bottom', "left")
-            break;
-          }
-        }
-      },
-      error: err => {
-        console.log(JSON.stringify(err))
+    this.accountServices.getAll().subscribe((data: any) => {
+      const array = JSON.stringify(this.accountServices.findByOwnerDocInDBList(data, this.userData.ownerDoc))
+      const items = JSON.parse(array);
+      if(items.size == 0) { this.snackBarAlert.openSnackBar("No account found for this user!", "Information", 10, 'bottom', "left"); }
+      else{
+        this.userAccount = items.account;
+        this.currentBalance = Number(items.currentBalance.replaceAll("€", ""));
+        this.currentBalance= new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(this.currentBalance);
       }
     })
+
   };
 
+  /**
+   *
+   */
   getCredits(){
-    this.histServices.getAllCredits().subscribe({
-      next: data => {
-        for (let index = 0; index < data.length; index++) {
-          const element = data[index].account;
-          console.log(this.userAccount +" == " +element)
-          console.log(Number(this.userAccount) === Number(element))
-          if(Number(this.userAccount) === Number(element)){
+    this.histServices.getAllCredits().subscribe((data: AccountTransactionModel) => {
+      const array = JSON.stringify(this.accountServices.findByAccountInDBList(data, this.userAccount))
+      const items = JSON.parse(array);
+      console.log("==================  CREDITS ============================")
+      console.log(items)
+      if(items.size == 0) { this.snackBarAlert.openSnackBar("No account found for this user!", "Information", 10, 'bottom', "left"); }
+      else{
 
-          }
-        }
-      },
-      error: err => {
-        console.log(JSON.stringify(err))
       }
     })
   };
 
+  /**
+   *
+   */
   getDebits(){
-    this.histServices.getAllDebits().subscribe({
-      next: data => {
-        for (let index = 0; index < data.length; index++) {
-          const element = data[index].ownerDoc;
-          if(Number(element) === Number(this.userData.telephone)){
-            this.userAccount = data[index].account;
-            this.currentBalance = Number(data[index].currentBalance.replaceAll("€", ""));
-            this.currentBalance= new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(this.currentBalance);
-            break;
-          }else{
-            this.snackBarAlert.openSnackBar("No account found for this user!", "Information", 10, 'bottom', "left")
-            break;
-          }
+    this.histServices.getAllDebits().subscribe((data: AccountTransactionModel) => {
+      const array = JSON.stringify(this.accountServices.findByOwnerDocInDBList(data, this.userAccount))
+        const items = JSON.parse(array);
+        if(items.size == 0)  this.snackBarAlert.openSnackBar("No account found for this user!", "Information", 10, 'bottom', "left");
+        else{
+          this.userAccount = items.account;
+          this.currentBalance = Number(items.currentBalance.replaceAll("€", ""));
+          this.currentBalance= new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(this.currentBalance);
         }
-      },
-      error: err => {
-        console.log(JSON.stringify(err))
-      }
     })
   };
 

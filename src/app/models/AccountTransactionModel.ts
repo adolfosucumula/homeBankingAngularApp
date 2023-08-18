@@ -1,4 +1,4 @@
-import { AccountModel } from "./AccountModel";
+import { AccountClass } from "./AccountModel";
 
 export interface AccountTransactionModel {
   id: number,

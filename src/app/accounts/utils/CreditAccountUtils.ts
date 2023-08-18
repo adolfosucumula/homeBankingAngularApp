@@ -82,7 +82,7 @@ export class CreditAccountUtils {
          * if equals get this balance account and sum with the
          * amount to be credited
          * */
-        for (let index = 0; index < data.length; index++) {
+        /*for (let index = 0; index < data.length; index++) {
           const element = data[index].account;
 
 
@@ -119,7 +119,7 @@ export class CreditAccountUtils {
 
             break;
           }
-        }
+        }*/
       },
       error: err => {
         console.log(JSON.stringify(err), null, 2)

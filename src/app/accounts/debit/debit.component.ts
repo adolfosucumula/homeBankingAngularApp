@@ -9,7 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import { AccountUtils } from '../utils/accountUtils';
-import { AccountModel } from 'src/app/models/AccountModel';
+import { AccountClass } from 'src/app/models/AccountModel';
 import { DebitAccountUtils } from '../utils/DebitAccountUtils';
 import { CurrencyPipe } from '@angular/common';
 import { CreditAccountUtils } from '../utils/CreditAccountUtils';
@@ -32,7 +32,7 @@ export class DebitComponent implements OnInit{
 
   //
   constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe,
-    private accountServices: AccountServicesService, private creditServices: CreditServicesService
+   private creditServices: CreditServicesService
     , private utils: DebitAccountUtils, private router: Router, private route: ActivatedRoute,
     private accountService: AccountServicesService, private snackAlert: SnackBarAlertMessage,
     private editAccountUtils: EditAccountUtils) { }
@@ -170,8 +170,6 @@ export class DebitComponent implements OnInit{
         this.getAccount(account, balanceAfter.toString(), this.accountForm);
 
 
-
-
     };
 
 
@@ -181,20 +179,13 @@ export class DebitComponent implements OnInit{
      */
     getAccount(account: number = 0, balanceAfter: string, form: FormGroup){ this.snackAlert.openSnackBar("Account"+ account, "Information", 10, 'bottom', "left")
       if(account > 0){
-        this.accountServices.getAll().subscribe({
-          next: data => {
-            for (let index = 0; index < data.length; index++) {
-              if(data[index].account === account){
-                //this.id = data[index].id;
-                this.editAccountUtils.updateAccount(data[index].id,Number(data[index].account), data[index].iban, data[index].owner, data[index].swift,
-                  Number(data[index].ownerDoc), data[index].currentBalance, "€"+balanceAfter, data[index].currency, form);
-
-                break;
-              }
-            }
-          },
-          error: err => {
-            console.log(JSON.stringify(err), null, 2)
+        this.accountService.getAll().subscribe((data: any) => {
+          const array = JSON.stringify(this.accountService.findByAccountInDBList(data, account));
+          const items = JSON.parse(array);
+          if(items.size == 0){ this.snackAlert.openSnackBar("This account "+ account + " was not found!" , "Information", 10, 'bottom', "left") }
+          else{
+            this.editAccountUtils.updateAccount(items.id,Number(items.account), items.iban, items.owner, items.swift,
+                Number(items.ownerDoc), items.currentBalance, "€"+balanceAfter, items.currency, form);
           }
         })
       }

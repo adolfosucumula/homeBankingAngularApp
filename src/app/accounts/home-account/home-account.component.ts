@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AccountModel } from 'src/app/models/AccountModel';
+import { AccountClass } from 'src/app/models/AccountModel';
 import { AccountServicesService } from 'src/app/services/account/account-services.service';
 import {NgFor} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
@@ -40,7 +40,7 @@ export class HomeAccountComponent implements OnInit{
   @Input() message?: string;
 
   //Creating a list/array list instance of the accounts to store all accounts comes from the server
-  allAccounts!: AccountModel[];
+  allAccounts!: AccountClass[];
   errorMessage?: string;
   calledChildren = false;
 
@@ -64,19 +64,9 @@ export class HomeAccountComponent implements OnInit{
 
   //Method that returns all accounts from database server
   getAll(){
-    this.accountServices.getAll().subscribe({
-      next: data => {
-        this.allAccounts = data;
-        this.dataSource = new MatTableDataSource(this.allAccounts);
-      },
-      error: err => {console.log(err)
-        if (err.error) {
-          this.errorMessage = JSON.parse(err.error).message;
-        } else {
-
-          this.errorMessage = "Error with status: " + err.status;
-        }
-      }
+    this.accountServices.getAll().subscribe((data: any) => {
+      this.allAccounts = data;
+      this.dataSource = new MatTableDataSource(this.allAccounts);
     });
   }
 
