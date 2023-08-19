@@ -26,7 +26,7 @@ export class CreditComponent implements OnInit{
 
     //
     constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe,
-      private accountServices: AccountServicesService, private creditServices: CreditServicesService
+      private accountServices: AccountServicesService
       , private utils: CreditAccountUtils, private route: ActivatedRoute, private router: Router,
       private snackBarAlert: SnackBarAlertMessage, private localStore: StorageService, private _snackBar: MatSnackBar) { }
 
@@ -112,7 +112,7 @@ export class CreditComponent implements OnInit{
         return ;
       }
 
-      this.utils.getBalanceByAccount(this.accountForm.value.account, this.accountForm);
+      this.utils.getUpdateCreditAccount(this.accountForm.value.account, this.accountForm);
 
 
     };
@@ -120,13 +120,8 @@ export class CreditComponent implements OnInit{
 
     getAccountById(id: number = 0){
       if(id > 0){
-        this.accountServices.getById(id).subscribe({
-          next: data => {
-            this.accountForm.patchValue(data);
-          },
-          error: err => {
-            console.log(JSON.stringify(err));
-          }
+        this.accountServices.getById(id).subscribe((data: any) => {
+          this.accountForm.patchValue(data);
         })
       }
     }

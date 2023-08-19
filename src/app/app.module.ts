@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -59,6 +60,10 @@ import { SignoutComponent } from './auth/signout/signout.component';
 import { HomePageComponent } from './web/home-page/home-page.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { BalanceComponent } from './accounts/balance/balance.component';
+import { AlertModalComponent } from './dialog/dialog-animation/dialog-animation.component';
+import { AlertDialogConfirmationComponent } from './dialog/alert-dialog-confirmation/alert-dialog-confirmation.component';
+import { ErrorAlertDialogComponent } from './dialog/error-alert-dialog/error-alert-dialog.component';
+import { SuccessAlertDialogComponent } from './dialog/success-alert-dialog/success-alert-dialog.component';
 
 
 
@@ -83,7 +88,11 @@ import { BalanceComponent } from './accounts/balance/balance.component';
         SigninComponent,
         SignoutComponent,
         HomePageComponent,
-        BalanceComponent
+        BalanceComponent,
+        AlertModalComponent,
+        AlertDialogConfirmationComponent,
+        ErrorAlertDialogComponent,
+        SuccessAlertDialogComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -122,7 +131,8 @@ import { BalanceComponent } from './accounts/balance/balance.component';
         MatSnackBarModule,
         MatTableModule,
         MatPaginatorModule,
-        HomeAccountComponent
+        HomeAccountComponent,
+        MatDialogModule
     ]
 })
 export class AppModule { }

@@ -32,6 +32,7 @@ export class GenericServices {
   /**
    *
    * @param model
+   * @param objToFind
    * @returns
    */
   find<T>(model: T | any, objToFind: T | any): Observable <T | T[]> {
@@ -45,9 +46,25 @@ export class GenericServices {
    * @returns
    */
   update<T>(model: T | any, objToUpdate: T | any): Observable <T | T[]> {
+    return this.http.put <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToUpdate.id}`, objToUpdate);
+  }
+
+  /**
+   *
+   * @param model
+   * @param objToUpdate
+   * @returns
+   */
+  updateByPatch<T>(model: T | any, objToUpdate: T | any): Observable <T | T[]> {
     return this.http.patch <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToUpdate.id}`, objToUpdate);
   }
 
+  /**
+   *
+   * @param model
+   * @param objToDelete
+   * @returns
+   */
   delete<T>(model: T | any, objToDelete: T): Observable <T | T[]> {
     return this.http.delete <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToDelete}`)
   }

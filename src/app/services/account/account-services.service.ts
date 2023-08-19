@@ -6,6 +6,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { handleError } from 'src/app/utils/handle-error';
 import { GenericServices } from '../generic-services.service';
+import { SnackBarAlertMessage } from 'src/app/utils/snackBarAlertMessage';
+import { AlertMessageFactories } from 'src/app/utils/AlertMessageFactories';
 
 let model: AccountClass = new AccountClass();
 
@@ -14,7 +16,10 @@ let model: AccountClass = new AccountClass();
 })
 export class AccountServicesService {
 
-  constructor(private http: HttpClient, private baseUrl: HttpReq, private services: GenericServices  ) { }
+  constructor(private http: HttpClient, private baseUrl: HttpReq,
+    private services: GenericServices, private snackBarAlert: SnackBarAlertMessage,
+    private alertD: AlertMessageFactories
+    ) { }
 
   getAll(){
 
@@ -75,7 +80,9 @@ export class AccountServicesService {
   }
 
   getById(id: number){
-    return this.http.get < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }` )
+    //return this.http.get < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }` )
+    model.setTableName("accounts")
+    return this.services.find(model, id)
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
@@ -85,18 +92,14 @@ export class AccountServicesService {
   }
 
   getByAccount(account: string): Observable<any> {
-    return this.http.get < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ account }` )
+    model.setTableName("accounts")
+    return this.services.find(model, account)
+    //return this.http.get < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ account }` )
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
-      catchError((err) => {
-        console.log('error caught in service. When trying to load users')
-        console.error(err);
-
-        //Handle the error here
-
-        return throwError(err);    //Rethrow it back to component
-      })
+      retry(3), // retry a failed request up to 3 times
+      catchError(handleError) // then handle the error
     );
   }
 
@@ -112,7 +115,19 @@ export class AccountServicesService {
     currency: string,
     createdAt: string,
     isActive: boolean): Observable <any>{
-    return this.http.put < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }`, {
+      model.account = account.toString();
+      model.iban = iban;
+      model.swift = swift;
+      model.owner = owner;
+      model.ownerDoc = ownerDoc.toString();
+      model.initialBalance = initialBalance;
+      model.currentBalance = currentBalance;
+      model.currency = currency;
+      model.createdAt = createdAt;
+      model.isActive = isActive;
+      model.setTableName("accounts")
+    return this.services.update(model, id)
+    /*return this.http.put < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }`, {
       account,
       iban,
       swift,
@@ -123,12 +138,14 @@ export class AccountServicesService {
       currency,
       createdAt,
       isActive
-    } )
+    } )*/
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to load users')
+        this.alertD.openErrorAlertDialog('Error Alert', "Error when try to update account. (STATUS = "+ err.status + ")", 'Close')
+        //this.snackBarAlert.openSnackBar("Error when try to update account. \n"+ err.status, "Information", 10, 'bottom', "left")
+        console.log('error caught in service. When try to update account')
         console.error(err);
 
         //Handle the error here
@@ -151,7 +168,19 @@ export class AccountServicesService {
     updatedAt: string,
     isActive: boolean
     ): Observable <any>{
-    return this.http.put < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }`, {
+      model.account = account.toString();
+      model.iban = iban;
+      model.swift = swift;
+      model.owner = owner;
+      model.ownerDoc = ownerDoc.toString();
+      model.initialBalance = initialBalance;
+      model.currentBalance = currentBalance;
+      model.currency = currency;
+      model.createdAt = createdAt;
+      model.isActive = isActive;
+      model.setTableName("accounts")
+    return this.services.update(model, id)
+    /*return this.http.put < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }`, {
       account,
       iban,
       swift,
@@ -163,11 +192,12 @@ export class AccountServicesService {
       createdAt,
       updatedAt,
       isActive
-    } ).pipe(
+    } )*/
+    .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to load users')
+        console.log('error caught in service. When try to update account')
         console.error(err);
 
         //Handle the error here
@@ -178,12 +208,14 @@ export class AccountServicesService {
   }
 
   delete(id: number){
-    return this.http.delete < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }` )
+    model.setTableName("accounts")
+    return this.services.delete(model, id)
+    //return this.http.delete < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }` )
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to load users')
+        console.log('error caught in service. When try to delete account')
         console.error(err);
 
         //Handle the error here

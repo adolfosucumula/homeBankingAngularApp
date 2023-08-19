@@ -98,34 +98,20 @@ export class DebitComponent implements OnInit{
     getById(id: number = 0){
 
       if(id > 0){
-        this.accountService.getById(id).subscribe({
-          next: data => {
+        this.accountService.getById(id).subscribe((data: any) => {
+          this.accountForm.patchValue({
+            owner: data.owner,
+            account: data.account,
+            balanceBefore: data.currentBalance,
+            amount: '',
+            balanceAfter: '',
+            operator: 'Operator',
+            status: 'Pendent',
+            createdAt: this.date.value
+          });
 
-           // console.log(JSON.stringify(data, null, 2));
-
-            this.accountForm.patchValue({
-              owner: data.owner,
-              account: data.account,
-              balanceBefore: data.currentBalance,
-              amount: '',
-              balanceAfter: '',
-              operator: 'Operator',
-              status: 'Pendent',
-              createdAt: this.date.value
-            });
-
-            //Preserve the account register to be used at next step
-            this.accountData.patchValue(data);
-
-          },
-          error: err => {console.log(err)
-            if (err.error) {
-              //this.errorMessage = JSON.parse(err.error).message;
-            } else {
-
-              //this.errorMessage = "Error with status: " + err.status;
-            }
-          }
+          //Preserve the account register to be used at next step
+          this.accountData.patchValue(data);
         })
       }
     };

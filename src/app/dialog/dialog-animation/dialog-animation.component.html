@@ -1,0 +1,19 @@
+<h1 mat-dialog-title class="title">
+  <img src="https://th.bing.com/th/id/R.f5304a5dc178421a18dddb9afe4c2ecb?rik=9mugt8gRNhCB5A&riu=http%3a%2f%2fwww.freeiconspng.com%2fuploads%2finfo-icon-16.png&ehk=E7NykclEybIg2v5vaRJhv59tAtYF8gPui28BaX101Wo%3d&risl=&pid=ImgRaw&r=0"
+  width="40" height="40" alt="" srcset="">
+  <span>{{ title }}</span>
+</h1>
+<div mat-dialog-content class="content">
+  <div class="message">
+    {{ message }}
+  </div>
+</div>
+<div mat-dialog-actions class="footer">
+  <mat-divider></mat-divider>
+</div>
+
+<mat-card>
+  <mat-card-actions align="end">
+    <button mat-button (click)="onNoClick()" alig>{{ buttonName }}</button>
+  </mat-card-actions>
+</mat-card>

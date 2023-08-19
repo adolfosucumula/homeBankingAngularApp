@@ -5,6 +5,7 @@ import { AccountServicesService } from "../../services/account/account-services.
 import { Observable } from "rxjs";
 import { CreditServicesService } from "src/app/services/transactions/credit-services.service";
 import { EditAccountUtils } from "./EditAccountUtils";
+import { SnackBarAlertMessage } from "src/app/utils/snackBarAlertMessage";
 
 
 @Injectable({
@@ -14,7 +15,7 @@ import { EditAccountUtils } from "./EditAccountUtils";
 export class CreditAccountUtils {
 
   constructor(private accountService: AccountServicesService, private creditServices: CreditServicesService,
-    private editAcUtils: EditAccountUtils
+    private editAcUtils: EditAccountUtils, private snackBarAlert: SnackBarAlertMessage
     ) {}
 
   acc: any = '';
@@ -70,11 +71,10 @@ export class CreditAccountUtils {
   };
 
 
-  getBalanceByAccount(account: number, form: FormGroup){
+  getUpdateCreditAccount(account: number, form: FormGroup){
 
-    this.accountService.getAll().subscribe({
-      next: data => {
-        //console.log(JSON.stringify(data, null, 2))
+    this.accountService.getAll().subscribe((data: any) => {
+      //console.log(JSON.stringify(data, null, 2))
 
         /**
          * Load all accounts from database
@@ -82,48 +82,41 @@ export class CreditAccountUtils {
          * if equals get this balance account and sum with the
          * amount to be credited
          * */
-        /*for (let index = 0; index < data.length; index++) {
-          const element = data[index].account;
 
-
-          if(element === account){
-            console.log(JSON.stringify(data[index], null, 6))
-            this.acc = element;
+        const array = JSON.stringify(this.accountService.findByAccountInDBList(data, account));
+        const items = JSON.parse(array);
+        if(items.size == 0){ this.snackBarAlert.openSnackBar("Account was not found", "Information", 10, 'bottom', "left") }
+        else{
+          this.acc = items.account;
             //this.balance = data[index].currentBalance;
-            var bala = data[index].currentBalance.replaceAll("€","");
+            var bala = items.currentBalance.replaceAll("€","");
             bala = bala.replaceAll(",","");
             var amoun = form.value.amount.replaceAll("€","");
             amoun = amoun.replaceAll(",","");
             var currentBalance = parseFloat(bala) + parseFloat(amoun);
 
-            currentBalance.toString(), data[index].createdAt
+            currentBalance.toString(), items.createdAt
 
             // First update the account current balance  and next save
             // Credit register to the database server
-            this.editAcUtils.updateAccountBalance(data[index].id,
+            this.editAcUtils.updateAccountBalance(items.id,
               Number(account),
-              data[index].iban,
-              data[index].swift,
-              data[index].owner,
-              data[index].ownerDoc,
-              data[index].initialBalance,
+              items.iban,
+              items.swift,
+              items.owner,
+              items.ownerDoc,
+              items.initialBalance,
               "€" + currentBalance.toString(),
-              data[index].currency,
-              data[index].createdAt,
+              items.currency,
+              items.createdAt,
               form.value.createdAt,
-              data[index].isActive
+              items.isActive
               );
 
-              this.creditAccount(form, data[index].currentBalance,
+              this.creditAccount(form, items.currentBalance,
                 "€" + currentBalance.toString(), "finalized");
+        }
 
-            break;
-          }
-        }*/
-      },
-      error: err => {
-        console.log(JSON.stringify(err), null, 2)
-      }
     })
   };
 

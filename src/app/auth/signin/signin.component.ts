@@ -78,6 +78,8 @@ export class SigninComponent {
           const element = data[index];
           //
           if(this.entityForm.value.username != data[index].username){
+
+            //this.alertD.openInfoAlertDialog()
             this.snackbarAlert.openSnackBar("This username does not exists!","Okay", 12, "bottom", "center");
           }else if(this.entityForm.value.password != data[index].password){
             this.snackbarAlert.openSnackBar("You've entered a wrong password!","Okay", 12, "bottom", "center");

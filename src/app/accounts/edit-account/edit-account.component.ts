@@ -5,6 +5,9 @@ import { AccountServicesService } from 'src/app/services/account/account-service
 import { AbstractControl, FormBuilder,FormGroup,FormControl,Validators } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { AccountUtils } from '../utils/accountUtils';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertModalComponent } from 'src/app/dialog/dialog-animation/dialog-animation.component';
+import { AlertMessageFactories } from 'src/app/utils/AlertMessageFactories';
 
 @Component({
   selector: 'app-edit-account',
@@ -42,10 +45,12 @@ export class EditAccountComponent implements OnInit{
   constructor(private formBuilder: FormBuilder, private currencyPipe: CurrencyPipe, private route: ActivatedRoute,
     private router: Router,
     private accountService: AccountServicesService,
-    private utils: AccountUtils
+    private utils: AccountUtils, public dialog: MatDialog, private alertD: AlertMessageFactories
     ) { }
 
   ngOnInit(): void {
+
+    this.alertD.openSuccessAlertDialog()
 
     //Function to validate the form fields according to the specific rules
     this.accountForm = this.formBuilder.group({
@@ -84,6 +89,8 @@ export class EditAccountComponent implements OnInit{
 
   };
 
+
+
   //Call AbstractControl class to check if the data from form fields conforms to the rule defined above
   get _fC(): {[key: string]: AbstractControl } {
     return this.accountForm.controls;
@@ -91,21 +98,9 @@ export class EditAccountComponent implements OnInit{
 
 
   getById(id: number){
-    this.accountService.getById(id).subscribe({
-      next: data => {
-
-        //console.log(JSON.stringify(data, null, 2));
-        this.accountForm.patchValue(data);
-
-      },
-      error: err => {console.log(err)
-        if (err.error) {
-          this.errorMessage = JSON.parse(err.error).message;
-        } else {
-
-          this.errorMessage = "Error with status: " + err.status;
-        }
-      }
+    this.accountService.getById(id).subscribe((data: any) => {
+      //console.log(JSON.stringify(data, null, 2));
+      this.accountForm.patchValue(data);
     })
   };
 
@@ -128,18 +123,8 @@ export class EditAccountComponent implements OnInit{
       this.utils.getFormData(this.accountForm).currency,
       this.utils.getFormData(this.accountForm).createdAt,
       this.utils.getFormData(this.accountForm).isActive)
-    .subscribe({
-      next: data => {
-        this.router.navigate(['dashboard']);
-      },
-      error: err => {
-        if (err.error) {
-          this.errorMessage = JSON.parse(err.error).message;
-        } else {
-          this.errorMessage = "Error with status: " + err.status;
-        }
-        console.log(JSON.stringify(err, null, 2))
-      }
+    .subscribe((data: any) => {
+      this.router.navigate(['dashboard']);
     })
   }
 }
