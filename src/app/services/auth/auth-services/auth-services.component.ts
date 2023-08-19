@@ -54,10 +54,18 @@ export class AuthServicesComponent {
    * @returns
    */
   signIn(username: string, password: string, createdAt: string): Observable <any> {
-    return this.http.post <UserModel> ( this.httpReq.URL_API() + 'loggeds/',
+
+    model.setTableName("loggeds")
+    model.setUsername(username);
+    model.setPassword(password);
+    model.setCreatedAt(createdAt);
+    console.log(model)
+    return this.services.create(model, model)
+    /*return this.http.post <UserModel> ( this.httpReq.URL_API() + 'loggeds/',
       {username, password , createdAt}
       ,this.httpReq.myHttpOption()
-    ).pipe(
+    )*/
+    .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {

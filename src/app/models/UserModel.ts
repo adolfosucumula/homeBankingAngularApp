@@ -41,8 +41,32 @@ export class UserModel {
     this.id = id;
   }
 
-  public getId(){
+  public getId(): number{
     return this.id;
+  }
+
+  public setUsername(username: string): void{
+    this.username = username;
+  }
+
+  public getUsername(): string{
+    return this.username;
+  }
+
+  public setPassword(password: string): void {
+    this.password = password;
+  }
+
+  public getPassword(): string {
+    return this.password;
+  }
+
+  public setCreatedAt(createdAt: string): void {
+    this.createdAt = createdAt;
+  }
+
+  public getCreatedAt(): string {
+    return this.createdAt;
   }
 
   public setTableName(tablename: string) {

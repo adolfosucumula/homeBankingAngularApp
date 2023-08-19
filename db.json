@@ -307,6 +307,19 @@
       "password": "12345678",
       "createdAt": "19/08/2023 10:12",
       "id": 29
+    },
+    {
+      "id": 30,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "19/08/2023 10:22",
+      "updatedAt": "",
+      "tableName": "loggeds"
     }
   ],
   "signout": [
@@ -398,6 +411,12 @@
       "date": "19/08/2023 09:28",
       "signout": true,
       "id": 15
+    },
+    {
+      "username": "admin",
+      "date": "19/08/2023 10:22",
+      "signout": true,
+      "id": 16
     }
   ],
   "accounts": [
