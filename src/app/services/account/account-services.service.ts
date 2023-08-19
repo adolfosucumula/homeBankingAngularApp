@@ -126,6 +126,7 @@ export class AccountServicesService {
       model.createdAt = createdAt;
       model.isActive = isActive;
       model.setTableName("accounts")
+
     return this.services.update(model, id)
     /*return this.http.put < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }`, {
       account,

@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { UserModel } from 'src/app/models/UserModel';
 import { AuthServicesComponent } from 'src/app/services/auth/auth-services/auth-services.component';
+import { AlertMessageFactories } from 'src/app/utils/AlertMessageFactories';
 import { AuthUtils } from 'src/app/utils/AuthUtils';
 import { CurrentDate } from 'src/app/utils/CurrentDate';
 import { StorageService } from 'src/app/utils/StorageService.service';
@@ -20,7 +21,7 @@ export class SigninComponent {
   constructor(private authUtils: AuthUtils, private snackbarAlert: SnackBarAlertMessage,
      private localStore: StorageService,private formBuilder: FormBuilder,
      private router: Router, private authServices: AuthServicesComponent,
-     private currentDate: CurrentDate
+     private currentDate: CurrentDate, private alertD: AlertMessageFactories
     ){}
 
   submitted = false;
@@ -72,27 +73,20 @@ export class SigninComponent {
   };
 
   getAllUsers(){
-    this.authServices.allUsers().subscribe({
-      next: data => {
-        for (let index = 0; index < data.length; index++) {
-          const element = data[index];
-          //
-          if(this.entityForm.value.username != data[index].username){
+    this.authServices.allUsers().subscribe((data: UserModel) => {
+      const array = JSON.stringify(this.authServices.findUserByUsernameInDBList(data, this.entityForm.value.username));
 
-            //this.alertD.openInfoAlertDialog()
-            this.snackbarAlert.openSnackBar("This username does not exists!","Okay", 12, "bottom", "center");
-          }else if(this.entityForm.value.password != data[index].password){
-            this.snackbarAlert.openSnackBar("You've entered a wrong password!","Okay", 12, "bottom", "center");
-          }
-         else{
-          this.signIn(this.entityForm, data[index].username, data[index].email, data[index].telephone, data[index].id, data[index].role );
-         }
+      if(array == null){
+        this.alertD.openErrorAlertDialog("Warning", "This username was not found.", "Ok", '700ms', '1000ms')
+      }else{
+        const items = JSON.parse(array);
+        if(items.password != this.entityForm.value.password){
+          this.alertD.openErrorAlertDialog("Warning", "The password is wrong.", "Ok", '700ms', '1000ms')
+        }else{
+          this.signIn(this.entityForm, items.username, items.email, items.telephone, items.id, items.role );
         }
-      },
-      error: err => {
-        this.snackbarAlert.openSnackBar("Login failed!","Okay", 12, "bottom", "center");
-        console.log(JSON.stringify(err), null, 3)
       }
+
     })
   };
 
@@ -115,7 +109,7 @@ export class SigninComponent {
         },1);
         this.isLogged = this.localStore.isLoggedIn();
         if(this.isLogged){
-          this.snackbarAlert.openSnackBar("You are logged in","Okay", 10, "bottom", "center");
+          this.alertD.openSuccessAlertDialog("You are logged in")
           //window.location.reload();
           this.router.navigate(['/dashboard']);
         }

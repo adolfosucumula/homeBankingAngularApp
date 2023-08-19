@@ -26,7 +26,7 @@ export class GenericServices {
    * @returns
    */
   read<T>(model: T | any): Observable <T | T[]> {
-    return this.http.get <T | T[]>(`${ this.endPoint.URL_API() + model.tableName }`);
+    return this.http.get <T | T[]>(`${ this.endPoint.URL_API() + model.tableName }`, this.endPoint.myHttpOption());
   }
 
   /**
@@ -46,7 +46,7 @@ export class GenericServices {
    * @returns
    */
   update<T>(model: T | any, objToUpdate: T | any): Observable <T | T[]> {
-    return this.http.put <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToUpdate.id}`, objToUpdate);
+    return this.http.put <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToUpdate}`, model);
   }
 
   /**
@@ -56,7 +56,7 @@ export class GenericServices {
    * @returns
    */
   updateByPatch<T>(model: T | any, objToUpdate: T | any): Observable <T | T[]> {
-    return this.http.patch <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToUpdate.id}`, objToUpdate);
+    return this.http.patch <T | T[]> (`${this.endPoint.URL_API() + model.tableName}/${objToUpdate}`, model);
   }
 
   /**

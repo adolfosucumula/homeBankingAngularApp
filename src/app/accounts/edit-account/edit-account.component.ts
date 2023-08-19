@@ -50,7 +50,6 @@ export class EditAccountComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.alertD.openSuccessAlertDialog()
 
     //Function to validate the form fields according to the specific rules
     this.accountForm = this.formBuilder.group({

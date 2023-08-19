@@ -1,3 +1,5 @@
+import { Observable } from "rxjs";
+
 export class UserModel {
   private id: number;
   private fullname: string;
@@ -9,22 +11,20 @@ export class UserModel {
   private isActive: boolean;
   private createdAt: string;
   private updatedAt: string;
-  public tableName = "users";
+  public tableName: string;
 
   constructor(
-    id: number,
-    fullname: string,
-    username: string,
-    email: string,
-    telephone: number,
-    password: string,
-    role: string,
-    isActive: boolean,
-    createdAt: string,
-    updatedAt: string
+    fullname: string = '',
+    username: string = '',
+    email: string = '',
+    telephone: number = 0,
+    password: string = '',
+    role: string = '',
+    isActive: boolean = false,
+    createdAt: string = '',
+    updatedAt: string = ''
     ){
-
-      this.id = id;
+      this.id = 0;
       this.fullname = fullname;
       this.username = username;
       this.email = email;
@@ -34,8 +34,16 @@ export class UserModel {
       this.isActive = isActive;
       this.createdAt = createdAt;
       this.updatedAt = updatedAt;
+      this.tableName = "users"
   }
 
+  public setId(id: number): void {
+    this.id = id;
+  }
+
+  public getId(){
+    return this.id;
+  }
 
   public setTableName(tablename: string) {
     this.tableName = tablename;

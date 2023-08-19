@@ -10,11 +10,9 @@ import { StorageService } from 'src/app/utils/StorageService.service';
 import { AuthUtils } from 'src/app/utils/AuthUtils';
 import { FormGroup } from '@angular/forms';
 import { UserModel } from 'src/app/models/UserModel';
+import { GenericServices } from '../../generic-services.service';
 
-//const httpOptions = {
-  //headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-//};
-
+let model: UserModel = new UserModel();
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +20,7 @@ import { UserModel } from 'src/app/models/UserModel';
 
 export class AuthServicesComponent {
 
-  constructor(private localStore: StorageService, private authUtils: AuthUtils,
+  constructor(private localStore: StorageService, private services: GenericServices, private authUtils: AuthUtils,
     private httpReq: HttpReq, private http: HttpClient) {}
 
   signInFormData: FormGroup = this.authUtils.createSigninFormGroup();
@@ -31,9 +29,11 @@ export class AuthServicesComponent {
    *
    */
   allUsers(): Observable <any>{
-    return this.http.get <UserModel> (this.httpReq.URL_API() + 'users/'
+    //model.setTableName("accounts")
+    return this.services.read(model)
+    /*return this.http.get <UserModel> (this.httpReq.URL_API() + 'users/'
     ,this.httpReq.myHttpOption()
-    )
+    )*/
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
@@ -141,6 +141,36 @@ export class AuthServicesComponent {
         return throwError(err);    //Rethrow it back to component
       })
     );
+  }
+
+  /**
+   *
+   * @param dataList
+   * @param id
+   * @returns
+   */
+  findUserByIdInDBList(dataList: UserModel | any, id: Number): Observable <any> {
+    return dataList.find((dataList: {id: Number}) => dataList.id == id );
+  }
+
+  /**
+   *
+   * @param dataList
+   * @param username
+   * @returns
+   */
+  findUserByUsernameInDBList(dataList: UserModel | any, username: string): Observable <any> {
+    return dataList.find((dataList: {username: string}) =>  dataList.username == username );
+  }
+
+  /**
+   *
+   * @param dataList
+   * @param email
+   * @returns
+   */
+  findUserByEmailInDBList(dataList: UserModel | any, email: string): Observable <any> {
+    return dataList.find((dataList: {email: string}) => dataList.email == email );
   }
 
 }
