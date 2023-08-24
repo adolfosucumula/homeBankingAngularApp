@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AccountClass } from 'src/app/models/AccountModel';
-import { HttpReq } from 'src/app/server/HttpReq';
+import { HttpEndpointSetting } from 'src/app/server/httpEndpointSetting';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { handleError } from 'src/app/utils/handle-error';
@@ -16,7 +16,7 @@ let model: AccountClass = new AccountClass();
 })
 export class AccountServicesService {
 
-  constructor(private http: HttpClient, private baseUrl: HttpReq,
+  constructor(private http: HttpClient, private baseUrl: HttpEndpointSetting,
     private services: GenericServices, private snackBarAlert: SnackBarAlertMessage,
     private alertD: AlertMessageFactories
     ) { }

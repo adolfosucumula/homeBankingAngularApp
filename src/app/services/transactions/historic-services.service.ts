@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { AccountTransactionModel } from 'src/app/models/AccountTransactionModel';
-import { HttpReq } from 'src/app/server/HttpReq';
+import { HttpEndpointSetting } from 'src/app/server/httpEndpointSetting';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,10 @@ import { HttpReq } from 'src/app/server/HttpReq';
 
 export class HistoricServices {
 
-  constructor(private http: HttpClient, private base_url: HttpReq){}
+  constructor(private http: HttpClient, private base_url: HttpEndpointSetting){}
 
   getAllCredits(): Observable < any > {
-    return this.http.get(this.base_url.URL_API() + 'credits' )
+    return this.http.get(this.base_url.endPointURL() + 'credits' )
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
@@ -30,7 +30,7 @@ export class HistoricServices {
   }
 
   getCreditsById(accountId: number): Observable < any > {
-    return this.http.get(this.base_url.URL_API() + `credits/${ accountId }` )
+    return this.http.get(this.base_url.endPointURL() + `credits/${ accountId }` )
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
@@ -46,7 +46,7 @@ export class HistoricServices {
   }
 
   getAllDebits(): Observable < any > {
-    return this.http.get(this.base_url.URL_API() + 'debits' )
+    return this.http.get(this.base_url.endPointURL() + 'debits' )
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
@@ -62,7 +62,7 @@ export class HistoricServices {
   }
 
   getDebitsById(accountId: number): Observable < any > {
-    return this.http.get(this.base_url.URL_API() + `debits/${ accountId }` )
+    return this.http.get(this.base_url.endPointURL() + `debits/${ accountId }` )
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error

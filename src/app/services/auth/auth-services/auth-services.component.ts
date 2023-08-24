@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { HttpReq } from 'src/app/server/HttpReq';
+import { HttpEndpointSetting } from 'src/app/server/httpEndpointSetting';
 import { StorageService } from 'src/app/utils/StorageService.service';
 import { AuthUtils } from 'src/app/utils/AuthUtils';
 import { FormGroup } from '@angular/forms';
@@ -22,7 +22,7 @@ let model: UserModel = new UserModel();
 export class AuthServicesComponent {
 
   constructor(private localStore: StorageService, private services: GenericServices,
-    private authUtils: AuthUtils, private httpReq: HttpReq, private http: HttpClient,
+    private authUtils: AuthUtils, private httpReq: HttpEndpointSetting, private http: HttpClient,
     private alertD: AlertMessageFactories
     ) {}
 
@@ -103,7 +103,7 @@ export class AuthServicesComponent {
     createdAt: string,
     updatedAt: string
   ): Observable <any> {
-    return this.http.post <UserModel> ( this.httpReq.URL_API() + 'users/',
+    return this.http.post <UserModel> ( this.httpReq.endPointURL() + 'users/',
     {
       fullname,
       username,
@@ -140,7 +140,7 @@ export class AuthServicesComponent {
     this.localStore.clearSession();
     this.localStore.saveUser({}, 0);
     this.localStore.isLoggedIn();
-    return this.http.post(this.httpReq.URL_API() + 'signout',
+    return this.http.post(this.httpReq.endPointURL() + 'signout',
     {
       username: username, date: date, signout: true
     }

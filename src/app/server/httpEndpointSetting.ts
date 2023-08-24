@@ -6,11 +6,11 @@ import { Injectable } from "@angular/core";
   providedIn: 'root'
 })
 
-export class HttpReq {
+export class HttpEndpointSetting {
 
-  private readonly url = 'http://localhost:3000/';
+  private readonly url = 'http://localhost:2000/';
 
-  URL_API(){
+  endPointURL(){
     return this.url;
   }
 

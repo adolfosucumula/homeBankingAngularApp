@@ -3,16 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { AccountTransactionModel } from 'src/app/models/AccountTransactionModel';
-import { HttpReq } from 'src/app/server/HttpReq';
+import { HttpEndpointSetting } from 'src/app/server/httpEndpointSetting';
 @Injectable({
   providedIn: 'root'
 })
 export class CreditServicesService {
 
-  constructor(private http: HttpClient, private base_url: HttpReq) { }
+  constructor(private http: HttpClient, private base_url: HttpEndpointSetting) { }
 
   getAll(){
-    return this.http.get < AccountTransactionModel [] > ( this.base_url.URL_API() + 'credits/')
+    return this.http.get < AccountTransactionModel [] > ( this.base_url.endPointURL() + 'credits/')
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
@@ -38,7 +38,7 @@ export class CreditServicesService {
     status: string,
     createdAt: string
   ): Observable <any>{
-    return this.http.post < AccountTransactionModel > ( this.base_url.URL_API() + 'credits/', {
+    return this.http.post < AccountTransactionModel > ( this.base_url.endPointURL() + 'credits/', {
       sourceAccount,
       owner,
       account,
@@ -63,7 +63,7 @@ export class CreditServicesService {
   }
 
   getById(id: number) {
-    return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ id }`)
+    return this.http.get < AccountTransactionModel > ( this.base_url.endPointURL() + `credits/${ id }`)
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
@@ -79,7 +79,7 @@ export class CreditServicesService {
   }
 
   getByAccount(account: number) {
-    return this.http.get < AccountTransactionModel > ( this.base_url.URL_API() + `credits/${ account }`)
+    return this.http.get < AccountTransactionModel > ( this.base_url.endPointURL() + `credits/${ account }`)
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
