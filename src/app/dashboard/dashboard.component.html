@@ -9,9 +9,9 @@
 </button>
  <span class="example-spacer"></span>
  <!--   Menu buttons -->
-  <button mat-button *ngIf="isLogged" class="btn-menu-01" [routerLink]="['/logout']" >
-  Logout
-  </button>
+
+  <app-signout></app-signout>
+
   <button mat-button *ngIf="!isLogged" class="btn-menu-01" [routerLink]="['/login']">Sign In
   </button>
   <button mat-button *ngIf="!isLogged" class="btn-menu-01" [routerLink]="['/signup']"> Sign Up
@@ -36,10 +36,11 @@
   </mat-menu>
 
   <mat-menu #menu="matMenu" *ngIf="isLogged">
-    <button mat-menu-item [routerLink]="['/logout']" >
+    \<!--<button mat-menu-item [routerLink]="['/logout']" >
       <mat-icon>dialpad</mat-icon>
       <span>Logout</span>
-    </button>
+    </button>-->
+    <app-signout></app-signout>
   </mat-menu>
 
    </mat-toolbar>

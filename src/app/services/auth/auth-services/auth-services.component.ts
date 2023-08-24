@@ -32,11 +32,8 @@ export class AuthServicesComponent {
    *
    */
   allUsers(): Observable <any>{
-    //model.setTableName("accounts")
+    model.setTableName("users")
     return this.services.read(model)
-    /*return this.http.get <UserModel> (this.httpReq.URL_API() + 'users/'
-    ,this.httpReq.myHttpOption()
-    )*/
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
@@ -45,7 +42,7 @@ export class AuthServicesComponent {
         if(err.status == 0){
           this.alertD.openErrorAlertDialog("Error Message", "Server error: "+ err.message, "Ok", '800ms', '500ms')
         }else{
-          this.alertD.openErrorAlertDialog("Error Message", err.message + " Status: " + err.status, "Ok")
+          this.alertD.openErrorAlertDialog("Error Message", err.message + " Status: " + err.status, "Ok", '700ms', '400ms')
         }
         console.error(err);
 
@@ -67,19 +64,20 @@ export class AuthServicesComponent {
     model.setUsername(username);
     model.setPassword(password);
     model.setCreatedAt(createdAt);
-    console.log(model)
+
     return this.services.create(model, model)
-    /*return this.http.post <UserModel> ( this.httpReq.URL_API() + 'loggeds/',
-      {username, password , createdAt}
-      ,this.httpReq.myHttpOption()
-    )*/
+
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
         console.log('error caught in service. When trying to sign in')
         console.error(err);
-
+        if(err.status == 0){
+          this.alertD.openErrorAlertDialog("Error Message", "Server error: "+ err.message, "Ok", '800ms', '500ms')
+        }else{
+          this.alertD.openErrorAlertDialog("Error Message", err.message + " Status: " + err.status, "Ok", '700ms', '400ms')
+        }
         //Handle the error here
 
         return throwError(err);    //Rethrow it back to component
@@ -122,7 +120,11 @@ export class AuthServicesComponent {
       catchError((err) => {
         console.log('error caught in service. When trying to sign up')
         console.error(err);
-
+        if(err.status == 0){
+          this.alertD.openErrorAlertDialog("Error Message", "Server error: "+ err.message, "Ok", '800ms', '500ms')
+        }else{
+          this.alertD.openErrorAlertDialog("Error Message", err.message + " Status: " + err.status, "Ok", '700ms', '400ms')
+        }
         //Handle the error here
 
         return throwError(err);    //Rethrow it back to component
@@ -140,18 +142,24 @@ export class AuthServicesComponent {
     this.localStore.clearSession();
     this.localStore.saveUser({}, 0);
     this.localStore.isLoggedIn();
-    return this.http.post(this.httpReq.endPointURL() + 'signout',
-    {
-      username: username, date: date, signout: true
-    }
-    , this.httpReq.myHttpOption()
-    ).pipe(
+
+    model.setTableName("signout");
+    model.setUsername(username);
+    model.setCreatedAt(date);
+    model.signout = true;
+
+    return this.services.create(model, model)
+    .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
         console.log('error caught in service. When trying to log out')
         console.error(err);
-
+        if(err.status == 0){
+          this.alertD.openErrorAlertDialog("Error Message", "Server error: "+ err.message, "Ok", '800ms', '500ms')
+        }else{
+          this.alertD.openErrorAlertDialog("Error Message", err.message + " Status: " + err.status, "Ok", '700ms', '400ms')
+        }
         //Handle the error here
 
         return throwError(err);    //Rethrow it back to component
@@ -176,8 +184,27 @@ export class AuthServicesComponent {
    * @returns
    */
   findUserByUsernameInDBList(dataList: UserModel | any, username: string): Observable <any> {
-    return dataList.find((dataList: {username: string}) =>  dataList.username == username );
+    const array = dataList.find((dataList: {username: string}) =>  dataList.username == username );
+    console.log(array)
+    return array
   }
+
+  /**
+   *
+   * @param dataList
+   * @param username
+   * @param password
+   * @returns
+   */
+  compareUsernameAndPassword(dataList: any | any, username: string, password: string): boolean {
+    const isEqual = dataList.findIndex( (element: {username: string, password: string}) =>
+    element.username  == username
+    && element.password  == password);
+
+    if(isEqual >= 0) return true;
+    else return false;
+  }
+
 
   /**
    *

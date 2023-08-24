@@ -19,7 +19,7 @@ export class SignoutComponent implements OnInit {
     user: any;
 
     ngOnInit(): void {
-      this.signOut();
+
     }
 
     /**
@@ -29,20 +29,12 @@ export class SignoutComponent implements OnInit {
     signOut(){
       this.user = this.localStore.getUser();
       this.authServices.logout(this.user.username, this.currentDate.getDate())
-      .subscribe({
-        next: data => {
-          this.okay = this.localStore.isLoggedIn();
+      .subscribe((data: any) => {
+        this.okay = this.localStore.isLoggedIn();
 
           if(!this.okay){
-            //window.location.reload();
-            //this.localStore.redirectToLoginPage();
             this.router.navigate(['/']);
-
           }
-        },
-        error: err => {
-
-        }
       })
 
 

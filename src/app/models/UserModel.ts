@@ -1,6 +1,7 @@
 import { Observable } from "rxjs";
 
 export class UserModel {
+  [x: string]: any;
   private id: number;
   private fullname: string;
   private username: string;
@@ -12,6 +13,7 @@ export class UserModel {
   private createdAt: string;
   private updatedAt: string;
   public tableName: string;
+  public signout: boolean = true;
 
   constructor(
     fullname: string = '',
@@ -77,9 +79,15 @@ export class UserModel {
     return this.tableName;
   }
 
-  public isPasswordMatch(confirmPassword: string){
+  public isPasswordsMatches(confirmPassword: string){
     return this.password == confirmPassword;
   }
+
+  public thisPasswordsMatches(password: string, confirmPassword: string){
+    return password == confirmPassword;
+  }
+
+
 
 
 }

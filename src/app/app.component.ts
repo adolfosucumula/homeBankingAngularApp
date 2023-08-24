@@ -37,7 +37,7 @@ export class AppComponent {
   ngOnInit(): void{
 
     this.isLogged = this.localStore.isLoggedIn();
-    console.log("Is logged: "+this.isLogged);
+    //console.log("Is logged: "+this.isLogged);
   }
 
   signOut(){
