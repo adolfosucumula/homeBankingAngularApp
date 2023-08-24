@@ -11,6 +11,7 @@ import { AuthUtils } from 'src/app/utils/AuthUtils';
 import { FormGroup } from '@angular/forms';
 import { UserModel } from 'src/app/models/UserModel';
 import { GenericServices } from '../../generic-services.service';
+import { AlertMessageFactories } from 'src/app/utils/AlertMessageFactories';
 
 let model: UserModel = new UserModel();
 
@@ -20,8 +21,10 @@ let model: UserModel = new UserModel();
 
 export class AuthServicesComponent {
 
-  constructor(private localStore: StorageService, private services: GenericServices, private authUtils: AuthUtils,
-    private httpReq: HttpReq, private http: HttpClient) {}
+  constructor(private localStore: StorageService, private services: GenericServices,
+    private authUtils: AuthUtils, private httpReq: HttpReq, private http: HttpClient,
+    private alertD: AlertMessageFactories
+    ) {}
 
   signInFormData: FormGroup = this.authUtils.createSigninFormGroup();
 
@@ -38,7 +41,12 @@ export class AuthServicesComponent {
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
-        console.log('error caught in service. When trying to load users')
+        console.log('error caught in service. When trying to load users. '+ err.status)
+        if(err.status == 0){
+          this.alertD.openErrorAlertDialog("Error Message", "Server error: "+ err.message, "Ok", '800ms', '500ms')
+        }else{
+          this.alertD.openErrorAlertDialog("Error Message", err.message + " Status: " + err.status, "Ok")
+        }
         console.error(err);
 
         //Handle the error here

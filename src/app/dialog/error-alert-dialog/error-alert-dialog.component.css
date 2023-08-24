@@ -1,10 +1,7 @@
-button {
-  margin-right: 8px;
-}
 
 .title{
-  background: #1a1838;
-  color: rgb(255, 255, 255);
+  background: #ffffff;
+  color: rgb(20, 20, 20);
   margin-bottom: 0%;
   display: flex;
 }
@@ -21,8 +18,8 @@ button {
 .content{
   margin-top: 0%;
   padding: .1rem 2rem;
-  background: #1a1838;
-  color: rgb(255, 255, 255);
+  background: #ffffff;
+  color: rgb(20, 20, 20);
 }
 
 .content .message {
@@ -34,16 +31,18 @@ button {
 }
 
 .footer{
-  background: #1a1838;
-  color: rgb(255, 255, 255);
+  background: #ffffff;
+  color: rgb(20, 20, 20);
 }
 
 mat-card {
-  background: #1a1838;
-  color: rgb(255, 255, 255);
+  background: #ffffff;
+  color: rgb(20, 20, 20);
 }
 
 mat-card button{
+  margin-right: 8px;
   color: #ffffff;
-  border: #f72929 1px solid;
+  background: #f72929;
+  border: #242424 1px solid;
 }

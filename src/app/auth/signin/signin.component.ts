@@ -67,12 +67,12 @@ export class SigninComponent {
      * to the database and make login. But at the end I decided to implement
      * the submit method only
      */
-    this.getAllUsers();
+    this.firstFindUser();
 
 
   };
 
-  getAllUsers(){
+  firstFindUser(){
     this.authServices.allUsers().subscribe((data: UserModel) => {
       const array = JSON.stringify(this.authServices.findUserByUsernameInDBList(data, this.entityForm.value.username));
 
@@ -92,26 +92,30 @@ export class SigninComponent {
 
 
   signIn(form: FormGroup, username: string, email: string, telephone: number, userID: number, userRole: string ){
+
     this.authServices.signIn(
       this.authUtils.getLoginFormData(form).username,
       this.authUtils.getLoginFormData(form).password,
       this.currentDate.getDate()
     ).subscribe({
       next: data => {
-        this.localStore.saveUser({
-          userID: userID,
-          username: username,
-          email: email,
-          telephone: telephone,
-          role: userRole,
-          createdAt: this.currentDate.getDate(),
-          isActive: true
-        },1);
+
         this.isLogged = this.localStore.isLoggedIn();
         if(this.isLogged){
+          this.localStore.saveUser({
+            userID: userID,
+            username: username,
+            email: email,
+            telephone: telephone,
+            role: userRole,
+            createdAt: this.currentDate.getDate(),
+            isActive: true
+          },1);
           this.alertD.openSuccessAlertDialog("You are logged in")
           //window.location.reload();
           this.router.navigate(['/dashboard']);
+        }else{
+          this.snackbarAlert.openSnackBar("Login failed!","Okay", 12, "bottom", "center");
         }
       },
       error: err => {

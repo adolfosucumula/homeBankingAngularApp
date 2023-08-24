@@ -42,7 +42,7 @@ import { MatPaginatorModule} from '@angular/material/paginator';
 
 
 //Importing Http client module because we have components that make http requests throught HttpClient module
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { HomeAccountComponent } from './accounts/home-account/home-account.component';
 import { EditAccountComponent } from './accounts/edit-account/edit-account.component';
@@ -64,6 +64,8 @@ import { AlertModalComponent } from './dialog/dialog-animation/dialog-animation.
 import { AlertDialogConfirmationComponent } from './dialog/alert-dialog-confirmation/alert-dialog-confirmation.component';
 import { ErrorAlertDialogComponent } from './dialog/error-alert-dialog/error-alert-dialog.component';
 import { SuccessAlertDialogComponent } from './dialog/success-alert-dialog/success-alert-dialog.component';
+import { LoaderSpinnerComponent } from './spinner/loader-spinner/loader-spinner.component';
+import { LoadingInterceptor } from './spinner/interceptor/loading.interceptor';
 
 
 
@@ -92,9 +94,12 @@ import { SuccessAlertDialogComponent } from './dialog/success-alert-dialog/succe
         AlertModalComponent,
         AlertDialogConfirmationComponent,
         ErrorAlertDialogComponent,
-        SuccessAlertDialogComponent
+        SuccessAlertDialogComponent,
+        LoaderSpinnerComponent
     ],
-    providers: [],
+    providers: [
+      {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
