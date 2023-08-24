@@ -91,8 +91,14 @@ export class SigninComponent {
           const array = JSON.stringify(this.authServices.findUserByUsernameInDBList(data, this.entityForm.value.username));
           const items = JSON.parse(array);
 
-          // Reguister login history
-          this.signinService.signIn(this.entityForm, items.username, items.email, items.telephone, items.id, items.role );
+          // Register login history
+          if(!items.isActive){
+            this.router.navigate(['/user-inactive']);
+          }
+          else{
+            this.signinService.signIn(this.entityForm, items.username, items.email, items.telephone, items.id, items.role, items.isActive );
+          }
+
         }
 
       }

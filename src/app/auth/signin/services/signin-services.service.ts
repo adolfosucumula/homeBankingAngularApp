@@ -24,7 +24,7 @@ export class SigninServicesService {
     ) {}
 
 
-    signIn(form: FormGroup, username: string, email: string, telephone: number, userID: number, userRole: string ){
+    signIn(form: FormGroup, username: string, email: string, telephone: number, userID: number, userRole: string, isActive: boolean ){
 
       this.authServices.signIn(
         this.authUtils.getLoginFormData(form).username,
@@ -39,11 +39,12 @@ export class SigninServicesService {
             telephone: telephone,
             role: userRole,
             createdAt: this.currentDate.getDate(),
-            isActive: true
+            isActive: isActive
           },1);
           this.isLogged = this.localStore.isLoggedIn();
           if(this.isLogged){
-            this.router.navigate(['/dashboard']);
+              this.router.navigate(['/dashboard']);
+
           }else{
             this.alertD.openErrorAlertDialog("Error", "Logging failed!", "Ok", '700ms', '1000ms')
           }

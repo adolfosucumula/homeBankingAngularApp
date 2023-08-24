@@ -27,21 +27,22 @@ export class DashboardComponent {
     let btn = document.querySelector('.btn-menu-sidebar');
     let sidebar = document.querySelector('.mat-drawer');
     this.isVisited = !this.isVisited;
-    //btn?.setAttribute(`style`,`display:flex;`);
-    //sidebar?.classList.toggle('active');
+
   }
 
   ngOnInit(): void {
 
-    //console.log(JSON.stringify(this.localStore.getUser()))
-    //console.log(JSON.stringify(this.localStore.isLoggedIn()))
     this.isLogged = this.localStore.isLoggedIn();
+    this.username = this.localStore.getUser();
+    //Check is the  user is logged. If false redirect him to the login page
     if(!this.isLogged){
-      //console.log("User not logged")
       this.router.navigate(['/login']);
     }
+  //Check is the  user is active. If false redirect him to the inactive page
+    if(!this.username.isActive){
+      //this.router.navigate(['/user-inactive']);
+    }
 
-    this.username = this.localStore.getUser();
 
   }
 

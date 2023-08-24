@@ -66,6 +66,7 @@ import { ErrorAlertDialogComponent } from './dialog/error-alert-dialog/error-ale
 import { SuccessAlertDialogComponent } from './dialog/success-alert-dialog/success-alert-dialog.component';
 import { LoaderSpinnerComponent } from './spinner/loader-spinner/loader-spinner.component';
 import { LoadingInterceptor } from './spinner/interceptor/loading.interceptor';
+import { UserStatusComponent } from './auth/user-status/user-status.component';
 
 
 
@@ -95,7 +96,8 @@ import { LoadingInterceptor } from './spinner/interceptor/loading.interceptor';
         AlertDialogConfirmationComponent,
         ErrorAlertDialogComponent,
         SuccessAlertDialogComponent,
-        LoaderSpinnerComponent
+        LoaderSpinnerComponent,
+        UserStatusComponent
     ],
     providers: [
       {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}

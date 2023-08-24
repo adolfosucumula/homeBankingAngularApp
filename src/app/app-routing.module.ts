@@ -15,6 +15,7 @@ import { CreditComponent } from './accounts/credit/credit.component';
 import { HomePageComponent } from './web/home-page/home-page.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { BalanceComponent } from './accounts/balance/balance.component';
+import { UserStatusComponent } from './auth/user-status/user-status.component';
 
 //Here we define our routes
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
 
   { path: 'logout', component: SignoutComponent},
+  { path: 'user-inactive', component: UserStatusComponent},
   { path: 'dashboard', component: DashboardComponent,
     children: [
       { path: 'xx/account', component: AccountsComponent },

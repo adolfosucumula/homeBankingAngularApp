@@ -6,6 +6,9 @@ import { StorageService } from 'src/app/utils/StorageService.service';
 import { SnackBarAlertMessage } from 'src/app/utils/snackBarAlertMessage';
 import { SignUpUtilsService } from './utils/utils.service';
 import { AuthServicesComponent } from '../auth-services/auth-services.component';
+import { UserModel } from 'src/app/models/UserModel';
+import { SignupServicesService } from './services/signup-services.service';
+import { AlertMessageFactories } from 'src/app/utils/AlertMessageFactories';
 
 @Component({
   selector: 'app-signup',
@@ -15,9 +18,11 @@ import { AuthServicesComponent } from '../auth-services/auth-services.component'
 export class SignupComponent {
 
 
-  constructor(private utils: SignUpUtilsService, private snackbarAlert: SnackBarAlertMessage,
-    private localStore: StorageService,private formBuilder: FormBuilder,
+  constructor(private utils: SignUpUtilsService,
+    private localStore: StorageService,
+    private signUpService: SignupServicesService,
     private router: Router, private authServices: AuthServicesComponent,
+    private alertD: AlertMessageFactories,
     private currentDate: CurrentDate
    ){}
 
@@ -36,17 +41,6 @@ export class SignupComponent {
 
     ngOnInit(): void {
 
-      //Function to validate the form fields according to the specific rules
-      /*this.entityForm = this.formBuilder.group({
-
-        fullname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+'), Validators.maxLength(200)] ],
-        username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(100)] ],
-        email: ['', [Validators.required,Validators.email, Validators.maxLength(100)] ],
-        telephone: ['', [Validators.required,Validators.pattern('^[0-9]+$'), Validators.minLength(9), Validators.maxLength(9)] ],
-        password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(8)] ],
-        //confirmPassword: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(8)] ]
-      });*/
-
       this.entityForm = this.utils.validateFieldGroup();
 
       if(this.localStore.isLoggedIn()){
@@ -55,7 +49,7 @@ export class SignupComponent {
     };
 
     /**
-       * Method to sig in to the system.
+       * Method to sig in to the user.
        * The
        * @returns
        */
@@ -69,60 +63,28 @@ export class SignupComponent {
        * First list all the user in database to check the user already exist
        * by comparing the username and the email
        */
-      this.authServices.allUsers().subscribe({
-        next: data => {
-          for (let index = 0; index < data.length; index++) {
-            const login = data[index].username;
-            const email = data[index].email;
-            const telephone = Number(data[index].telephone);
-            const tel = Number(this.entityForm.value.telephone);
-            if(login === this.entityForm.value.username){
-              this.erroMessage = "This user is already registered!";
-              break;
-            }else if(email === this.entityForm.value.email){
-              this.erroMessage = "This email is already registered!";
-              break;
-            }else if(telephone === tel){
-              this.erroMessage = "This telephone is already registered!";
-              break;
-            }else{
-              this.erroMessage = "";
-              this.saveUser(this.entityForm);
+      this.authServices.allUsers().subscribe((data: UserModel) => {
 
-              break;
-            }
+          if(this.signUpService.thisUserExist(data, this.entityForm.value.username.toLowerCase())){
 
+            this.alertD.openErrorAlertDialog("Warning", "This username already exist.", "Ok", '700ms', '1000ms')
+
+          }else if(this.signUpService.thisEmailExist(data, this.entityForm.value.email.toLowerCase())){
+
+            this.alertD.openErrorAlertDialog("Warning", "This email already exist.", "Ok", '700ms', '1000ms')
+
+          }else if(this.signUpService.thisTelephoneExist(data, this.entityForm.value.telephone)){
+
+            this.alertD.openErrorAlertDialog("Warning", "This telephone was already registed.", "Ok", '700ms', '1000ms')
+
+          }else{
+            this.erroMessage = "";
+              this.signUpService.saveUser(this.entityForm);
           }
-        },
-        error: err => {
-          console.log(JSON.stringify(err), null, 3)
-        }
+
       })
 
     };
-
-    saveUser(formData: FormGroup){
-      this.authServices.register(
-        this.utils.getRegisterFormData(formData).fullname,
-        this.utils.getRegisterFormData(formData).username,
-        this.utils.getRegisterFormData(formData).email,
-        this.utils.getRegisterFormData(formData).telephone,
-        this.utils.getRegisterFormData(formData).password,
-        "Normal",
-        true,
-        this.currentDate.getDate(),
-        this.currentDate.getDate()
-      )
-      .subscribe({
-        next: data => {
-          this.router.navigate(['/login']);
-        },
-        error: err => {
-          console.log(JSON.stringify(err), null, 3)
-        }
-      })
-    }
-
 
 
 }

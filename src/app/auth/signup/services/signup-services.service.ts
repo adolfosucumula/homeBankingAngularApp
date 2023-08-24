@@ -1,11 +1,31 @@
 import { Injectable } from '@angular/core';
+import { AuthServicesComponent } from '../../auth-services/auth-services.component';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SignUpUtilsService } from '../utils/utils.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignupServicesService {
 
-  constructor() { }
+  constructor(private authServices: AuthServicesComponent, private utils: SignUpUtilsService, private router: Router) { }
+
+  /**
+   *
+   * @param formData
+   */
+  saveUser(formData: FormGroup){
+
+    this.authServices.register(
+      this.utils.getUserObject(formData)
+    )
+    .subscribe((data: any)=> {
+      this.router.navigate(['/login']);
+    })
+
+  }
+
 
 
   /**

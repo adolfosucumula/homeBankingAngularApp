@@ -91,30 +91,13 @@ export class AuthServicesComponent {
    * @returns
    */
   register(
-    fullname: string,
-    username: string,
-    email: string,
-    telephone: number,
-    password: string,
-    role: string,
-    isActive: boolean,
-    createdAt: string,
-    updatedAt: string
+    user: UserModel
   ): Observable <any> {
-    return this.http.post <UserModel> ( this.httpReq.endPointURL() + 'users/',
-    {
-      fullname,
-      username,
-      email,
-      telephone,
-      password,
-      role,
-      isActive,
-      createdAt,
-      updatedAt
-    }
-    ,this.httpReq.myHttpOption()
-    ).pipe(
+
+    user.setTableName("users");
+
+    return this.services.create(user, user)
+    .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error
       catchError((err) => {
