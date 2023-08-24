@@ -1,7 +1,9 @@
 import { Observable } from "rxjs";
 
 export class UserModel {
+
   [x: string]: any;
+  
   private id: number;
   private fullname: string;
   private username: string;

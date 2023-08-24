@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthServicesComponent } from 'src/app/services/auth/auth-services/auth-services.component';
+import { AuthServicesComponent } from 'src/app/auth/auth-services/auth-services.component';
 import { AlertMessageFactories } from 'src/app/utils/AlertMessageFactories';
-import { AuthUtils } from 'src/app/utils/AuthUtils';
+import { AuthUtils } from 'src/app/auth/utils/AuthUtils';
 import { CurrentDate } from 'src/app/utils/CurrentDate';
 import { StorageService } from 'src/app/utils/StorageService.service';
 import { SnackBarAlertMessage } from 'src/app/utils/snackBarAlertMessage';

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthServicesComponent } from 'src/app/services/auth/auth-services/auth-services.component';
-import { AuthUtils } from 'src/app/utils/AuthUtils';
 import { CurrentDate } from 'src/app/utils/CurrentDate';
 import { StorageService } from 'src/app/utils/StorageService.service';
 import { SnackBarAlertMessage } from 'src/app/utils/snackBarAlertMessage';
+import { SignUpUtilsService } from './utils/utils.service';
+import { AuthServicesComponent } from '../auth-services/auth-services.component';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +15,7 @@ import { SnackBarAlertMessage } from 'src/app/utils/snackBarAlertMessage';
 export class SignupComponent {
 
 
-  constructor(private authUtils: AuthUtils, private snackbarAlert: SnackBarAlertMessage,
+  constructor(private utils: SignUpUtilsService, private snackbarAlert: SnackBarAlertMessage,
     private localStore: StorageService,private formBuilder: FormBuilder,
     private router: Router, private authServices: AuthServicesComponent,
     private currentDate: CurrentDate
@@ -26,7 +26,7 @@ export class SignupComponent {
   hide = true;
   erroMessage = "";
 
-  entityForm: FormGroup = this.authUtils.createSignupFormGroup();
+  entityForm: FormGroup = this.utils.createSignupFormGroup();
 
   //Call AbstractControl class to check if the data from form fields conforms to the rule defined above
     get _fC(): {[key: string]: AbstractControl } {
@@ -37,7 +37,7 @@ export class SignupComponent {
     ngOnInit(): void {
 
       //Function to validate the form fields according to the specific rules
-      this.entityForm = this.formBuilder.group({
+      /*this.entityForm = this.formBuilder.group({
 
         fullname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+'), Validators.maxLength(200)] ],
         username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(100)] ],
@@ -45,7 +45,9 @@ export class SignupComponent {
         telephone: ['', [Validators.required,Validators.pattern('^[0-9]+$'), Validators.minLength(9), Validators.maxLength(9)] ],
         password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(8)] ],
         //confirmPassword: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(8)] ]
-      });
+      });*/
+
+      this.entityForm = this.utils.validateFieldGroup();
 
       if(this.localStore.isLoggedIn()){
         this.router.navigate(['/']);
@@ -101,11 +103,11 @@ export class SignupComponent {
 
     saveUser(formData: FormGroup){
       this.authServices.register(
-        this.authUtils.getRegisterFormData(formData).fullname,
-        this.authUtils.getRegisterFormData(formData).username,
-        this.authUtils.getRegisterFormData(formData).email,
-        this.authUtils.getRegisterFormData(formData).telephone,
-        this.authUtils.getRegisterFormData(formData).password,
+        this.utils.getRegisterFormData(formData).fullname,
+        this.utils.getRegisterFormData(formData).username,
+        this.utils.getRegisterFormData(formData).email,
+        this.utils.getRegisterFormData(formData).telephone,
+        this.utils.getRegisterFormData(formData).password,
         "Normal",
         true,
         this.currentDate.getDate(),

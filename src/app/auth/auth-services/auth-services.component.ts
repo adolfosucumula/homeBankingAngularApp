@@ -7,10 +7,10 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpEndpointSetting } from 'src/app/server/httpEndpointSetting';
 import { StorageService } from 'src/app/utils/StorageService.service';
-import { AuthUtils } from 'src/app/utils/AuthUtils';
+import { AuthUtils } from 'src/app/auth/utils/AuthUtils';
 import { FormGroup } from '@angular/forms';
 import { UserModel } from 'src/app/models/UserModel';
-import { GenericServices } from '../../generic-services.service';
+import { GenericServices } from '../../services/generic-services.service';
 import { AlertMessageFactories } from 'src/app/utils/AlertMessageFactories';
 
 let model: UserModel = new UserModel();
@@ -187,6 +187,21 @@ export class AuthServicesComponent {
     const array = dataList.find((dataList: {username: string}) =>  dataList.username == username );
     console.log(array)
     return array
+  }
+
+  /**
+   *
+   * @param dataList
+   * @param username
+   * @param password
+   * @returns
+   */
+  compareUsername(dataList: any | any, username: string): boolean {
+    const isEqual = dataList.findIndex( (element: {username: string}) =>
+    element.username  == username);
+
+    if(isEqual >= 0) return true;
+    else return false;
   }
 
   /**

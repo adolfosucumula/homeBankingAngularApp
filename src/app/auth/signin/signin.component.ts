@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserModel } from 'src/app/models/UserModel';
-import { AuthServicesComponent } from 'src/app/services/auth/auth-services/auth-services.component';
+import { AuthServicesComponent } from 'src/app/auth/auth-services/auth-services.component';
 import { AlertMessageFactories } from 'src/app/utils/AlertMessageFactories';
-import { AuthUtils } from 'src/app/utils/AuthUtils';
+import { AuthUtils } from 'src/app/auth/utils/AuthUtils';
 import { CurrentDate } from 'src/app/utils/CurrentDate';
 import { StorageService } from 'src/app/utils/StorageService.service';
 import { SnackBarAlertMessage } from 'src/app/utils/snackBarAlertMessage';
-import { SigninServicesService } from '../services/signin-services.service';
+import { SigninServicesService } from './services/signin-services.service';
+
+let user = new UserModel();
 
 @Component({
   selector: 'app-signin',
@@ -17,7 +19,6 @@ import { SigninServicesService } from '../services/signin-services.service';
 })
 export class SigninComponent {
 
-  user = new UserModel();
 
   constructor(private authUtils: AuthUtils,
      private localStore: StorageService,private formBuilder: FormBuilder,
@@ -76,17 +77,23 @@ export class SigninComponent {
     this.authServices.allUsers().subscribe((data: any) => {
 
       // Find user from database list
-      const exists = this.authServices.compareUsernameAndPassword(data, this.entityForm.value.username, this.entityForm.value.password);
+      const exists = this.authServices.compareUsername(data, this.entityForm.value.username);
 
       if(!exists){
-        this.alertD.openErrorAlertDialog("Warning", "This username was not found.", "Ok", '700ms', '1000ms')
+        this.alertD.openErrorAlertDialog("Warning", "User not found.", "Ok", '700ms', '1000ms')
       }else{
 
-        const array = JSON.stringify(this.authServices.findUserByUsernameInDBList(data, this.entityForm.value.username));
-        const items = JSON.parse(array);
+        const exists = this.authServices.compareUsernameAndPassword(data, this.entityForm.value.username, this.entityForm.value.password);
+        if(!exists){
+          this.alertD.openErrorAlertDialog("Warning", "Password wrong.", "Ok", '700ms', '1000ms')
+        }else{
 
-        // Reguister login history
-        this.signinService.signIn(this.entityForm, items.username, items.email, items.telephone, items.id, items.role );
+          const array = JSON.stringify(this.authServices.findUserByUsernameInDBList(data, this.entityForm.value.username));
+          const items = JSON.parse(array);
+
+          // Reguister login history
+          this.signinService.signIn(this.entityForm, items.username, items.email, items.telephone, items.id, items.role );
+        }
 
       }
 

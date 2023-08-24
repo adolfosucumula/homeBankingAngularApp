@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthServicesComponent } from 'src/app/services/auth/auth-services/auth-services.component';
+import { AuthServicesComponent } from 'src/app/auth/auth-services/auth-services.component';
 import { CurrentDate } from 'src/app/utils/CurrentDate';
 import { StorageService } from 'src/app/utils/StorageService.service';
 

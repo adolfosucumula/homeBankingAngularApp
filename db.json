@@ -720,6 +720,48 @@
       "createdAt": "24/08/2023 04:42",
       "updatedAt": "",
       "tableName": "loggeds"
+    },
+    {
+      "signout": true,
+      "id": 60,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "24/08/2023 04:46",
+      "updatedAt": "",
+      "tableName": "loggeds"
+    },
+    {
+      "signout": true,
+      "id": 61,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "24/08/2023 05:29",
+      "updatedAt": "",
+      "tableName": "loggeds"
+    },
+    {
+      "signout": true,
+      "id": 62,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "24/08/2023 05:29",
+      "updatedAt": "",
+      "tableName": "loggeds"
     }
   ],
   "signout": [
@@ -1213,6 +1255,48 @@
       "role": "",
       "isActive": false,
       "createdAt": "24/08/2023 04:42",
+      "updatedAt": "",
+      "tableName": "signout"
+    },
+    {
+      "signout": true,
+      "id": 50,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "",
+      "role": "",
+      "isActive": false,
+      "createdAt": "24/08/2023 05:21",
+      "updatedAt": "",
+      "tableName": "signout"
+    },
+    {
+      "signout": true,
+      "id": 51,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "24/08/2023 05:29",
+      "updatedAt": "",
+      "tableName": "signout"
+    },
+    {
+      "signout": true,
+      "id": 52,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "",
+      "role": "",
+      "isActive": false,
+      "createdAt": "24/08/2023 06:10",
       "updatedAt": "",
       "tableName": "signout"
     }
