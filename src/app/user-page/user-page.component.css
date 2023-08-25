@@ -1,0 +1,258 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Arimo:ital,wght@1,400;1,600&family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,600&family=Pacifico&family=Roboto:ital,wght@0,500;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@1,300;1,400;1,500;1,600;1,800;1,900&display=swap');
+
+.main{
+  padding: 3rem 2rem;
+  margin: auto;
+  display: block;
+  align-content: center;
+  font-family: 'Rubik', sans-serif;
+}
+
+.main .container{
+  position: relative;
+  width: 100%;
+  display: block;
+  background: rgba(18, 150, 53, 0.28);
+  border: 0px;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.25);
+  font-family: 'Rubik', sans-serif;
+}
+
+.main .container .balance .header{
+  padding: 2rem 1rem;
+}
+.main .container .balance .header h2{
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: rgb(2, 29, 82);
+}
+
+.main .container .balance .header div{
+  padding: 1rem 1rem;
+  height: 100%;
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: rgb(77, 77, 77);
+}
+
+.main .container .balance .header div .mat-icon.currency{
+  width: 3%;
+  font-size: 1.6rem;
+}
+
+.main .container .balance .box-card{
+  width: 100%;
+  display: flex;
+  border-top: 2px solid rgb(165, 209, 177);
+}
+
+.main .container .balance .box-card .card{
+  margin-top: 1%;
+  width: 17%;
+  padding: .9rem 1rem;
+  margin-left: 1%;
+  text-align: right;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.20);
+  border: 0px;
+  cursor: pointer;
+}
+
+.main .container .balance .box-card .card button{
+  border: 0px;
+  background: transparent;
+}
+
+.main .container .balance .box-card .card #currency{
+  color: #000;
+  font-size: 1rem;
+}
+.main .container .balance .box-card .card #balance{
+  color: rgb(77, 77, 77);
+  font-size: 1.5rem;
+  font-weight: bold;
+
+}
+
+.main .container .balance .box-card .card .mat-icon{
+  transform: scale(2);
+  color: rgb(165, 209, 177);
+}
+
+.main .container .balance .box-card .card:hover{
+  background: rgba(8, 8, 8, 0.28);
+  background-size: cover;
+  color: #FFF;
+  background-attachment: fixed;
+  border-radius: 5rem;
+  transition: all .3s;
+}
+
+
+/*--------------------------------------------------------*/
+
+.main .container .transactions{
+  width: 100%;
+  display: block;
+}
+.main .container .transactions .header{
+  padding: 2rem 1rem;
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid rgb(165, 209, 177);
+}
+
+.main .container .transactions .header .title{
+  width: 30%;
+}
+.main .container .transactions .header .title h2{
+  font-weight: bold;
+  font-size: 1.7rem;
+  color: rgb(2, 29, 82);
+}
+
+.main .container .transactions .header .form{
+  width: 70%;
+  display: flex;
+  border-top: 2px solid rgb(165, 209, 177);
+  align-items: center;
+  text-align: center;
+}
+
+.main .container .transactions .header .form div{
+  width: 50%;
+  border: 1px solid #FFF;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.20);
+  background: transparent;
+}
+
+.main .container .transactions .header .form div input.search{
+  width: 90%;
+  border: 0px;
+  border-radius: 0px;
+  outline: none;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #414141;
+  padding: .5rem;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.main .container .transactions .header .form div input.search:focus {
+  background-color: rgba(22, 22, 22, 0.11);
+  border-radius: 2rem;
+  transition: all 0.2s;
+}
+
+.main .container .transactions .header .form div input.search::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+.main .container .transactions .header .form div input.search::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+.main .container .transactions .header .form div:hover{
+  border-radius: 2rem;
+  transition: all 0.2s;
+}
+
+.main .container .transactions .header .form #btn-search{
+  width: 10%;
+  border: 0;
+  background: transparent;
+  color: rgb(77, 77, 77);
+
+}
+
+.main .container .transactions .header .form #btn-search .mat-icon{
+  transform: scale(1.3);
+}
+
+.main .container .transactions .header .form #btn-all{
+  padding: .5rem 2rem;
+  margin-left: 1%;
+  background: rgb(74, 168, 99);
+  border: 0;
+  border-radius: 2rem;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.20);
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+}
+
+.main .container .transactions .header .form #btn-all:hover{
+  padding: .6rem 2.5rem;
+  background: #27a723;
+  border: 1px solid #ffffff;
+  color: #f5f5f5;
+}
+
+
+.main .container .transactions .list{
+  padding: 2rem 1rem;
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid rgb(165, 209, 177);
+}
+
+.main .container .transactions .list .box{
+  width: 100%;
+  display: block;
+}
+.main .container .transactions .list .box .date {
+  border-bottom: 1px solid rgb(165, 209, 177);
+}
+
+.main .container .transactions .list .box .date h2{
+  font-size: 1rem;
+  margin-top: -1.5%;
+  margin-bottom: -.2%;
+}
+.main .container .transactions .list .box .operation{
+  width: 100%;
+  padding: 1rem;
+}
+
+.main .container .transactions .list .box .operation .mov{
+  display: flex;
+  align-items: center;
+
+}
+
+.main .container .transactions .list .box .operation .mov span{
+  background: transparent;
+  padding: .7rem .9rem;
+  position: absolute;
+  border: 3px solid rgb(165, 209, 177);
+  border-radius: 5rem;
+  color: rgb(34, 34, 34);
+}
+
+.main .container .transactions .list .box .operation .mov span .mat-icon{
+  transform: scale(1.8);
+}
+
+.main .container .transactions .list .box .operation .mov #operator{
+  width: 40%;
+  display: block;
+  text-align: left;
+  margin-left: 6%;
+}
+.main .container .transactions .list .box .operation .mov #operator h2{
+  font-size: 1.1rem;
+  color: #414141;
+}
+
+.main .container .transactions .list .box .operation .mov #amount{
+  text-align: right;
+  width: 60%;
+}
+
+.main .container .transactions .list .box .operation .mov #amount h1{
+  color: #414141;
+  font-size: 1rem;
+  font-weight:500;
+}

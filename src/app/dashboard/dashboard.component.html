@@ -36,11 +36,9 @@
   </mat-menu>
 
   <mat-menu #menu="matMenu" *ngIf="isLogged">
-    \<!--<button mat-menu-item [routerLink]="['/logout']" >
-      <mat-icon>dialpad</mat-icon>
-      <span>Logout</span>
-    </button>-->
+    <!---- Sign out button -->
     <app-signout></app-signout>
+    <!---- Sign out button End -->
   </mat-menu>
 
    </mat-toolbar>
@@ -69,7 +67,7 @@
         Home
       </button>
       <mat-list-item role="listitem" *ngIf="username.role == 'ROOT' || username.role == 'AMIN'">
-        <button mat-button >
+        <button mat-button (click)="account()">
           <mat-icon>supervised_user_circle</mat-icon>
           Users</button>
       </mat-list-item>
@@ -112,7 +110,9 @@
         </button>
       </mat-list-item>
     </mat-list>
+
   </mat-drawer>
+
   <mat-drawer-content>
 
 
@@ -123,4 +123,6 @@
 
 
   </mat-drawer-content>
+
+
 </mat-drawer-container>

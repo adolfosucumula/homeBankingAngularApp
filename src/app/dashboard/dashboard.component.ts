@@ -38,16 +38,14 @@ export class DashboardComponent {
     if(!this.isLogged){
       this.router.navigate(['/login']);
     }
-  //Check is the  user is active. If false redirect him to the inactive page
-    if(!this.username.isActive){
-      //this.router.navigate(['/user-inactive']);
-    }
+
+    this.account()
 
 
   }
 
   account(){
-    this.router.navigate(['xx/account'], {relativeTo: this.route});
+    this.router.navigate(['account/user'], {relativeTo: this.route});
   }
 
   accountHome(){
