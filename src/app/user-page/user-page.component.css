@@ -201,6 +201,7 @@
 .main .container .transactions .list .box{
   width: 100%;
   display: block;
+  cursor: pointer;
 }
 .main .container .transactions .list .box .date {
   border-bottom: 1px solid rgb(165, 209, 177);
@@ -255,4 +256,9 @@
   color: #414141;
   font-size: 1rem;
   font-weight:500;
+}
+
+.main .container .transactions .list:hover{
+  background: rgba(0, 0, 0, 0.20);
+  border-radius: 2rem;
 }
