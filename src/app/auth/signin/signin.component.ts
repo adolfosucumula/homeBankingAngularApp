@@ -23,7 +23,7 @@ export class SigninComponent {
   constructor(private authUtils: AuthUtils,
      private localStore: StorageService,private formBuilder: FormBuilder,
      private router: Router, private authServices: AuthServicesComponent, private alertD: AlertMessageFactories,
-     private  signinService: SigninServicesService, private currentDate: CurrentDate
+     private  signinService: SigninServicesService
     ){}
 
   submitted = false;
@@ -32,7 +32,7 @@ export class SigninComponent {
   entityForm: FormGroup = this.authUtils.createSigninFormGroup();
 
    //Call AbstractControl class to check if the data from form fields conforms to the rule defined above
-   get _fC(): {[key: string]: AbstractControl } {
+    get _fC(): {[key: string]: AbstractControl } {
       return this.entityForm.controls;
     };
 
@@ -40,10 +40,7 @@ export class SigninComponent {
   ngOnInit(): void {
 
     //Function to validate the form fields according to the specific rules
-    this.entityForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(100)] ],
-      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(8)] ],
-    });
+    this.entityForm = this.authUtils.validateForm();
 
     if(this.localStore.isLoggedIn()){
       this.router.navigate(['/']);
@@ -63,7 +60,6 @@ export class SigninComponent {
     }
 
     this.firstFindUser();
-
 
   };
 

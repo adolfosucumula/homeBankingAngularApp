@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 export class UserModel {
 
   [x: string]: any;
-  
+
   private id: number;
   private fullname: string;
   private username: string;
@@ -15,15 +15,16 @@ export class UserModel {
   private createdAt: string;
   private updatedAt: string;
   public tableName: string;
+  private avatar: string;
   public signout: boolean = true;
 
   constructor(
     fullname: string = '',
-    username: string = '',
+    username: string = 'root',
     email: string = '',
     telephone: number = 0,
     password: string = '',
-    role: string = '',
+    role: string = 'ADMIN',
     isActive: boolean = false,
     createdAt: string = '',
     updatedAt: string = ''
@@ -39,6 +40,7 @@ export class UserModel {
       this.createdAt = createdAt;
       this.updatedAt = updatedAt;
       this.tableName = "users"
+      this.avatar = 'https://static-00.iconduck.com/assets.00/user-icon-2048x2048-ihoxz4vq.png';
   }
 
   public setId(id: number): void {
@@ -79,6 +81,22 @@ export class UserModel {
 
   public getTableName(): string {
     return this.tableName;
+  }
+
+  public setRole(role: string): void{
+    this.role = role
+  }
+
+  public getRole(): string{
+    return this.role
+  }
+
+  public setAvatar(avatar: string): void{
+    this.avatar = avatar
+  }
+
+  public getAvatar(): string{
+    return this.avatar;
   }
 
   public isPasswordsMatches(confirmPassword: string){

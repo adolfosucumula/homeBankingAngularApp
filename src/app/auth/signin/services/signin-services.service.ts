@@ -24,6 +24,17 @@ export class SigninServicesService {
     ) {}
 
 
+    /**
+     *
+     * @param form
+     * @param username
+     * @param email
+     * @param telephone
+     * @param userID
+     * @param userRole
+     * @param isActive
+     */
+
     signIn(form: FormGroup, username: string, email: string, telephone: number, userID: number, userRole: string, isActive: boolean ){
 
       this.authServices.signIn(

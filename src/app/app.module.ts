@@ -40,7 +40,6 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatPaginatorModule} from '@angular/material/paginator';
 
-
 //Importing Http client module because we have components that make http requests throught HttpClient module
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -68,6 +67,7 @@ import { LoaderSpinnerComponent } from './spinner/loader-spinner/loader-spinner.
 import { LoadingInterceptor } from './spinner/interceptor/loading.interceptor';
 import { UserStatusComponent } from './auth/user-status/user-status.component';
 import { UserPageComponent } from './user-page/user-page.component';
+import { MainWindowComponent } from './web/main-window/main-window.component';
 
 
 
@@ -76,7 +76,7 @@ import { UserPageComponent } from './user-page/user-page.component';
         AppComponent,
         //LoginComponent,
         SignupComponent,
-        //AccountsComponent,
+        AccountsComponent,
         DashboardComponent,
         EditAccountComponent,
         AddAccountComponent,
@@ -99,7 +99,8 @@ import { UserPageComponent } from './user-page/user-page.component';
         SuccessAlertDialogComponent,
         LoaderSpinnerComponent,
         UserStatusComponent,
-        UserPageComponent
+        UserPageComponent,
+        MainWindowComponent
     ],
     providers: [
       {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}

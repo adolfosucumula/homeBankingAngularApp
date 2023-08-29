@@ -24,6 +24,9 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   //-------------------------------------------------------
 
+  { path: 'acc', component: AccountsComponent},
+  { path: 'balance', component: BalanceComponent},
+  { path: 'balance/:id', component: BalanceComponent},
   { path: 'home', component: HomePageComponent},
 
   { path: 'login', component: SigninComponent},

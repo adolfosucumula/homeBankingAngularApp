@@ -8,7 +8,7 @@ import { Injectable } from "@angular/core";
 
 export class HttpEndpointSetting {
 
-  private readonly url = 'http://localhost:2000/';
+  private readonly url = 'http://localhost:3000/';
 
   endPointURL(){
     return this.url;

@@ -2172,6 +2172,48 @@
       "createdAt": "25/08/2023 02:01",
       "updatedAt": "",
       "tableName": "loggeds"
+    },
+    {
+      "signout": true,
+      "id": 160,
+      "fullname": "",
+      "username": "marcos",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "25/08/2023 10:35",
+      "updatedAt": "",
+      "tableName": "loggeds"
+    },
+    {
+      "signout": true,
+      "id": 161,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "25/08/2023 10:40",
+      "updatedAt": "",
+      "tableName": "loggeds"
+    },
+    {
+      "signout": true,
+      "id": 162,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "25/08/2023 11:12",
+      "updatedAt": "",
+      "tableName": "loggeds"
     }
   ],
   "signout": [
@@ -3474,6 +3516,61 @@
       "createdAt": "25/08/2023 02:01",
       "updatedAt": "",
       "tableName": "signout"
+    },
+    {
+      "signout": true,
+      "id": 110,
+      "fullname": "",
+      "email": "",
+      "telephone": 0,
+      "password": "",
+      "role": "",
+      "isActive": false,
+      "createdAt": "25/08/2023 10:35",
+      "updatedAt": "",
+      "tableName": "signout"
+    },
+    {
+      "signout": true,
+      "id": 111,
+      "fullname": "",
+      "username": "marcos",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "25/08/2023 10:35",
+      "updatedAt": "",
+      "tableName": "signout"
+    },
+    {
+      "signout": true,
+      "id": 112,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "25/08/2023 10:40",
+      "updatedAt": "",
+      "tableName": "signout"
+    },
+    {
+      "signout": true,
+      "id": 113,
+      "fullname": "",
+      "username": "admin",
+      "email": "",
+      "telephone": 0,
+      "password": "12345678",
+      "role": "",
+      "isActive": false,
+      "createdAt": "25/08/2023 11:12",
+      "updatedAt": "",
+      "tableName": "signout"
     }
   ],
   "accounts": [
@@ -3481,15 +3578,15 @@
       "id": 5,
       "account": "1991991811123",
       "iban": "LAU9999999999999990",
-      "swift": "FGGGGGGG",
+      "swift": "FGGGGGFF",
       "owner": "AFAGHGHA",
-      "ownerDoc": "admin",
+      "ownerDoc": "ADMIN",
       "initialBalance": "€200,120",
       "currentBalance": "€200,120",
       "currency": "Euro",
       "isActive": true,
       "tableName": "accounts",
-      "createdAt": "2023-08-10T23:00:00.000Z",
+      "createdAt": "2023-08-24T23:00:00.000Z",
       "updatedAt": ""
     },
     {
@@ -3558,31 +3655,19 @@
       "id": 10
     },
     {
-      "account": 1991991811123,
-      "iban": "2121212122222222222",
-      "swift": "ASAAAAAA",
-      "owner": "Azzz",
-      "ownerDoc": "991111",
-      "initialBalance": "€22,222,222",
-      "currentBalance": "€22224555",
+      "id": 11,
+      "account": "8888888888888",
+      "iban": "AFFA000000000000000",
+      "swift": "Mauricio",
+      "owner": "ASAAAAAA",
+      "ownerDoc": "3232323232",
+      "initialBalance": "€4001232323",
+      "currentBalance": "€3998232324",
       "currency": "Euro",
-      "createdAt": "2023-08-22T23:00:00.000Z",
-      "updatedAt": "2023-08-25T23:00:00.000Z",
-      "isActive": false,
-      "id": 11
-    },
-    {
-      "account": "9899979999999",
-      "iban": "ASA3333333232333322",
-      "swift": "AZSSSUUU",
-      "owner": "ASaaaa",
-      "ownerDoc": "232323",
-      "initialBalance": "€233,322",
-      "currentBalance": "€233,322",
-      "currency": "Dollar",
-      "createdAt": "2023-08-23T23:00:00.000Z",
-      "isActive": false,
-      "id": 12
+      "isActive": true,
+      "tableName": "accounts",
+      "createdAt": "2023-08-25T10:24:00.619Z",
+      "updatedAt": ""
     }
   ],
   "credits": [
@@ -3642,6 +3727,30 @@
       "status": "finalized",
       "createdAt": "2023-08-25T23:00:00.000Z",
       "id": 5
+    },
+    {
+      "sourceAccount": "8888888888889",
+      "owner": "AAAAAAAAAA",
+      "account": "8888888888888",
+      "balanceBefore": "€121,212",
+      "amount": "€1,111,111",
+      "balanceAfter": "€1232323",
+      "operator": "AAAAAAA",
+      "status": "finalized",
+      "createdAt": "2023-08-23T23:00:00.000Z",
+      "id": 6
+    },
+    {
+      "sourceAccount": "8888888888889",
+      "owner": "AAAAAAA",
+      "account": "8888888888888",
+      "balanceBefore": "€1232323",
+      "amount": "€4,000,000,000",
+      "balanceAfter": "€4001232323",
+      "operator": "AAAAAA",
+      "status": "finalized",
+      "createdAt": "2023-08-24T23:00:00.000Z",
+      "id": 7
     }
   ],
   "debits": [
@@ -3788,6 +3897,17 @@
       "status": "O.Finalized",
       "createdAt": "2023-08-13T01:37:27.812Z",
       "id": 13
+    },
+    {
+      "owner": "Mauricio",
+      "account": "8888888888888",
+      "balanceBefore": "€4001232323",
+      "amount": "€2,999,999",
+      "balanceAfter": "€3998232324",
+      "operator": "Operator",
+      "status": "O.Finalized",
+      "createdAt": "2023-08-25T10:24:00.619Z",
+      "id": 14
     }
   ],
   "transactions": [

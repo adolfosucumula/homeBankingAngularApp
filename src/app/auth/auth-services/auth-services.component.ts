@@ -201,6 +201,17 @@ export class AuthServicesComponent {
 
     if(isEqual >= 0) return true;
     else return false;
+
+    //Beste way
+    /* A code's name cannot be repeated
+      export function codeProductExists (code: string){
+        return bk.getAll().some(element => {
+          if(element.getCode() == code) return true
+          else return false
+        })
+      }
+
+     */
   }
 
 

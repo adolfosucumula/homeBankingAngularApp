@@ -7,6 +7,7 @@ import { SnackBarAlertMessage } from '../utils/snackBarAlertMessage';
 import { AccountClass } from '../models/AccountModel';
 import { MatTableDataSource } from '@angular/material/table';
 import { formatCurrency } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-page',
@@ -32,10 +33,16 @@ export class UserPageComponent implements OnInit{
     dataList: any;
 
     constructor(private localStore: StorageService, private accountServices: AccountServicesService,
-      private histServices: HistoricServices, private snackBarAlert: SnackBarAlertMessage
+      private histServices: HistoricServices, private snackBarAlert: SnackBarAlertMessage, private router: Router
       ){ }
 
     ngOnInit(): void {
+      this.isLogged = this.localStore.isLoggedIn();
+    this.username = this.localStore.getUser();
+      if(!this.isLogged){
+        this.router.navigate(['/login']);
+      }
+
       this.isLogged = this.localStore.isLoggedIn();
       this.username = this.localStore.getUser();
       this.getCredits()
@@ -67,7 +74,7 @@ export class UserPageComponent implements OnInit{
       })
     };
     getFormatted(_localLanguage: string = 'pt-PT', _currency: string = 'EUR', value: number): any {
-      
+
       return new Intl.NumberFormat(_localLanguage, { style: 'currency', currency: _currency }).format(value);
     }
 

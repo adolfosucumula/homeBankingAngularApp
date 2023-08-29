@@ -35,6 +35,24 @@ export class AccountServicesService {
     );
   }
 
+  filter(filter: string = '', datalist: AccountClass[]){
+    let result: AccountClass[] = [];
+
+    if(filter)
+    {
+      //result = datalist.filter(p => p.account.includes(filter))
+      //result = datalist.filter((obj) => obj.account.includes(filter))
+      result = datalist.filter((item) => {
+        return item.account == filter
+      })
+      console.log(result)
+      //result = datalist.find((datalist: {account: string}) => datalist.account == filter)
+    }
+    else
+      result = datalist;
+    return result;
+  }
+
   create(
     account: number,
     iban: string,
@@ -181,19 +199,7 @@ export class AccountServicesService {
       model.isActive = isActive;
       model.setTableName("accounts")
     return this.services.update(model, id)
-    /*return this.http.put < AccountClass > ( this.baseUrl.URL_API() + `accounts/${ id }`, {
-      account,
-      iban,
-      swift,
-      owner,
-      ownerDoc,
-      initialBalance,
-      currentBalance,
-      currency,
-      createdAt,
-      updatedAt,
-      isActive
-    } )*/
+
     .pipe(
       retry(3), // retry a failed request up to 3 times
       //catchError(this.handleError) // then handle the error

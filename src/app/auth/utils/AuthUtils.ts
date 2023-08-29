@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
 
@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 
 export class AuthUtils {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private formBuilder: FormBuilder){}
 
   date = new FormControl(new Date());
   serializedDate = new FormControl(new Date().toISOString());
@@ -22,8 +22,18 @@ export class AuthUtils {
     });
   };
 
+  validateForm(){
+    return this.formBuilder.group({
+      username: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.maxLength(100)] ],
+      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$'), Validators.minLength(8)] ],
+    });
+  }
 
-
+/**
+ *
+ * @param form
+ * @returns
+ */
   getLoginFormData(form: FormGroup) {
     let {
       username,
